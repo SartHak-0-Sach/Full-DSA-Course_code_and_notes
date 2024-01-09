@@ -1,0 +1,7 @@
+In this lecture we discussed the introduction to programming, how programming languages help us communicate what we want to tell the computer to do and how there are different programming languages for different tasks.
+
+There are compilers in computers who compile and convert programming language high level syntax to machine understandable binary code and help us get the job done.
+
+Then we started with the basics of programming by learning and implementing the concept of flowcharts and how they can be useful to understand the workflow of a program.
+
+Then lastly we learnt about various basic concepts like loops, operators like arithmatic operators and conditionals.
