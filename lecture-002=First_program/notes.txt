@@ -1,1 +1,44 @@
-getting started
+In this lecture we started out by learning more about how compilers translate our code into binary code that machine can understand and that there are a lot of online and offline compilers that we can choose from for writing code online and offline.
+
+Then we started out by writing our first code "Namaste Duniya" and in that we understood the basic structure of a C++ document.
+
+What header files are- files that store predefined functions.
+
+What namespaces are- Namespaces are used to organize code into logical groups and to prevent name collisions that can occur especially when your code base includes multiple libraries.
+
+Why namespaces are considered a bad practice- When you use using namespace std; in C++, it means that you're telling the compiler to consider all the names in the std (Standard Library) namespace as if they were part of the global namespace. While this can save you from typing std:: before every standard library element (like cout or cin), it might lead to naming conflicts, especially in larger programs.
+
+You can also go to next line by using \n instead of using endl.
+
+Then we learnt more about what different datatypes are and when they are used.
+
+We also got to know how much space each datatype takes when stored in memory of computer that can be found out by using sizeof() on a variable of each datatype.
+
+Later on we went into depth of memory allocation and understood how each byte stores the number we input into a variable.
+
+Also we learnt about what typecasting is and when it is used.
+
+In character datatype, the ASCII (American Standard Code for Information Interchange) table was developed to provide a standardized way to represent characters in computers and communication equipment.
+
+Before the adoption of ASCII, various incompatible character encodings were in use, which created challenges when exchanging data between different computer systems. ASCII provided a standardized mapping of characters to numerical codes, allowing computers to interpret and display text consistently.
+
+As for why characters are not stored as they appear visually, there are a few reasons:
+
+Uniformity and Consistency: Storing characters as numerical codes provides a uniform and consistent way to represent text across different systems. This allows for interoperability and ease of communication.
+
+Memory Efficiency: Numerical representations typically require less storage space than storing characters directly as visual images or shapes. This is especially important in memory-constrained environments.
+
+Computational Efficiency: Manipulating and processing numerical codes is generally faster and more efficient for computers than dealing with visual representations of characters.
+
+Compatibility: Using numerical codes allows for easier integration with various software and hardware components, facilitating the development of a common standard for character encoding.
+
+Also we learnt that sizeof is a compile time function and not a runtime function and tells the size of datatype and does not matter on the value stored in variable of that datatype, thus works differently for strings.
+
+And we learnt how we store negative numbers in memory. The steps to store it is:-
+
+1) Ignore negative sign
+2) Convert into binary representation
+3) Take 2's compliment and store(1's compliment + 1) and store
+4) To display it, take 2's compliment again and display and since first bit was 1 so computer knows it is storing negative number so it adds negative sign later.
+
+Lastly we learnt about various operators like arithmatic operators, ternary operators, relational operators, assignment operators, logical operators, and the most important one, bitwise operators
