@@ -1,16 +1,9 @@
 #include <iostream>
-#include <algorithm>
 #include <vector>
+#include <algorithm>
 using namespace std;
 
-long long appleAndCoupon(int n, int m, vector<int> arr)
-{
-    sort(arr.begin(), arr.end());
-    long long sum = 0;
-    for (int i = 0; i < arr.size(); i++)
-    {
-        sum += arr[i];
-    }
-    sum -= arr[arr.size() - m];
-    return sum;
+int classTest(int n, vector<int> &a, int k) {
+    std::sort(a.begin(), a.end());
+    return a[n-k];
 }
