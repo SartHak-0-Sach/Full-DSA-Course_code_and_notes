@@ -1,0 +1,6 @@
+https://stackoverflow.com/questions/40716515/do-stdstrings-end-in-0-when-initialized-with-a-string-literal
+
+(Write about this question also)
+
+https://cplusplus.com/reference/string/string/
+

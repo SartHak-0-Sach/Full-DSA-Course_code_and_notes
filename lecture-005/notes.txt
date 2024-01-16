@@ -1,0 +1,3 @@
+Checkout homework timestamps from description and solve them
+
+Also add leetcode question links to notes
