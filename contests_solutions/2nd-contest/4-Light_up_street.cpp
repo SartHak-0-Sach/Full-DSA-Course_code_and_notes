@@ -2,44 +2,75 @@
 #include <vector>
 using namespace std;
 
-long long threeWaySplit(int n, vector<int> arr)
+int LightUptheStreet(int n, int m, int k, vector<int> check)
 {
-    long long ans = 0;
-    long long start = 0;
-    long long end = n - 1;
-    long long s1 = arr[start];
-    long long s2 = arr[end];
-
-    while (start < end)
+    int last = 0;
+    int next = 0;
+    int count = 1;
+    int i = 0;
+    bool c = 1;
+    if ((check[0] - k <= 1) && (check[m - 1] + k >= n))
     {
-
-        if (s1 == s2)
+        while (i < m)
         {
-            ans = s1;
-
-            start++;
-            end--;
-
-            s1 += arr[start];
-            s2 += arr[end];
+            if ((check[i] - k <= 1) && (check[i] + k >= n))
+            {
+                c = 0;
+                break;
+            }
+            if (i <= m - 2)
+            {
+                if (check[i + 1] - check[i] - 1 > 2 * k)
+                {
+                    return -1;
+                    break;
+                }
+            }
+            if (i == m - 1)
+            {
+                if (last > next + 1)
+                {
+                    count++;
+                    c = 0;
+                }
+            }
+            if (check[i] + k >= n)
+            {
+                count++;
+                c = 0;
+                break;
+            }
+            if (check[i] - k <= 1)
+            {
+                last = check[i + 1] - k;
+                next = check[i] + k;
+                i++;
+            }
+            else if (last <= next + 1)
+            {
+                i++;
+                last = check[i] - k;
+            }
+            else if (last > next + 1)
+            {
+                i--;
+                last = check[i + 1] - k;
+                next = check[i] + k;
+                count++;
+                c = 0;
+            }
         }
-
-        else if (s1 < s2)
+        if (c)
         {
-
-            start++;
-
-            s1 += arr[start];
+            return -1;
         }
-
         else
         {
-
-            end--;
-
-            s2 += arr[end];
+            return count;
         }
     }
-
-    return ans;
+    else
+    {
+        return -1;
+    }
 }
