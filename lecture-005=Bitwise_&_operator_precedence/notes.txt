@@ -1,0 +1,38 @@
+In this lecture, we started off by learning about bitwise operators.
+
+Under bitwise operators we read about 4 bitwise operators, which are, & | ~ ^
+
+& operator(AND operator)- This operator gives true only when both bits are 1(both are true) and thus is often used for cases where 2 conditions have to be true for execution of certain piece of code.
+
+| operator(OR operator)- This operator gives false only when both bits are 0(both are false) and thus is often used for cases where any one of 2 conditions have to be true for execution of certain piece of code.
+
+~ operator(NOT operator)- This operator reverse the bit to 0 if it was 1, and makes it 1 if it was 0. For any integer, ~ of that integer is calculated by finding its 2's compliment(two's complement of an integer is calculated by first reversing all its bits. If the original integer's last bit is 1, the result is negated. To obtain the final representation for printing, reverse all the bits again and add 1, along with the negative sign if the integer was negated earlier).
+
+^ operator(XOR operator)- This operator only gives 0(false) when the 2 values are equal, and thus is often used to detect duplicate values.
+
+Then we studied about 2 more operators- left and right shift operators.
+
+Left-shift operator- When we do left shift operator, we move all set bits to one place left and add a 0(this addition of digit is called padding and is always 0 in case of this operator) at the end of the number, and this can be used to find the double of a number as by doing one left shift we are moving each bit to left so it is similar to multiplying number by 2.
+
+Right-shift operator- When we do right shift operator, we move all set bits to one place right and add a 0 at the start of the number, and this can be used to find the number divided by 2 as by doing one left shift we are moving each bit to left so it is similar to multiplying number by 2.
+
+The bits operations for integers are preferred than normal code because they are much faster.
+
+NOTE: In the case of edge cases, left shift operator might give wrong value as if the number is too big, the second last bit will be moved to last bit place and make the resultant number distorted than original value and negative. Similarly, we cannot use right-shift operator on a negative number as it will return a huge number. Also we cannot perform left-shift either on a negative number.
+
+NOTE2: When you perform a right shift operation on a binary number and the rightmost bit (the least significant bit) is 1, the behavior depends on the programming language and the specific type of right shift being used: arithmetic right shift or logical right shift.
+
+Logical Right Shift:
+In a logical right shift, the vacant bit positions on the left are filled with zeros.
+For example, if you have the binary number 1011 and you perform a logical right shift by one position, you get 0101.
+
+Arithmetic Right Shift:
+In an arithmetic right shift, the vacant bit positions on the left are filled with the value of the sign bit (the leftmost bit).
+If the original number is positive (sign bit is 0), then the vacant positions are filled with zeros.
+If the original number is negative (sign bit is 1), then the vacant positions are filled with ones.
+For example, if you have the binary number 1011 (which is -5 in decimal, assuming two's complement representation) and you perform an arithmetic right shift by one position, you get 1101.
+
+It's important to note that the behavior may vary depending on the programming language and the data type used for the right shift operation. Most languages provide both logical and arithmetic right shift operators, and the default behavior might be different.
+
+NOTE: In performing left-shift or right-shift on a negative number, the padding is compiler dependent and may not always be 0.
+
