@@ -1,0 +1,1 @@
+This lecture was the continuition lecture of lec-3 pattern problems in which we solved basic pattern problems using nested loops but here we tried approaching more complex patterns and solved them.
