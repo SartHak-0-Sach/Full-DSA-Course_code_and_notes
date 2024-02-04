@@ -1,0 +1,11 @@
+In this lecture we started off by learning C++ syntax about how we take input and output in a compiler.
+
+One new thing we learnt here was that the compiler does not read space, tab and break-line(enter) characters into the input but if we are taking input of a string where taking the input of space is important, then we will have to use cin.get().
+
+If we don't know how many input there are going to be, we can use a while loop as follows- while(cin>>x){}
+
+Then we went on to learn about conditionals and how they are used.
+
+After that we udnerstood while loops and their significance in code. We also learned about its implementation by writing a few basic programs like finding sum till n.
+
+Then lastly we tried implementing few basic pattern problems using nested loops and rest of the pattern problems were done in the next lecture.
