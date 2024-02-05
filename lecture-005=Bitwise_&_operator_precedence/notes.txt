@@ -36,3 +36,13 @@ It's important to note that the behavior may vary depending on the programming l
 
 NOTE: In performing left-shift or right-shift on a negative number, the padding is compiler dependent and may not always be 0.
 
+Later, we studied some more topics like pre-increment and post-increment operators and pre-decrement and post-decrement operators.
+
+After that we studied about a new type of loop that is for loop and understood its syntax.
+Then using for loop we solved few basic problems like sum from 1 to n, fibonacci series from 1 to n and if n is a prime number.
+
+After that we learnt about break and continue keyword also.
+
+Then we learned about block and global scope of variables in conditionals, loops and functions.
+
+Lastly we solved some basic LeetCode problems about topics discussed in this lecture and rest of the questions will be taken up in next video.
