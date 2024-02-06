@@ -1,0 +1,54 @@
+In this lecture we will study about switch-case statements and functions.
+
+Let us take a look at switch-case statements first.
+The use of switch-case statements comes only in case of multiple cases present to a certain statement and instead of putting too many conditional statements we can simply use switch-case instead.(to avoid violate DRY principle)
+
+The thing with switch-case statements is that only int and char are allowed to be used in it.
+
+And also in case of switch-case, only break keyword is valid and not continue.
+
+We also leaned more about exit().
+In C++, the exit() function is part of the <cstdlib> header and is used to terminate a program. It allows you to exit a program and return a status code to the operating system. The exit() function takes an integer argument, which represents the exit status of the program.
+
+Here's a simple example:
+
+#include <cstdlib>
+int main() {
+    // Your program logic here
+    // Exit the program with a status code of 0
+    exit(0);
+}
+
+The integer argument passed to exit() is often used to indicate the success or failure of the program. By convention, a return value of 0 typically indicates successful execution, while non-zero values indicate errors or abnormal termination.
+Here's an example where the program exits with a non-zero status:
+
+#include <cstdlib>
+#include <iostream>
+int main() {
+    // Your program logic here
+    // Exit the program with a status code of 1
+    exit(1);
+}
+
+It's important to note that calling exit() will immediately terminate the program, and no further code in the program will be executed after the call to exit(). This includes any destructors for automatic objects (variables with automatic storage duration).
+
+If you need to perform cleanup operations before exiting, it's often better to use the atexit() function or rely on C++'s destructors and resource management techniques.
+
+Here's an example using atexit():
+
+#include <cstdlib>
+#include <iostream>
+void cleanupFunction() {
+    std::cout << "Performing cleanup before exit." << std::endl;
+    // Additional cleanup logic
+}
+int main() {
+    // Your program logic here
+    // Register the cleanup function
+    atexit(cleanupFunction);
+    // Exit the program with a status code of 0
+    exit(0);
+}
+
+This way, cleanupFunction() will be called before the program exits, allowing you to perform necessary cleanup operations.
+
