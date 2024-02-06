@@ -1,5 +1,0 @@
-In this lecture, we studied more about memory allocation. We understood in depth about how integers are stored in binary system and how we can find the binary representation of a number or find the number from its binary representation in a program.
-
-Later on we inplemented the same in our IDE.
-
-Then we also learned how to change a negative decimal representation of a number to binary and vice versa. This can be done by 
