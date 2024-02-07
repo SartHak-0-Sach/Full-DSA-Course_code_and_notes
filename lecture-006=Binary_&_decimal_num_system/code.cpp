@@ -46,11 +46,12 @@ string decimalToBinary(int n)
 int binaryToDecimal(string str)
 {
     int result = 0;
-    for (int i = str.length(); i >= 0; i++)
+    for (int i = str.length() - 1; i >= 0; i--)
     {
-        
+        if (str[i] == '1')
+            result |= 1 << (str.length() - 1 - i);
     }
-    
+    return result;
 }
 
 int main(int argc, char const *argv[])
