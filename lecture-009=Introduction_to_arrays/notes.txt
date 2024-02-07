@@ -1,0 +1,56 @@
+In this lecture, we learned more about arrays. What are arrays? Why do we need them? How to use them?
+Arrays are contiguous blocks of memory that are used to store data that belongs to the same datatype. These are static in nature and represent fixed block of memory declared during code writing and their size cannot be changed during run-time. Arrays are indexed and we can directly access certain values through these indexes in O(1) time. While for insertion and deletion at a specific index, array takes O(N) time. For searching, we can carry it out in O(logN) time in the case of arrays, only condition being array will have to sorted(monotonic function(either increasing or decreasing not both)) for binary search (O(NlogN) time for sorting arrays is the best time complexity).
+
+How to initialize whole array with same value?
+There are 4 ways to do it:-
+Using a loop:
+Iterate over the array.
+Assign the desired value to each element in the array.
+
+int arr[100];
+int value = 10;
+for (int i = 0; i < 100; ++i) {
+    arr[i] = value;
+}
+
+
+Using std::fill:
+Include the <algorithm> header.
+Use the std::fill algorithm to fill the array with a specific value.
+
+#include <algorithm>
+int arr[100];
+int value = 20;
+std::fill(arr, arr + 100, value);
+
+
+Using std::fill_n:
+Include the <algorithm> header.
+Use the std::fill_n algorithm to specify the number of elements to fill with the desired value.
+
+#include <algorithm>
+int arr[100];
+int value = 30;
+std::fill_n(arr, 100, value);
+
+you can initialize the entire array with the same value during array initialization in C++. One way to do this is by using the "fill" technique. However, C++ does not directly support initializing an entire array with a single value using syntax like int arr[100] = {1};.
+
+But there's a workaround:
+int arr[100] = {0}; // Initializes all elements to 0
+In this case, all elements of the array arr will be initialized to 0. This works because if you partially initialize an array like this, the remaining elements are automatically initialized to zero for fundamental types like int.
+
+However, this method only works if you want to initialize the array with 0. If you want to initialize it with a different value, you'd need to use one of the techniques mentioned earlier after the array declaration.
+
+These techniques provide different ways to initialize an entire array with the same value in C++. They are applicable to arrays of various data types, not just integers.
+
+What are the default values for different data types arrays when they are initialized without providing them values?
+The default values for different data types when arrays are initialized without providing specific values depend on the programming language. Here are some common default values for different data types in C++:
+
+C/C++:
+
+int: 0
+float: 0.0
+double: 0.0
+char: '\0' (null character)
+Pointers: nullptr or NULL
+
