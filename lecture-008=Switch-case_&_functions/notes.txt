@@ -5,7 +5,16 @@ The use of switch-case statements comes only in case of multiple cases present t
 
 The thing with switch-case statements is that only int and char are allowed to be used in it.
 
-And also in case of switch-case, only break keyword is valid and not continue.
+And also in case of switch-case, only break keyword is valid and not continue keyword.
+In fact in many programming languages, including C, C++, Java, and others, the continue keyword is not used within switch-case statements because it's not designed to work in that context.
+
+The continue statement is typically used in loop constructs like for, while, or do-while to skip the rest of the code within the loop's body for the current iteration and move to the next iteration. It's not meant to be used to control the flow within switch-case constructs, which are primarily used for multi-way branching.
+
+In a switch-case statement, once a case is matched, the code execution starts from that case and continues until the end of the switch block or until a break statement is encountered. The break statement is used to exit the switch block after executing the code associated with the matched case. Using continue wouldn't make sense in this context because there's no concept of "skipping" to the next iteration like in a loop.
+
+However, some languages provide mechanisms to fall through from one case to another without a break statement (e.g., in C, if no break statement is encountered, control falls through to the next case). In such cases, using continue would disrupt this fall-through behavior and cause unintended consequences.
+
+Therefore, to control the flow within a switch-case statement, programmers use break to exit the switch block or allow the fall-through behavior where necessary.
 
 We also leaned more about exit().
 In C++, the exit() function is part of the <cstdlib> header and is used to terminate a program. It allows you to exit a program and return a status code to the operating system. The exit() function takes an integer argument, which represents the exit status of the program.
@@ -51,4 +60,5 @@ int main() {
 }
 
 This way, cleanupFunction() will be called before the program exits, allowing you to perform necessary cleanup operations.
+
 
