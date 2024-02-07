@@ -1,0 +1,14 @@
+In this lecture, we solved 3 problems from leetcode and codestudio and learned about how they can be solved in optimized manner.
+
+We also learned that-
+The space complexity of my code, despite using the same amount of space as the optimized solution provided, might be displayed as higher on LeetCode due to how the platform evaluates space complexity. Here are a few possible reasons:
+
+Auxiliary space consideration: LeetCode may consider not only the space used explicitly by your code but also any additional auxiliary space used, such as stack space for function calls or any other hidden space usage.
+
+Compiler optimizations: LeetCode may compile and run your code in a different environment or with different compiler flags than what you might use locally. Compiler optimizations can affect how much memory your code consumes.
+
+Memory allocation specifics: The way memory is allocated and managed in the online judge environment of LeetCode might differ from your local environment, leading to variations in reported memory usage.
+
+Additional overhead: There might be additional overhead or bookkeeping required by the online judge platform for running and evaluating your code, which could contribute to differences in reported space complexity.
+
+In summary, while my code may use the same amount of space as the optimized solution provided, the reported space complexity on LeetCode might differ due to various factors related to the platform's evaluation process and environment.
