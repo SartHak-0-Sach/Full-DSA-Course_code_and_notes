@@ -2,4 +2,37 @@ In this lecture, we studied more about memory allocation. We understood in depth
 
 Later on we inplemented the same in our IDE.
 
-Then we also learned how to change a negative decimal representation of a number to binary and vice versa. This can be done by 
+Then we also learned how to change a negative decimal representation of a number to binary and vice versa. This can be done by utilizing a method called Two's Complement. Two's Complement is a binary representation scheme used to represent signed integers in a way that allows for easy addition and subtraction. To convert a negative decimal representation to binary using Two's Complement, follow these steps:
+
+Convert the Absolute Value to Binary: Begin by converting the absolute value of the negative decimal number to binary using the standard binary conversion method.
+
+Pad with Zeros: Ensure that the binary representation has the desired number of bits. If the absolute value requires fewer bits than the chosen bit length, pad the left side with zeros.
+
+Invert the Bits: Flip all the bits in the binary representation. Change 0s to 1s and vice versa.
+
+Add 1: Add 1 to the inverted binary representation.
+
+The resulting binary representation is the Two's Complement of the original negative decimal number.
+
+For example, let's convert -7 to an 8-bit Two's Complement binary representation:
+
+The absolute value of 7 in binary is 0111.
+Since we are using 8 bits, no padding is needed.
+Inverting the bits gives 1000.
+Adding 1 gives the final Two's Complement representation: 1001.
+Conversely, to convert a Two's Complement binary representation back to a negative decimal number, reverse the process:
+
+Check the Most Significant Bit (MSB): If the leftmost bit is 1, the number is negative.
+
+Invert the Bits: Flip all the bits.
+
+Convert to Decimal: Convert the inverted binary representation to decimal.
+
+Add a Negative Sign: Add a negative sign to the decimal result.
+
+Continuing with the example, if we have the 8-bit Two's Complement representation 1001:
+
+The MSB is 1, indicating a negative number.
+Inverting the bits gives 0110.
+Converting 0110 to decimal gives 6.
+Adding a negative sign results in -6, which is the original negative decimal number.
