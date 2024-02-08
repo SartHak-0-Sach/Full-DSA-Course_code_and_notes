@@ -12,3 +12,60 @@ Memory allocation specifics: The way memory is allocated and managed in the onli
 Additional overhead: There might be additional overhead or bookkeeping required by the online judge platform for running and evaluating your code, which could contribute to differences in reported space complexity.
 
 In summary, while my code may use the same amount of space as the optimized solution provided, the reported space complexity on LeetCode might differ due to various factors related to the platform's evaluation process and environment.
+
+
+We also learned that in C++, std::pair is a templated class provided by the Standard Template Library (STL) that allows you to encapsulate two heterogeneous objects into a single entity. It's a very handy utility when you need to associate two values together but don't necessarily want to define a separate struct or class for that purpose.
+
+Here's a comprehensive breakdown of std::pair:
+
+1. Template Class:
+std::pair is a template class, meaning it can hold elements of any data type. It's defined in the <utility> header.
+
+2. Pair Structure:
+Each std::pair contains two elements, typically referred to as first and second. These elements can be of different types.
+
+3. Creating Pairs:
+You can create std::pair instances in several ways:
+
+Explicitly providing the types:
+
+cpp
+Copy code
+std::pair<int, double> myPair(5, 3.14);
+Using make_pair function (since C++11):
+
+auto myPair = std::make_pair(5, 3.14);
+4. Accessing Elements:
+You can access the elements of the pair using the first and second member variables:
+
+std::cout << "First: " << myPair.first << ", Second: " << myPair.second << std::endl;
+5. Utility Functions:
+The <utility> header provides utility functions to work with pairs:
+
+make_pair: Constructs a pair from two values.
+swap: Swaps the contents of two pairs.
+get: Allows access to elements of the pair by index (since C++17).
+6. Using with Standard Containers:
+Pairs are commonly used in conjunction with standard containers like std::map, std::unordered_map, std::set, std::multimap, and std::multiset to associate keys with values.
+
+7. Example Usage:
+Here's an example demonstrating the usage of std::pair:
+
+#include <iostream>
+#include <utility>
+
+int main() {
+    std::pair<int, std::string> student(1, "John");
+    std::cout << "ID: " << student.first << ", Name: " << student.second << std::endl;
+    return 0;
+}
+8. When to Use:
+std::pair is handy for one-off associations or returning multiple values from a function without needing to define a separate struct or class.
+
+9. Limitations:
+std::pair is useful for simple use cases, but for more complex associations or structures, defining a custom struct or class might be more appropriate.
+
+10. C++17 and Beyond:
+With C++17, std::pair gained some additional functionality, like the get function for accessing elements by index.
+
+That's a comprehensive overview of std::pair in C++. It's a simple yet powerful tool for bundling two values together.
