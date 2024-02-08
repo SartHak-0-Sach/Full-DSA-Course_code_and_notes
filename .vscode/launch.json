@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/saksh/OneDrive/Desktop/github/Love-babbar-dsa-code_and_notes/lecture-006=Binary_&_decimal_num_system",
-      "program": "c:/Users/saksh/OneDrive/Desktop/github/Love-babbar-dsa-code_and_notes/lecture-006=Binary_&_decimal_num_system/build/Debug/outDebug",
+      "cwd": "c:/Users/saksh/OneDrive/Desktop/github/365-day_daily-problem_challenge/039-8th_feb-Perfect_squares",
+      "program": "c:/Users/saksh/OneDrive/Desktop/github/365-day_daily-problem_challenge/039-8th_feb-Perfect_squares/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
