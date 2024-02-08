@@ -1,28 +1,62 @@
 #include <iostream>
 using namespace std;
-// class Calculator{
-//     public:
-//     Calculator(string str)
-//     {
-//         cout << "Constructor called with : " + str << endl;  // Calling the constructor
-//     }
 
-// };
+int factorial(int n)
+{
+    if (n == 0 || n == 1)
+        return 1;
 
-// int main(int argc, char const *argv[])
-// {
-//     string expression = "3+4*5";
-//     // Create an object of the class and pass the expression as a parameter to it.
-//     Calculator calcObj("3+4*5");
+    return n * factorial(n - 1);
+}
 
-//     return 0;
-// }
+int nCr(int n, int r)
+{
+    return factorial(n) / (factorial(r) * factorial(n - r));
+}
 
-// Question-1 make calculator class in c++ that takes string expression and returns solution and works infinitely until break
+int countBits(int n)
+{
+    int count = 0;
+    while (n > 0)
+    {
+        if (n & 1)
+            count++;
 
+        n >> 1;
+    }
+    return count;
+}
+
+int fibonacci(int n)
+{
+    if (n == 0)
+        return 0;
+    if (n == 1)
+        return 1;
+
+    int a = 0;
+    int b = 1;
+    int count = 2;
+    int ans;
+    while (count != n)
+    {
+        int c = a + b;
+        a = b;
+        b = c;
+        count++;
+        ans = c;
+    }
+    return ans;
+}
 
 int main(int argc, char const *argv[])
 {
+    // int n, r;
+    // cin >> n >> r;
+    // cout << nCr(n, r) << "\n";
+    // int m;
+    // cin >> m;
+    // cout << fibonacci(m) << endl;
     int a, b;
     cin >> a >> b;
     char op;
@@ -30,7 +64,7 @@ int main(int argc, char const *argv[])
     while (true)
     {
         cin >> op;
-        cout << "Press q to quit" << endl; // Question-2 make a menu driven program for calculator
+        cout << "Press q to quit" << endl;
         switch (op)
         {
         case '+':
@@ -63,5 +97,3 @@ int main(int argc, char const *argv[])
     }
     return 0;
 }
-
-// Question-3 coin problem using switch-case
