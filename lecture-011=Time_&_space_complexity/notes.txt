@@ -1,0 +1,342 @@
+The "10^8 operations rule" in computer science and algorithm analysis is a heuristic used to estimate the efficiency of algorithms in terms of their time complexity. This rule suggests that algorithms whose time complexity is on the order of O(nlogn) or better (where n represents the size of the input) can typically handle inputs up to 10^8 elements efficiently on modern hardware.
+
+Here's a breakdown of how this rule is applied:
+
+Algorithm Analysis: The time complexity of algorithms is often analyzed in terms of the size of the input, denoted as n. For example, some algorithms might have a linear time complexity O(n), a logarithmic time complexity O(logn), or a superlinear time complexity like O(nlogn). These complexities describe how the runtime of the algorithm grows with the size of the input.
+
+Practical Considerations: While theoretical analysis of algorithms provides insights into their efficiency, practical considerations are also crucial. Modern computers have finite resources, and the time it takes to execute an algorithm can be influenced by factors like processor speed, memory access times, and cache efficiency.
+
+Empirical Observation: Through empirical testing and observation, computer scientists have noticed that algorithms with time complexities up to    O(nlogn) generally perform well on inputs with up to 10^8 elements. This observation is based on the idea that for most real-world applications, inputs of this size can be processed efficiently within reasonable time frames.
+
+Beyond 10^8: Algorithms with time complexities worse than O(nlogn), such as O(n^2) or O(2^n) may struggle to handle inputs of size 10^8 efficiently. For very large inputs, algorithms with better time complexities are preferred. In practice, this might involve algorithmic optimizations, parallel computing techniques, or utilizing specialized hardware.
+
+It's important to note that the "10^8 operations rule" is a rough guideline rather than a strict rule. The actual performance of an algorithm can vary based on numerous factors, including hardware characteristics, implementation details, and specific characteristics of the input data. Additionally, advancements in hardware technology may influence the practical implications of this rule over time. Therefore, while the rule provides a useful rule of thumb for algorithm design and analysis, it should be applied with consideration for the specific context and requirements of each problem.
+
+
+In C++, the time complexity of nested loops depends on various factors such as loop bounds, loop increments, and the operations performed within the loops. While nested loops often result in a time complexity of O(N^2)(where N is the size of the input), there are scenarios where this may not hold true. Here are all the cases possible where nested loops do not result in a time complexity of O(N^2):
+
+Constant Bounds: If the bounds of the loops are constants independent of the input size N, the time complexity remains constant. For example:
+
+for (int i = 0; i < 10; ++i) {
+    for (int j = 0; j < 10; ++j) {
+        // Operations
+    }
+}
+
+Fixed Ratios: If the increment of one loop is dependent on the iterator of another loop by a fixed ratio, the time complexity may not be O(N^2). For example:
+
+for (int i = 0; i < N; ++i) {
+    for (int j = i; j < N; j += 2) {
+        // Operations
+    }
+}
+In this case, the inner loop iterates with a fixed ratio (j += 2) based on the outer loop's iterator.
+
+Non-Exponential Increments: If the increment of loop variables is not exponential with respect to the input size, the time complexity may differ. For example:
+
+for (int i = 0; i < N; ++i) {
+    for (int j = 1; j < N; j *= 2) {
+        // Operations
+    }
+}
+Here, the inner loop's increment (j *= 2) is not linear with respect to the input size.
+
+Variable Bounds Dependent on Input: If the bounds of the loops are dependent on the input size N but not directly related to each other, the time complexity may vary. For example:
+
+for (int i = 0; i < N; ++i) {
+    for (int j = 0; j < M; ++j) {
+        // Operations
+    }
+}
+Here, the time complexity is O(N×M), which is not necessarily O(N^2) unless M is also proportional to N.
+
+Early Termination: If the loops have early termination conditions based on certain criteria, the actual number of iterations may not reach O(N^2)
+For example:
+
+for (int i = 0; i < N; ++i) {
+    for (int j = 0; j < N; ++j) {
+        if (condition)
+            break; // Terminate early
+        // Operations
+    }
+}
+In this case, if the condition is met early, the number of iterations will be less than O(N^2).
+
+
+Constraints in coding questions refer to the limitations or conditions imposed on the input data or the algorithm itself. These constraints help define the scope of the problem and guide developers in designing efficient solutions. Here's a list of common constraints found in coding questions:
+
+Input Size Constraints: These constraints limit the size of the input data. For example:
+
+The number of elements in an array or a list.
+The length of a string or a sequence.
+The number of nodes or edges in a graph.
+Value Constraints: These constraints restrict the range of values that input elements can take. For example:
+
+The range of integer values (e.g., between 1 and 10^9).
+The range of floating-point numbers.
+The presence of negative or non-negative numbers.
+Time Complexity Constraints: These constraints specify the maximum allowed time for an algorithm to execute. For example:
+
+The algorithm must run in less than O(N^2) time.
+The algorithm must terminate within a certain time limit, such as 1 second.
+Space Complexity Constraints: These constraints limit the amount of memory or space that an algorithm can use. For example:
+
+The algorithm must use less than O(N) space.
+The algorithm must fit within a certain memory limit, such as 256 MB.
+Resource Constraints: These constraints may include limitations on other computational resources, such as the number of function calls, recursion depth, or the number of allowed operations.
+
+Now, let's discuss some algorithms commonly used in coding questions along with their complexities, operations, and other details:
+
+Sorting Algorithms:
+
+Merge Sort: O(NlogN) time complexity. It divides the array into two halves, recursively sorts them, and then merges the sorted halves.
+Quick Sort: O(NlogN) time complexity on average. It partitions the array into smaller sections based on a pivot element, recursively sorts these sections, and then combines them.
+Heap Sort: O(NlogN) time complexity. It builds a max-heap from the array and repeatedly extracts the maximum element to obtain a sorted sequence.
+Searching Algorithms:
+
+Binary Search: O(logN) time complexity. It efficiently finds the position of a target value within a sorted array by repeatedly halving the search interval.
+Depth-First Search (DFS): O(V+E) time complexity, where V is the number of vertices and E is the number of edges in the graph. It explores a graph or tree by recursively visiting all vertices reachable from a chosen starting vertex.
+Breadth-First Search (BFS): O(V+E) time complexity. It explores a graph or tree by systematically visiting all vertices at a given depth level before moving to the next level.
+
+Dynamic Programming:
+Fibonacci Sequence: O(N) time complexity using dynamic programming with memoization or tabulation. It efficiently computes Fibonacci numbers by storing previously computed results.
+Longest Common Subsequence (LCS): O(m×n) time complexity, where m and n are the lengths of the input sequences. It finds the longest subsequence common to two sequences.
+Knapsack Problem: O(n×W) time complexity, where n is the number of items and W is the capacity of the knapsack. It solves the problem of maximizing the value of items placed into a knapsack without exceeding its capacity.
+
+Graph Algorithms:
+Dijkstra's Algorithm: O((V+E)logV) time complexity using a binary heap or O(V^2) using an array-based implementation. It finds the shortest paths from a single source vertex to all other vertices in a weighted graph with non-negative edge weights.
+Bellman-Ford Algorithm: O(VE) time complexity. It finds the shortest paths from a single source vertex to all other vertices in a weighted graph, even in the presence of negative edge weights.
+Minimum Spanning Tree (MST):
+Prim's Algorithm: O(V^2) time complexity using an adjacency matrix or O((V+E)logV) using a binary heap. It finds the minimum spanning tree of a connected, undirected graph.
+Kruskal's Algorithm: O(ElogV) time complexity using a sorting algorithm. It finds the minimum spanning tree of a connected, undirected graph.
+
+String Algorithms:
+String Matching:
+Naive Algorithm: O((N−M+1)×M) time complexity, where N is the length of the text and M is the length of the pattern. It checks for the occurrence of a pattern within a text by sliding the pattern over the text.
+KMP Algorithm: O(N+M) time complexity. It efficiently finds all occurrences of a pattern within a text using a prefix function to avoid unnecessary comparisons.
+Edit Distance: O(m×n) time complexity, where m and n are the lengths of the input strings. It computes the minimum number of edit operations (insertions, deletions, or substitutions) required to transform one string into another.
+
+Number Theory Algorithms:
+Sieve of Eratosthenes: O(NloglogN) time complexity. It generates all prime numbers up to a given limit by iteratively marking the multiples of each prime.
+
+GCD (Greatest Common Divisor):
+Euclidean Algorithm: O(logmin(a,b)) time complexity, where a and b are the input numbers. It efficiently computes the greatest common divisor of two integers.
+Sieve of Atkin: O(N) time complexity. It generates all prime numbers up to a given limit using a different approach compared to the Sieve of Eratosthenes.
+
+Greedy Algorithms:
+Interval Scheduling: O(NlogN) time complexity, where N is the number of intervals. It selects a maximum-size subset of mutually compatible intervals.
+Dijkstra's Algorithm: Mentioned earlier, it's a greedy algorithm for finding shortest paths in a graph.
+Fractional Knapsack: O(nlogn) time complexity using sorting. It solves the fractional knapsack problem by selecting items based on their value-to-weight ratios.
+
+Backtracking:
+N-Queens Problem: O(N!) time complexity. It finds all possible arrangements of N queens on an N×N chessboard such that no two queens threaten each other.
+Subset Sum: O(N^2) time complexity. It finds all subsets of a given set that sum up to a target value.
+Sudoku Solver: O(9^(N^2)) time complexity for a standard 9x9 Sudoku grid. It solves a Sudoku puzzle by trying all possible combinations of numbers in the empty cells.
+Bit Manipulation:
+Bitwise AND, OR, XOR, NOT: O(1) time complexity. These operations manipulate individual bits in integers efficiently.
+Bit Counting: O(logN) time complexity using techniques like Brian Kernighan's Algorithm or lookup tables. It counts the number of set bits (1s) in an integer.
+Bitwise Shifts: O(1) time complexity. Left and right shifts of bits can be performed efficiently.
+Geometry Algorithms:
+
+Convex Hull: O(NlogN) time complexity using algorithms like Graham's Scan or Jarvis March. It finds the smallest convex polygon that encloses a given set of points.
+Closest Pair of Points: O(NlogN) time complexity using divide and conquer approach. It finds the pair of points with the smallest Euclidean distance among a set of points.
+Line Intersection: O(NlogN) time complexity using the Bentley-Ottmann Algorithm. It finds all intersections among a set of line segments.
+
+Randomized Algorithms:
+Randomized QuickSort: O(NlogN) expected time complexity. It is a variant of QuickSort that randomizes the selection of pivot elements to achieve better performance on average.
+Randomized Selection: O(N) expected time complexity. It finds the kth smallest element in an unsorted array using randomization to achieve linear expected time.
+Las Vegas Algorithms: These algorithms have a guaranteed correctness but their runtime is randomized. Examples include algorithms for primality testing like Miller-Rabin.
+Data Structures:
+Hash Tables: O(1) average case time complexity for insertion, deletion, and lookup operations in a well-implemented hash table.
+Priority Queues: O(logN) time complexity for insertion and deletion of the maximum (or minimum) element in a max-heap (or min-heap).
+Tries: O(L) time complexity for insertion, deletion, and lookup operations, where L is the length of the key.
+
+Miscellaneous Algorithms:
+Topological Sorting: O(V+E) time complexity. It sorts the vertices of a directed acyclic graph in such a way that for every directed edge →u→v, vertex u comes before vertex v in the ordering.
+Two Pointers Technique: O(N) time complexity. It is a technique for finding subarrays or sublists that satisfy certain conditions, typically in sorted arrays or lists.
+Manacher's Algorithm: O(N) time complexity. It finds the longest palindromic substring in linear time using dynamic programming and palindrome properties.
+
+Graph Algorithms (continued):
+
+Tarjan's Algorithm:
+O(V+E) time complexity. It finds strongly connected components (SCCs) in a directed graph efficiently.
+
+Articulation Points and Bridges:
+O(V+E) time complexity using depth-first search (DFS). It identifies critical points (articulation points) and critical edges (bridges) in an undirected graph.
+
+Eulerian Path and Circuit:
+O(V+E) time complexity. It determines whether a graph has an Eulerian path or circuit and, if so, finds one.
+
+Tree Algorithms:
+
+Tree Traversals:
+O(N) time complexity, where N is the number of nodes in the tree. Pre-order, in-order, post-order, and level-order traversals visit each node in the tree once.
+
+Lowest Common Ancestor (LCA):
+O(N) time complexity for preprocessing using techniques like binary lifting or Euler tour, and O(1) time complexity for each LCA query.
+
+Segment Trees:
+O(logN) time complexity for range queries and updates on an array or dynamic sequence represented as a segment tree.
+
+Mathematical Algorithms:
+
+Prime Factorization:
+O(N) time complexity using trial division or more advanced algorithms like Pollard's rho algorithm. It decomposes a number into its prime factors.
+
+Chinese Remainder Theorem (CRT):
+O(k^3) time complexity, where k is the number of congruences. It solves systems of simultaneous congruences efficiently.
+
+Fast Fourier Transform (FFT):
+O(NlogN) time complexity. It efficiently computes the discrete Fourier transform (DFT) of a sequence of numbers or polynomials.
+
+Flow Algorithms:
+
+Ford-Fulkerson Algorithm:
+O(E*f) time complexity on each iteration, where f is the maximum flow value. It finds the maximum flow in a flow network.
+
+Edmonds-Karp Algorithm:
+O(VE^2) time complexity. It is an implementation of the Ford-Fulkerson algorithm that uses BFS for finding augmenting paths.
+
+Push-Relabel Algorithm:
+O(V^2*E) time complexity. It is a faster maximum flow algorithm, especially suited for dense graphs.
+
+String Algorithms (continued):
+
+Rabin-Karp Algorithm:
+O(N+M) average case time complexity, where N is the length of the text and M is the length of the pattern. It efficiently finds all occurrences of a pattern within a text using hashing.
+
+Z Algorithm:
+O(N+M) time complexity, where N is the length of the text and M is the length of the pattern. It efficiently finds all occurrences of a pattern within a text using linear-time pattern matching.
+
+Suffix Array and Longest Common Prefix (LCP) Array:
+O(NlogN) time complexity for construction. These data structures are used for efficient string processing tasks like substring searches and finding repeated substrings.
+
+Dynamic Programming (continued):
+
+Matrix Chain Multiplication:
+O(N^3) time complexity using dynamic programming. It finds the most efficient way to multiply a sequence of matrices.
+
+Bitmask Dynamic Programming:
+O(2^N*N) time complexity. It solves combinatorial optimization problems by iterating over all possible subsets of elements using bitmasks.
+
+Greedy Algorithms (continued):
+
+Huffman Coding:
+O(NlogN) time complexity for building the Huffman tree. It is a lossless data compression algorithm that constructs an optimal prefix code based on the frequencies of characters in the input.
+
+Probabilistic Algorithms:
+
+Monte Carlo Algorithm: Its time complexity varies depending on the problem, but it often involves repeated random sampling to estimate the solution to a problem with a certain level of confidence.
+
+Las Vegas Algorithm: Mentioned earlier, these algorithms guarantee correctness but have randomized runtime.
+
+These algorithms cover a wide range of problem-solving techniques and are commonly encountered in coding interviews, competitive programming contests, and real-world software development scenarios. Understanding their complexities, operations, and underlying principles is crucial for effectively solving algorithmic problems and designing efficient algorithms. Additionally, it's important to practice implementing these algorithms and solving problems to develop proficiency in algorithmic problem-solving.
+
+
+Logarithmic Complexity:
+
+Constraint: 1 ≤ N ≤ 10^9
+Time Complexity: O(log N)
+
+Linear Complexity:
+
+Constraint: 1 ≤ N ≤ 10^6
+Time Complexity: O(N)
+
+Linearithmic Complexity:
+
+Constraint: 1 ≤ N ≤ 10^5
+Time Complexity: O(N log N)
+
+Quadratic Complexity:
+
+Constraint: 1 ≤ N ≤ 10^3
+Time Complexity: O(N^2)
+
+Cubic Complexity:
+
+Constraint: 1 ≤ N ≤ 10^2
+Time Complexity: O(N^3)
+
+Factorial Complexity:
+
+Constraint: 1 ≤ N ≤ 10
+Time Complexity: O(N!)
+
+Exponential Complexity:
+
+Constraint: 1 ≤ N ≤ 20
+Time Complexity: O(2^N)
+
+Polynomial Complexity:
+
+Constraint: 1 ≤ N ≤ 10^3
+Time Complexity: O(N^k), where k is a constant.
+
+Sublinear Complexity:
+
+Constraint: 1 ≤ N ≤ 10^18
+Time Complexity: O(sqrt(N))
+
+Log Factorial Complexity:
+
+Constraint: 1 ≤ N ≤ 10^6
+Time Complexity: O(N log N)
+
+Log-Logarithmic Complexity:
+
+Constraint: 1 ≤ N ≤ 10^18
+Time Complexity: O(log log N)
+
+Exponential Factorial Complexity:
+
+Constraint: 1 ≤ N ≤ 20
+Time Complexity: O(N^N)
+
+Super Exponential Complexity:
+
+Constraint: 1 ≤ N ≤ 10
+Time Complexity: O(N^N)
+
+Fractional Complexity:
+
+Constraint: 1 ≤ N ≤ 10^18
+Time Complexity: O(N^(1/c)), where c is a constant.
+
+Log-Factorial Complexity:
+
+Constraint: 1 ≤ N ≤ 10^6
+Time Complexity: O(log N!)
+
+Constant Complexity:
+
+Constraint: Typically used for operations that involve a fixed number of steps, regardless of input size.
+Example Constraint: No specific constraint, suitable for operations like accessing an element in an array or performing basic arithmetic operations.
+
+Exponential Polynomial Complexity:
+
+Constraint: Typically used for operations with exponential and polynomial terms, where both N and 2^N terms are involved.
+Example Constraint: 1 ≤ N ≤ 20, suitable for operations where the input size N is relatively small but the complexity grows exponentially with N.
+
+Quadratic Logarithmic Complexity:
+
+Constraint: Typically used for operations with quadratic and logarithmic terms, where both N^2 and N log N terms are involved.
+Example Constraint: 1 ≤ N ≤ 10^3, suitable for operations where the input size N can be moderately large, and the complexity grows quadratically with N but also has a logarithmic component.
+
+Quartic Complexity:
+
+Constraint: Typically used for operations with quartic terms, where N^4 term is involved.
+Example Constraint: 1 ≤ N ≤ 100, suitable for operations where the input size N is relatively small, and the complexity grows with the fourth power of N.
+
+Sextic Complexity:
+
+Constraint: Typically used for operations with sextic terms, where N^6 term is involved.
+Example Constraint: 1 ≤ N ≤ 50, suitable for operations where the input size N is relatively small, and the complexity grows with the sixth power of N.
+
+No, values larger than 10^8 do not necessarily imply constant complexity. In computational complexity analysis, O(1) complexity specifically refers to operations that take a constant amount of time, regardless of the input size.
+
+Values such as 10^9 or larger may still indicate complexities beyond constant time. For example:
+10^9 typically suggests linear (O(N)) or logarithmic (O(logN)) complexity for many algorithms, where N represents the size of the input.
+Larger values like 10^18 could suggest complexities like linearithmic (O(NlogN)), quadratic (O(N^2)), or even higher, depending on the problem and algorithm.
+
+In summary, the magnitude of a value alone does not determine its complexity class; rather, it's the behavior of the algorithm with respect to the input size that dictates the complexity.
