@@ -4,6 +4,8 @@ Welcome to the Love Babbar DSA Playlist repository! Here, you'll find comprehens
 
 Thank you for visiting this repository. All the resources provided here are completely free of cost. Please refer to the license file for terms and conditions regarding the use, redistribution, and modification of the content.
 
+### Apart from the usual course videos, I have added more bonus notes and code of more complex topics that are also considered necessary for upscaling in competitive programming along with some other resources provided at the top of the repository, youtube video links that were referred to make these notes will be provided in the bonus folders themselves😇😇
+
 ![Love-Babbar DSA course](README-image.jpg)
 
 ## Overview
