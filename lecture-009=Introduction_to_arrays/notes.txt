@@ -1,5 +1,5 @@
 In this lecture, we learned more about arrays. What are arrays? Why do we need them? How to use them?
-Arrays are contiguous blocks of memory that are used to store data that belongs to the same datatype. These are static in nature and represent fixed block of memory declared during code writing and their size cannot be changed during run-time. Arrays are indexed and we can directly access certain values through these indexes in O(1) time. While for insertion and deletion at a specific index, array takes O(N) time. For searching, we can carry it out in O(logN) time in the case of arrays, only condition being array will have to sorted(monotonic function(either increasing or decreasing not both)) for binary search (O(NlogN) time for sorting arrays is the best time complexity).
+Arrays are contiguous blocks of memory that are used to store data that belongs to the same datatype. These are static in nature and represent fixed block of memory declared during code writing and their size cannot be changed during run-time. Arrays are indexed and we can directly access certain values through these indexes in O(1) time. While for insertion and deletion at a specific index, array takes O(N) time. For searching, we can carry it out in O(logN) time in the case of arrays, only condition being array will have to sorted(monotonic function(either increasing or decreasing not both)) for binary search (O(NlogN) time for sorting arrays is the best time complexity). The memory address layout of the array can be shown as follows: 100 104 108 112... depending on size and datatype of array.
 
 How to initialize whole array with same value?
 There are 4 ways to do it:-
@@ -53,4 +53,140 @@ float: 0.0
 double: 0.0
 char: '\0' (null character)
 Pointers: nullptr or NULL
+
+Also on simply initializing let's say size 10 array with only 2 values, the compiler initializes rest 8 values with 0.
+
+
+If we are passing an array in a function without a size argument along with it, then we can find size of array by doing sizeof(arr)/sizeof(int)
+
+
+In C++, there are several ways to pass arrays to functions, each with its own advantages and considerations. Let's explore each method:
+
+Pass by pointer:
+This involves passing the pointer to the first element of the array to the function. The function then operates on the array elements using pointer arithmetic.
+
+void function(int* arr, int size) {
+    // Access array elements using pointer arithmetic
+    for (int i = 0; i < size; ++i) {
+        cout << arr[i] << " ";
+    }
+}
+Usage: function(array, size);
+
+Pass by reference:
+You can pass an array by reference, which allows the function to directly manipulate the original array.
+
+void function(int (&arr)[5]) {
+    // Access array elements directly
+    for (int i = 0; i < 5; ++i) {
+        cout << arr[i] << " ";
+    }
+}
+Usage: function(array);
+
+Pass by array:
+It's also possible to pass an array directly to a function, but the size of the array must be known at compile time.
+
+template<size_t N>
+void function(int (&arr)[N]) {
+    // Access array elements directly
+    for (int i = 0; i < N; ++i) {
+        cout << arr[i] << " ";
+    }
+}
+Usage: function(array);
+
+Pass by std::array:
+You can use std::array from the Standard Library, which encapsulates the size of the array.
+
+void function(std::array<int, 5>& arr) {
+    // Access array elements using array methods
+    for (int i = 0; i < arr.size(); ++i) {
+        cout << arr[i] << " ";
+    }
+}
+Usage: function(array);
+
+Pass by std::vector:
+If you prefer dynamic sizing, you can use std::vector.
+
+void function(std::vector<int>& arr) {
+    // Access array elements using vector methods
+    for (int elem : arr) {
+        cout << elem << " ";
+    }
+}
+Usage: function(vector);
+
+Pass by pointer with array size:
+Sometimes, a function may need to know the size of the array. In such cases, you can pass the array along with its size.
+
+void function(int* arr, int size) {
+    // Access array elements using pointer arithmetic
+    for (int i = 0; i < size; ++i) {
+        cout << arr[i] << " ";
+    }
+}
+Usage: function(array, size);
+
+Each method has its own trade-offs in terms of efficiency, safety, and flexibility. Choose the appropriate method based on the specific requirements of your program.
+
+
+In C++, int arr[] and int* arr[] are different types of arrays.
+
+int arr[]: This declares an array of integers. The size of the array is not specified explicitly in the declaration. It's inferred from the initializer if present or from the context in which the array is used. For example:
+
+int arr[] = {1, 2, 3, 4, 5}; // Declaration with initializer
+In this case, arr is an array of 5 integers.
+
+int* arr[]: This declares an array of pointers to integers. Each element of the array arr is a pointer to an integer. The size of the array is again inferred from the context or specified explicitly.
+
+int a = 1, b = 2, c = 3;
+int* arr[] = {&a, &b, &c}; // Declaration with initializer
+In this case, arr is an array of 3 pointers to integers, each pointing to the respective integer a, b, and c.
+
+In summary:
+
+int arr[] declares an array of integers.
+int* arr[] declares an array of pointers to integers.
+The distinction is important because the way you interact with these arrays (e.g., accessing elements, memory management) differs based on whether you're dealing with raw integers or pointers to integers.
+
+
+In C++, when you pass an array to a function, you usually have to specify the size of the array explicitly or use template techniques to deduce its size. However, int &arr[] is not a valid way to specify an array parameter in a function declaration.
+
+If you want to pass an array by reference to a function, you should use one of the following methods:
+
+Pass by reference to an array of fixed size:
+
+void function(int (&arr)[5]) {
+    // Access array elements directly
+    // Size is known at compile-time (5 in this case)
+}
+Pass by reference to an array with template deduction:
+
+template<size_t N>
+void function(int (&arr)[N]) {
+    // Access array elements directly
+    // Size is deduced by the compiler
+}
+Pass by reference to a std::array:
+
+void function(std::array<int, 5>& arr) {
+    // Access array elements using array methods
+    // Size is encapsulated in the std::array
+}
+If you want to pass a dynamically sized array, you might consider using std::vector or passing a pointer along with the size of the array. For example:
+
+void function(int* arr, size_t size) {
+    // Access array elements using pointer arithmetic
+    // Size of the array must be passed explicitly
+}
+Or, preferably, using std::vector:
+
+void function(std::vector<int>& arr) {
+    // Access array elements using vector methods
+    // No need to pass the size separately
+}
+Using one of these methods should resolve the compilation error you encountered. Remember that C++ does not directly support passing arrays by reference without specifying the size or using containers like std::array or std::vector.
+
 
