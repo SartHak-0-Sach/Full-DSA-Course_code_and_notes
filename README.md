@@ -1,8 +1,10 @@
-# Love Babbar DSA Playlist - Full Code and Notes
+# [Love Babbar DSA Playlist - Full Code and Notes](https://www.youtube.com/playlist?list=PLDzeHZWIZsTryvtXdMr6rPh4IDexB5NIA)
 
 Welcome to the Love Babbar DSA Playlist repository! Here, you'll find comprehensive notes, code solutions, and optimizations for all the homework and practice questions from the renowned Love Babbar DSA course.
 
 Thank you for visiting this repository. All the resources provided here are completely free of cost. Please refer to the license file for terms and conditions regarding the use, redistribution, and modification of the content.
+
+![Love-Babbar DSA course](README-image.jpg)
 
 ## Overview
 
