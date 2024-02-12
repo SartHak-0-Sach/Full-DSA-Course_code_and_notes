@@ -1,0 +1,7 @@
+Information about insertion sort
+Add what are the applications of insertion sort and its approach in non sorting questions
+Add complexity info of all cases
+What all datatypes can be sorted in insertion sort
+Add use case info
+
+Do sorting questions from codestudio roadmap and add notes in this repo also

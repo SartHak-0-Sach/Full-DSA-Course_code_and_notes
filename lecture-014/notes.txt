@@ -1,0 +1,2 @@
+Write approach of difficult binary search questions here
+Add an in depth notes about long long int, long long, long double etc etc and the difference between all of them

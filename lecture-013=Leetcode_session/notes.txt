@@ -69,3 +69,8 @@ std::pair is useful for simple use cases, but for more complex associations or s
 With C++17, std::pair gained some additional functionality, like the get function for accessing elements by index.
 
 That's a comprehensive overview of std::pair in C++. It's a simple yet powerful tool for bundling two values together.
+
+
+8:16 mention correction mentioned in video in code
+25:20 Do total number of occurence code using binary search
+Solve problems in code section with the provided code only

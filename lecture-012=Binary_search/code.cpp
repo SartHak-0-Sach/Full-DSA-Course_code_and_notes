@@ -1,0 +1,1 @@
+// 4 types of binary search code(increasing and decreasing sort)(using for loop, using while loop)

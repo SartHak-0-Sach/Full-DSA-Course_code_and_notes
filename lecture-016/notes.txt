@@ -1,0 +1,5 @@
+Information about selection sort
+Add what are the applications of selection sort and its approach in non sorting questions
+Add complexity info of all cases
+What all datatypes can be sorted in selection sort
+Add use case info

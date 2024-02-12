@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/saksh/OneDrive/Desktop/github/365-day_daily-problem_challenge/039-8th_feb-Perfect_squares",
-      "program": "c:/Users/saksh/OneDrive/Desktop/github/365-day_daily-problem_challenge/039-8th_feb-Perfect_squares/build/Debug/outDebug",
+      "cwd": "c:/Users/saksh/OneDrive/Desktop/github/Love-babbar-dsa-code_and_notes/lecture-010=Leetcode_session",
+      "program": "c:/Users/saksh/OneDrive/Desktop/github/Love-babbar-dsa-code_and_notes/lecture-010=Leetcode_session/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

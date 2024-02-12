@@ -1,0 +1,3 @@
+binary search info
+complexity calculation
+binary search famous application problems and where to apply it

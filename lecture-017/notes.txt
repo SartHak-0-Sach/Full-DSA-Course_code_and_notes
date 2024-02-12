@@ -1,0 +1,11 @@
+Information about bubble sort
+Add what are the applications of bubble sort and its approach in non sorting questions
+Add complexity info of all cases
+What all datatypes can be sorted in bubble sort
+Add use case info
+
+Add info about in place sort
+Add info about stable or unstable sort
+Checkout the notes of fresources for more info about sorting theory
+Do homework mentioned at the end of video
+Do GFG quiz

@@ -1,0 +1,4 @@
+pointer info
+double pointer info
+use case of both
+in depth details of memory allocation by computers and address of memory
