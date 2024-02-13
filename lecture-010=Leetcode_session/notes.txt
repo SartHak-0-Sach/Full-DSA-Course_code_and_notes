@@ -1,2 +1,6 @@
 In this lecture we have solved many LeetCode and Codestudio questions about the topic of arrays and have found and compiled their most optimized solutions after lots of research. 
 
+find ways to swap entities
+whenever we talk about unique, we talk about either set or xor, info about them
+more info about *arr
+solve all questions with the approach discussed in video
