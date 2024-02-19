@@ -1,7 +1,24 @@
-Information about insertion sort
-Add what are the applications of insertion sort and its approach in non sorting questions
-Add complexity info of all cases
-What all datatypes can be sorted in insertion sort
-Add use case info
+Insertion Sort:
 
-Do sorting questions from codestudio roadmap and add notes in this repo also
+Insertion Sort is a simple sorting algorithm that builds the final sorted array (or list) one item at a time. It is efficient for small datasets or nearly sorted datasets. Insertion Sort works by repeatedly moving elements one at a time into their correct positions.
+
+Approach:
+
+Start with the second element (or index 1) and compare it with the elements before it.
+If the element is smaller, shift the larger elements one position to the right and insert the current element into its correct position.
+Repeat this process for each element in the array.
+Complexity:
+
+Best Case: O(n) comparisons, O(1) swaps (already sorted array).
+Average Case: O(n^2) comparisons, O(n^2) swaps.
+Worst Case: O(n^2) comparisons, O(n^2) swaps (reverse sorted array).
+Data Types:
+Insertion Sort can be applied to any data type that supports comparison operators. This includes integers, floating-point numbers, characters, strings, and custom data structures with defined comparison functions.
+
+Applications:
+
+Small Datasets: Insertion Sort performs efficiently on small arrays or lists due to its simplicity and low overhead.
+Nearly Sorted Data: When the input data is almost sorted, Insertion Sort outperforms other algorithms due to its adaptive nature.
+Online Algorithms: Insertion Sort can be used in scenarios where data is continuously arriving, as it can efficiently update the sorted list as new elements are received.
+Adaptability:
+Insertion Sort is an adaptive sorting algorithm, meaning it performs better on datasets that are already partially sorted. It adapts its behavior based on the input data, making it suitable for a wide range of scenarios. However, it may not perform well on large datasets due to its quadratic time complexity.
