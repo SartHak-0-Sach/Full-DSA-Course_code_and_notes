@@ -1,11 +1,135 @@
-Information about bubble sort
-Add what are the applications of bubble sort and its approach in non sorting questions
-Add complexity info of all cases
-What all datatypes can be sorted in bubble sort
-Add use case info
+Bubble sort:
+Bubble sort is a simple sorting algorithm that repeatedly steps through the list, compares adjacent elements, and swaps them if they are in the wrong order. The pass through the list is repeated until the list is sorted. It is named because smaller elements "bubble" to the top of the list with each iteration.
 
-Add info about in place sort
-Add info about stable or unstable sort
-Checkout the notes of fresources for more info about sorting theory
-Do homework mentioned at the end of video
-Do GFG quiz
+Approach:
+Start from the beginning of the list.
+Compare each pair of adjacent elements.
+If they are in the wrong order, swap them.
+Repeat this process until no swaps are needed, indicating that the list is sorted.
+Complexity:
+Time Complexity:
+Best Case: O(n) - When the list is already sorted.
+Average Case: O(n^2) - When elements are randomly arranged.
+Worst Case: O(n^2) - When the list is sorted in reverse order.
+Space Complexity: O(1) - Bubble sort only requires a constant amount of additional memory space.
+Applications:
+Small Data Sets: Bubble sort is suitable for sorting small datasets where efficiency is not a primary concern.
+Educational Purposes: It's often used in educational contexts to teach sorting algorithms due to its simplicity.
+Debugging: It can be handy for detecting small errors in sorting algorithms.
+Use Case:
+Bubble sort can be used in scenarios where simplicity and ease of implementation are more important than speed. For instance, in embedded systems with limited resources where the size of data to be sorted is small, or in scenarios where sorting is an occasional task and performance is not a critical factor.
+
+Data Types:
+Bubble sort can be applied to sort various data types including:
+
+Integers
+Floating-point numbers
+Characters
+Strings
+Structured data types (with proper comparison function)
+In-place Sort:
+Bubble sort is an in-place sorting algorithm, meaning it doesn't require additional storage space to perform sorting. It operates directly on the input array.
+
+Stability:
+Bubble sort is a stable sorting algorithm, meaning that the relative order of equal elements is preserved during sorting. This characteristic makes it suitable for sorting elements where the original order is important.
+
+
+The bubble sort is at its best if the input data is sorted. i.e. If the input data is sorted in the same order as expected output. This can be achieved by using one boolean variable. The boolean variable is used to check whether the values are swapped at least once in the inner loop. Consider the following code snippet: 
+
+int main()
+{   
+    int arr[] = {10, 20, 30, 40, 50}, i, j, isSwapped;
+    int n = sizeof(arr) / sizeof(*arr);
+    isSwapped = 1;
+    for(i = 0; i < n - 1 && isSwapped; ++i)
+    {
+        isSwapped = 0;
+        for(j = 0; j < n - i - 1; ++j)
+            if (arr[j] > arr[j + 1])
+            {
+                swap(&arr[j], &arr[j + 1]);
+                isSwapped = 1;
+            }
+    }
+    for(i = 0; i < n; ++i)
+        printf("%d ", arr[i]);
+    return 0;
+}
+
+In the best-case scenario, the array is already sorted, but just in case, bubble sort performs O(n) comparisons. As a result, the time complexity of bubble sort in the best-case scenario is O(n).
+
+1: 8, 7, 9, 22, 5, 13, 31 = 4 swaps 
+2: 7, 8, 9, 5, 13, 22, 31 = 3 swaps 
+3: 7, 8, 5, 9, 13, 22, 31 = 1 swap 
+4: 7, 5, 8, 9, 13, 22, 31 = 1 swap 
+5: 5, 7, 8, 9, 13, 22, 31 = 1 swap 
+
+Total 10 swaps are required to sort the array.
+
+At pass 1:
+Number of comparisons = (N-1)
+
+At pass 2:
+Number of comparisons = (N-2)
+
+At pass 3:
+Number of comparisons = (N-3)
+
+Likewise,
+At pass N-1:
+Number of comparisons = 1
+
+Now, calculating total number of comparison required to sort the array
+= (N-1) + (N-2) +  (N-3) + . . . 2 + 1
+= (N-1)*(N-1+1)/2  { by using sum of N natural Number formula }
+= (N * (N-1)) / 2
+
+Total number of comparison (Worst case) = N(N-1)/2
+
+The worst-case condition for bubble sort occurs when elements of the array are arranged in decreasing order.
+In the worst case, the total number of iterations or passes required to sort a given array is (N-1). where ‘N’ is the number of elements present in the array.
+
+calculating the total number of comparisons required to sort the array
+= (N-1) + (N-2) +  (N-3) + . . . 2 + 1
+= (N-1)*(N-1+1)/2  { by using sum of N natural Number formula }
+= (N * (N-1)) / 2
+
+In the worst case, the Total number of swaps = Total number of comparison
+Total number of comparison (Worst case) = N(N-1)/2
+Total number of swaps (Worst case) = N(N-1)/2
+
+So worst case time complexity is O(N^2) as N^2 is the highest order term.
+
+Bubble Sort is an example of a comparison-based sorting algorithm. A comparison-based sorting algorithm is a type of sorting algorithm that works by comparing pairs of elements in the input data and swapping them if they are in the wrong order. The goal is to rearrange the elements in ascending or descending order.
+
+Bubble Sort is a comparison-based sorting algorithm because it sorts elements by comparing them pairwise and then making decisions based on those comparisons to rearrange the elements.
+
+Bubble Sort is an example of a sorting algorithm that Swaps adjacent elements directly
+
+void bubbleSort(int arr[], int n)
+{
+    int i, j;
+    bool swapped;
+    for (i = 0; i < n - 1; i++) {
+        swapped = false;
+        for (j = 0; j < n - i - 1; j++) {
+        
+        //swap adjacent directly
+            if (arr[j] > arr[j + 1]) {
+                swap(&arr[j], &arr[j + 1]);
+                swapped = true;
+            }
+        }
+        if (swapped == false)
+            break;
+    }
+}
+
+Bubble sort performs the swapping of adjacent pairs without the use of any major data structure. Hence Bubble sort algorithm is an in-place algorithm.
+
+In Bubble Sort, after each pass, the largest element among the unsorted elements "bubbles up" to the last position of the current unsorted portion of the array. This means that with each pass, the largest unsorted element is moved to its correct sorted position at the end of the array.
+
+Option A: Bubble sort is stable, so this statement is incorrect.
+Option B: Bubble sort is a comparison-based algorithm, so this statement is also incorrect.
+Option C: Bubble sort has a high time complexity. which is equal to O(n^2). This statement is correct.
+Option D: It is adaptable to different data types, it will also work for string and float data types.
