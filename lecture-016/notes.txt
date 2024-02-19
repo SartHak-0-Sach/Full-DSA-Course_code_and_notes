@@ -1,5 +1,37 @@
-Information about selection sort
-Add what are the applications of selection sort and its approach in non sorting questions
-Add complexity info of all cases
-What all datatypes can be sorted in selection sort
-Add use case info
+Selection Sort: Overview
+
+Selection sort is a simple comparison-based sorting algorithm. It works by repeatedly finding the minimum element from the unsorted portion of the array and placing it at the beginning. The algorithm maintains two subarrays: the sorted subarray, which is built up from left to right at the front of the array, and the unsorted subarray at the remaining positions.
+
+Approach:
+
+Find the minimum element in the unsorted array.
+Swap it with the element at the beginning of the unsorted array.
+Move the subarray boundary one element to the right.
+Complexity:
+
+Time Complexity:
+Best Case: O(n^2)
+Average Case: O(n^2)
+Worst Case: O(n^2)
+Space Complexity: O(1) - Selection sort is an in-place sorting algorithm.
+Applications of Selection Sort:
+
+Selection sort is suitable for small datasets or when auxiliary memory space is limited.
+It can be used in scenarios where the simplicity of implementation is more important than the efficiency of the sorting algorithm.
+It's often used as an educational tool to demonstrate the concept of sorting algorithms due to its simplicity.
+Approach in Non-Sorting Questions:
+Selection sort's approach of finding the minimum (or maximum) can be applied in various non-sorting scenarios such as:
+
+Finding the smallest or largest element in an array.
+Locating the kth smallest or largest element in an array.
+Identifying the minimum or maximum value in a collection.
+Data Types Sorted:
+Selection sort can be applied to sort various data types including:
+
+Integer numbers
+Floating-point numbers
+Characters (for sorting strings)
+Custom data types (with defined comparison operators)
+
+Use Case Example:
+Consider a scenario where you have a list of students along with their exam scores. You want to rearrange the list in ascending order of scores using selection sort. This can be efficiently done using selection sort, especially if the dataset is not very large. The simplicity of the algorithm makes it suitable for such tasks where a quick, straightforward solution is preferred over more complex sorting algorithms.
