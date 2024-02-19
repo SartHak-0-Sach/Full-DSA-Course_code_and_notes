@@ -1,2 +1,684 @@
-Write approach of difficult binary search questions here
-Add an in depth notes about long long int, long long, long double etc etc and the difference between all of them
+
+
+
+
+datatypes list:-
+
+1. int:
+int is a fundamental data type in C++ used to store integer values.
+It typically occupies 32 bits of storage space, although its exact size may vary depending on the platform and compiler.
+The range of int is typically from -2147483648 to 2147483647.
+
+2. unsigned int:
+unsigned int is similar to int but can only store non-negative integer values (zero and positive integers).
+It has the same size as int and can represent values ranging from 0 to 4294967295.
+
+3. short int (or short):
+short int, often referred to as short, is used to store smaller integer values compared to int.
+It typically occupies 16 bits of storage space, with a range from -32768 to 32767.
+
+4. unsigned short int (or unsigned short):
+unsigned short int is similar to short int but can only store non-negative integer values.
+It has the same size as short int and can represent values from 0 to 65535.
+
+5. long int (or long):
+long int, commonly known as long, is used to store integer values with a larger range than int.
+It typically occupies 32 or 64 bits of storage space, depending on the platform and compiler.
+The range of long int is typically from -2147483648 to 2147483647, or from -9223372036854775808 to 9223372036854775807 for a 64-bit implementation.
+
+6. unsigned long int (or unsigned long):
+unsigned long int is similar to long int but can only store non-negative integer values.
+It has the same size as long int and can represent values from 0 to 4294967295, or from 0 to 18446744073709551615 for a 64-bit implementation.
+
+7. char:
+char is used to store single characters, typically represented as ASCII values.
+It occupies 8 bits of storage space and can represent values from -128 to 127 or 0 to 255, depending on whether it is signed or unsigned.
+
+8. bool:
+bool is a data type used to store boolean values, representing either true or false.
+It typically occupies 1 byte of storage space, although its exact size may vary.
+In C++, true evaluates to 1, and false evaluates to 0.
+
+9. float:
+float is a floating-point data type used to store single-precision floating-point numbers.
+It typically occupies 32 bits of storage space and can represent values with approximately 7 decimal digits of precision.
+
+10. double:
+double is a floating-point data type used to store double-precision floating-point numbers.
+It typically occupies 64 bits of storage space and provides greater precision than float, with approximately 15 decimal digits of precision.
+
+11. long long long int:
+This is not a standard data type in C++, but some compilers support it as an extension.
+It's an extension of long long int, providing an even larger range for integer values.
+Its storage size and range are implementation-dependent but are typically larger than long long int.
+
+12. long long unsigned int:
+Similar to long long int, but can only store non-negative integer values.
+It's an extension of long long int, providing an even larger range for non-negative integer values.
+
+13. long long long unsigned int:
+This is not a standard data type in C++, but some compilers may support it.
+An extension of long long unsigned int, providing an even larger range for non-negative integer values.
+
+14. long long long int (using typedef):
+It's possible to create custom data types using typedef in C++.
+For example, you can define a custom data type long long long int by aliasing long long long int to a new name.
+This technique can be useful for creating self-descriptive data types or for improving code readability.
+
+15. long long float, long long double (non-standard):
+These are not standard data types in C++, but some compilers or libraries may support them as extensions.
+They would potentially provide extended precision for floating-point calculations, similar to long double but with potentially larger storage sizes.
+
+16. User-defined Data Types (struct, class, enum):
+C++ allows programmers to define their own custom data types using struct, class, and enum.
+struct allows bundling together different types of data under a single name.
+class is similar to struct but supports encapsulation and data hiding through access specifiers.
+enum allows defining named integral constants.
+
+17. wchar_t:
+wchar_t is a wide character data type used to represent wide characters in C++.
+It typically occupies 16 bits or more, depending on the platform and compiler.
+It's commonly used for Unicode and internationalization support in C++ programs.
+
+18. Pointers and References:
+Pointers (*) and references (&) are not fundamental data types but are crucial features in C++ for working with memory addresses and accessing data indirectly.
+Pointers store memory addresses, while references provide an alias to an existing variable.
+They are extensively used for dynamic memory allocation, data structures, and passing parameters to functions by reference.
+
+19. std::nullptr_t:
+Introduced in C++11, std::nullptr_t is a special type used to represent a null pointer.
+It's intended to provide a type-safe alternative to using NULL or 0 for null pointer values.
+nullptr can be implicitly converted to any pointer type, but not to integral types, reducing potential ambiguities in code.
+
+20. std::size_t:
+std::size_t is an unsigned integer type defined in the <cstddef> header.
+It's commonly used for representing sizes and indices of objects in memory, particularly in conjunction with containers like std::vector and std::array.
+Its size is guaranteed to be sufficient to represent the size of any object in memory.
+
+21. std::ptrdiff_t:
+std::ptrdiff_t is a signed integer type defined in the <cstddef> header.
+It's used for pointer arithmetic and represents the difference between two pointers.
+Its size is guaranteed to be sufficient to represent the difference between any two pointers in memory.
+
+22. std::byte:
+Introduced in C++17, std::byte is a data type used to represent raw memory.
+It's intended for low-level manipulation of memory and provides a type-safe alternative to using char or unsigned char for such purposes.
+It's commonly used in scenarios like memory-mapped I/O and network programming.
+
+23. std::complex:
+std::complex is a template class defined in the <complex> header for representing complex numbers.
+It provides support for complex arithmetic operations like addition, subtraction, multiplication, and division.
+Instances of std::complex consist of a real part and an imaginary part, both of which can be of floating-point types.
+
+24. std::atomic:
+std::atomic is a template class introduced in C++11 for supporting atomic operations on shared variables in multithreaded programs.
+It provides a way to perform operations like load, store, and compare-and-exchange atomically, ensuring thread safety without the need for explicit locking mechanisms.
+It's commonly used in concurrent programming to prevent data races and ensure correct synchronization between threads.
+
+25. std::variant:
+std::variant is a template class introduced in C++17 for representing a value that can be one of a fixed set of alternative types.
+It provides a type-safe alternative to unions for storing values of different types, with support for type-safe retrieval and manipulation using visitor patterns.
+It's commonly used in scenarios where a function or data structure needs to handle multiple types of values flexibly.
+
+26. std::initializer_list:
+std::initializer_list is a template class introduced in C++11 for representing lists of values initialized within braces {}.
+It's commonly used to initialize objects, such as containers like std::vector or user-defined types, with a list of values.
+std::initializer_list provides a convenient and type-safe way to pass multiple values to constructors or functions.
+
+27. std::function:
+std::function is a template class introduced in C++11 for representing callable objects, such as functions, function pointers, lambdas, or other function-like entities.
+It provides a type-safe and polymorphic wrapper for callable objects, allowing them to be stored, passed as arguments, or returned from functions.
+std::function is commonly used in scenarios where functions need to be passed around as first-class objects, such as event handling, callbacks, and general-purpose function wrappers.
+
+28. std::tuple:
+std::tuple is a template class introduced in C++11 for representing heterogeneous collections of values, similar to a fixed-size container.
+It allows grouping together multiple values of different types into a single object, providing access to each element by its index or type.
+std::tuple is commonly used in scenarios where a function needs to return multiple values or when dealing with functions that accept multiple arguments of different types.
+
+29. std::array:
+std::array is a template class introduced in C++11 for representing fixed-size arrays with compile-time bounds checking.
+It provides a safer and more convenient alternative to built-in C-style arrays by encapsulating the size information and providing methods for accessing elements.
+std::array is commonly used in scenarios where a fixed-size collection of elements is needed, such as matrix operations, lookup tables, or passing arrays to functions.
+
+30. std::bitset:
+std::bitset is a template class introduced in C++11 for representing fixed-size sequences of bits, with each bit having a value of either 0 or 1.
+It provides efficient bitwise operations and supports various logical and arithmetic operations on bitsets.
+std::bitset is commonly used in scenarios where compact storage of boolean flags or bitwise manipulation is required, such as in network protocols, compression algorithms, or hardware interfacing.
+
+31. std::deque:
+std::deque is a template class introduced in the C++ Standard Library for representing double-ended queues.
+It provides constant time insertion and deletion operations at both the beginning and the end of the sequence.
+Unlike std::vector, std::deque does not guarantee contiguous storage, allowing for efficient insertion and deletion in the middle of the sequence.
+
+32. std::unordered_set:
+std::unordered_set is a template class introduced in C++11 for representing sets of unique elements in an unordered manner.
+It provides constant time average complexity for insertion, deletion, and lookup operations, making it suitable for scenarios requiring efficient membership tests.
+std::unordered_set is implemented using a hash table data structure, which offers fast access to elements with good average performance characteristics.
+
+33. std::unordered_map:
+std::unordered_map is a template class introduced in C++11 for representing associative containers that store key-value pairs in an unordered manner.
+It provides constant time average complexity for insertion, deletion, and lookup operations based on the key.
+std::unordered_map is commonly used in scenarios where efficient retrieval of values based on keys is required, such as caching, indexing, or frequency counting.
+
+34. std::variant:
+std::variant is a template class introduced in C++17 for representing a value that can be one of a fixed set of alternative types.
+It provides a type-safe alternative to unions for storing values of different types, with support for type-safe retrieval and manipulation using visitor patterns.
+std::variant is commonly used in scenarios where a function or data structure needs to handle multiple types of values flexibly.
+
+35. std::optional:
+std::optional is a template class introduced in C++17 for representing optional values, i.e., values that may or may not be present.
+It provides a type-safe and efficient way to represent optional values without using null pointers or sentinel values.
+std::optional is commonly used in scenarios where a function may or may not return a value, or when dealing with nullable references.
+
+36. std::chrono:
+std::chrono is a library introduced in C++11 for working with time-related operations and durations.
+It provides a type-safe and flexible way to represent time points, durations, and clocks, allowing for high-precision time calculations.
+std::chrono is commonly used in scenarios where precise timing, scheduling, or time-based calculations are required, such as in simulations, real-time systems, or benchmarking.
+
+37. std::stack:
+std::stack is a container adapter class introduced in the C++ Standard Library for implementing stacks (Last-In, First-Out data structures).
+It provides a simple interface for adding elements to the top of the stack (push), removing elements from the top (pop), and accessing the top element (top).
+std::stack is commonly used in scenarios where data needs to be processed in a last-in, first-out manner, such as expression evaluation, parsing, and backtracking algorithms.
+
+38. std::queue:
+std::queue is a container adapter class introduced in the C++ Standard Library for implementing queues (First-In, First-Out data structures).
+It provides a simple interface for adding elements to the back of the queue (push), removing elements from the front (pop), and accessing the front element (front).
+std::queue is commonly used in scenarios where data needs to be processed in a first-in, first-out manner, such as task scheduling, breadth-first search algorithms, and message passing.
+
+39. std::priority_queue:
+std::priority_queue is a container adapter class introduced in the C++ Standard Library for implementing priority queues.
+It maintains a sorted sequence of elements, where elements with higher priority are dequeued before elements with lower priority.
+std::priority_queue is commonly used in scenarios where elements need to be processed based on their priority, such as task scheduling, event-driven simulation, and shortest path algorithms.
+
+40. std::thread:
+std::thread is a class introduced in C++11 for representing threads of execution.
+It provides a platform-independent way to create and manage concurrent execution flows within a C++ program.
+std::thread is commonly used in scenarios where parallelism or concurrency is required, such as multi-threaded applications, parallel processing, and asynchronous I/O operations.
+
+41. std::mutex:
+std::mutex is a class introduced in C++11 for providing mutual exclusion and synchronization between multiple threads.
+It allows threads to lock and unlock access to shared resources, preventing data races and ensuring thread safety.
+std::mutex is commonly used in conjunction with std::thread and other synchronization primitives to implement critical sections and protect shared data.
+
+42. std::condition_variable:
+std::condition_variable is a class introduced in C++11 for implementing condition variables, which allow threads to wait for certain conditions to be met before proceeding.
+It provides a mechanism for threads to block until notified by another thread that a condition has changed.
+std::condition_variable is commonly used in conjunction with std::mutex to implement producer-consumer patterns, reader-writer locks, and other synchronization patterns.
+
+43. std::filesystem:
+std::filesystem is a library introduced in C++17 for working with file systems, directories, and paths.
+It provides a set of classes and functions for performing file I/O operations, directory traversal, file manipulation, and path manipulation.
+std::filesystem simplifies tasks related to file management and directory operations, making it easier to work with files and directories in a platform-independent manner.
+
+44. std::future:
+std::future is a class introduced in C++11 for representing a placeholder for a value that may not yet be available.
+It allows asynchronous operations to be performed concurrently with other tasks, providing a mechanism for obtaining the result of asynchronous computations.
+std::future is commonly used in conjunction with std::promise and std::async to perform asynchronous computations, parallelize tasks, and manage concurrent execution flows.
+
+45. std::promise:
+std::promise is a class introduced in C++11 for representing a mechanism to store a value or exception that will be made available in the future.
+It provides a way for one thread to set the result of an asynchronous computation, which can then be retrieved by another thread using a corresponding std::future object.
+std::promise is commonly used in conjunction with std::future and std::async to perform asynchronous computations and propagate results between threads.
+
+46. std::atomic_flag:
+std::atomic_flag is a class introduced in C++11 for providing atomic operations on a single boolean flag.
+It allows for lock-free synchronization of operations between multiple threads, ensuring atomicity and thread safety without the need for explicit locking mechanisms.
+std::atomic_flag is commonly used in scenarios where fine-grained synchronization is required, such as implementing spin locks, low-level synchronization primitives, and lock-free data structures.
+
+47. std::chrono::duration:
+std::chrono::duration is a class template introduced in C++11 for representing time durations with a specified unit of time.
+It provides a type-safe and flexible way to represent time intervals, allowing for precise and efficient time calculations.
+std::chrono::duration is commonly used in conjunction with std::chrono::time_point and std::chrono::steady_clock for measuring time intervals, performing timing operations, and scheduling tasks.
+
+48. std::reference_wrapper:
+std::reference_wrapper is a class template introduced in C++11 for providing a reference-like object that can be copied and stored.
+It allows references to be treated as first-class objects, enabling them to be passed around as function arguments, stored in containers, and returned from functions.
+std::reference_wrapper is commonly used in scenarios where references need to be stored or manipulated in a more flexible manner, such as in algorithms that operate on container elements.
+
+49. std::valarray:
+std::valarray is a template class introduced in C++ for representing and manipulating arrays of values.
+It provides mathematical operations, such as addition, subtraction, multiplication, division, and trigonometric functions, optimized for performance on arrays of numeric values.
+std::valarray is commonly used in numerical computing and scientific applications for performing vectorized operations on large datasets efficiently.
+
+50. std::tuple_size and std::tuple_element:
+std::tuple_size is a template meta-function introduced in C++11 for determining the size of a std::tuple.
+std::tuple_element is a template meta-function introduced in C++11 for accessing the type of an element in a std::tuple by its index.
+These meta-functions are commonly used in template metaprogramming and generic programming to extract information about the structure of tuples at compile time.
+
+51. std::any:
+std::any is a class template introduced in C++17 for representing values of any type, similar to a type-erased container.
+It provides a type-safe way to store and access values of different types without knowing their exact type at compile time.
+std::any is commonly used in scenarios where polymorphic behavior is required, such as implementing type-agnostic containers and function wrappers.
+
+52. std::optional (C++17):
+std::optional is a template class introduced in C++17 for representing optional values, i.e., values that may or may not be present.
+It provides a type-safe and efficient way to represent optional values without using null pointers or sentinel values.
+std::optional is commonly used in scenarios where a function may or may not return a value, or when dealing with nullable references.
+
+53. std::variant (C++17):
+std::variant is a template class introduced in C++17 for representing a value that can be one of a fixed set of alternative types.
+It provides a type-safe alternative to unions for storing values of different types, with support for type-safe retrieval and manipulation using visitor patterns.
+std::variant is commonly used in scenarios where a function or data structure needs to handle multiple types of values flexibly.
+
+54. std::string_view (C++17):
+std::string_view is a class introduced in C++17 for representing a view into a string, providing read-only access to the underlying character data without owning it.
+It allows for efficient string processing without the overhead of copying or allocating memory.
+std::string_view is commonly used in scenarios where temporary string objects can be avoided, such as string manipulation and passing string data to functions.
+
+55. std::enable_shared_from_this:
+std::enable_shared_from_this is a template class introduced in C++11 for enabling shared ownership of objects managed by std::shared_ptr.
+It allows an object to create additional std::shared_ptr instances that share ownership with an existing std::shared_ptr instance.
+std::enable_shared_from_this is commonly used in scenarios where objects need to pass references to themselves to other objects, such as in the implementation of observer patterns or callback mechanisms.
+
+56. std::initializer_list:
+std::initializer_list is a template class introduced in C++11 for representing lists of values initialized within braces {}.
+It's commonly used to initialize objects, such as containers like std::vector or user-defined types, with a list of values.
+std::initializer_list provides a convenient and type-safe way to pass multiple values to constructors or functions.
+
+57. std::unordered_multiset:
+std::unordered_multiset is a template class introduced in C++11 for representing sets of values in an unordered manner where multiple occurrences of the same value are allowed.
+It's similar to std::unordered_set, but allows for duplicate elements.
+std::unordered_multiset is commonly used in scenarios where fast insertion, deletion, and lookup operations are required for a collection of values with potential duplicates.
+
+58. std::unordered_multimap:
+std::unordered_multimap is a template class introduced in C++11 for representing associative containers that store key-value pairs in an unordered manner where multiple key-value pairs with the same key are allowed.
+It's similar to std::unordered_map, but allows for multiple key-value pairs with the same key.
+std::unordered_multimap is commonly used in scenarios where fast retrieval of values based on keys is required and multiple values may be associated with the same key.
+
+59. std::shared_mutex:
+std::shared_mutex is a class introduced in C++17 for providing shared ownership and multiple-reader/single-writer semantics for locking and synchronization.
+It allows multiple threads to acquire shared (read) ownership of the mutex simultaneously, but only one thread can acquire exclusive (write) ownership at a time.
+std::shared_mutex is commonly used in scenarios where multiple threads need to access a shared resource concurrently, with some threads only reading and others potentially modifying the resource.
+
+60. std::scoped_allocator_adaptor:
+std::scoped_allocator_adaptor is a class template introduced in C++11 for propagating allocator instances to nested containers within a specific scope.
+It allows for precise control over the allocation and deallocation of memory for nested containers, ensuring that all nested containers within a specific scope use the same allocator.
+std::scoped_allocator_adaptor is commonly used in scenarios where custom memory management is required, such as when working with nested containers or containers within containers.
+
+61. std::byte (C++17):
+std::byte is a data type introduced in C++17 for representing raw memory bytes.
+It provides a type-safe way to manipulate memory at the byte level, enabling low-level memory operations without relying on unsigned char or other integer types.
+std::byte is commonly used in scenarios where precise control over individual bytes of memory is required, such as in networking, serialization, and hardware interfacing.
+
+62. std::atomic_ref (C++20):
+std::atomic_ref is a class template introduced in C++20 for providing atomic operations on non-atomic variables.
+It allows for atomic operations to be performed on non-atomic variables without requiring them to be converted to std::atomic types.
+std::atomic_ref is commonly used in scenarios where atomicity is required but changing the type of a variable to std::atomic is not feasible or desirable.
+
+63. std::source_location (C++20):
+std::source_location is a structure introduced in C++20 for capturing information about the source code location where a function is called.
+It provides access to details such as the file name, line number, function name, and column number of the calling code.
+std::source_location is commonly used in debugging, logging, and error reporting frameworks to provide contextual information about the origin of function calls.
+
+64. std::ranges (C++20):
+std::ranges is a library introduced in C++20 for working with ranges of elements, providing a unified interface for common range operations.
+It includes algorithms, views, and adaptors for processing and manipulating ranges of elements in a functional and expressive manner.
+std::ranges is designed to replace the older <algorithm> library and provide a more modern and composable approach to working with sequences of elements.
+
+65. std::format (C++20):
+std::format is a function introduced in C++20 for performing type-safe string formatting.
+It provides a modern alternative to printf-style formatting and std::stringstream, offering improved type safety, performance, and extensibility.
+std::format supports a wide range of formatting options and integrates seamlessly with user-defined types and formatting specifications.
+
+66. std::chrono::calendar (C++20):
+std::chrono::calendar is a new addition to the <chrono> library in C++20 for working with calendrical calculations and date-time manipulation.
+It provides facilities for working with calendars, dates, times, time zones, and other calendrical concepts in a standardized and portable manner.
+std::chrono::calendar is designed to simplify common date-time operations and address deficiencies in the existing <chrono> library.
+
+67. std::coroutine (C++20):
+std::coroutine is a library introduced in C++20 for supporting coroutines, a feature that enables functions to be suspended and resumed at specific points without losing their state.
+It provides facilities for defining and using coroutines, allowing developers to write asynchronous and event-driven code more easily and efficiently.
+Coroutines are commonly used in scenarios such as asynchronous I/O operations, cooperative multitasking, and state machines.
+
+68. std::format (C++20):
+std::format is a function introduced in C++20 for performing type-safe string formatting.
+It provides a modern alternative to printf-style formatting and std::stringstream, offering improved type safety, performance, and extensibility.
+std::format supports a wide range of formatting options and integrates seamlessly with user-defined types and formatting specifications.
+
+69. std::source_location (C++20):
+std::source_location is a structure introduced in C++20 for capturing information about the source code location where a function is called.
+It provides access to details such as the file name, line number, function name, and column number of the calling code.
+std::source_location is commonly used in debugging, logging, and error reporting frameworks to provide contextual information about the origin of function calls.
+
+70. std::span (C++20):
+std::span is a class template introduced in C++20 for representing a view into a contiguous sequence of elements.
+It provides a lightweight, non-owning reference to a sequence of elements, allowing for efficient access and manipulation without requiring ownership or memory allocation.
+std::span is commonly used in scenarios where passing or manipulating sequences of elements is required, such as in function arguments, container interoperability, and array slicing.
+
+71. Concepts (C++20):
+Concepts are a language feature introduced in C++20 for specifying constraints on template parameters.
+They allow template authors to express requirements on template arguments, such as required operations, types, or properties, in a more expressive and readable manner.
+Concepts improve code clarity, error messages, and compile-time diagnostics by enabling better template constraint checking and inference.
+
+72. Ranges (C++20):
+Ranges are a library feature introduced in C++20 for representing and manipulating sequences of elements in a more functional and composable manner.
+They provide a unified interface for common range operations such as transformation, filtering, and aggregation, making code more expressive and readable.
+Ranges are designed to work seamlessly with standard algorithms and containers, enabling more concise and efficient code.
+
+73. std::span (C++20):
+std::span is a class template introduced in C++20 for representing a view into a contiguous sequence of elements.
+It provides a lightweight, non-owning reference to a sequence of elements, allowing for efficient access and manipulation without requiring ownership or memory allocation.
+std::span is commonly used in scenarios where passing or manipulating sequences of elements is required, such as in function arguments, container interoperability, and array slicing.
+
+74. std::format (C++20):
+std::format is a function introduced in C++20 for performing type-safe string formatting.
+It provides a modern alternative to printf-style formatting and std::stringstream, offering improved type safety, performance, and extensibility.
+std::format supports a wide range of formatting options and integrates seamlessly with user-defined types and formatting specifications.
+
+75. std::source_location (C++20):
+std::source_location is a structure introduced in C++20 for capturing information about the source code location where a function is called.
+It provides access to details such as the file name, line number, function name, and column number of the calling code.
+std::source_location is commonly used in debugging, logging, and error reporting frameworks to provide contextual information about the origin of function calls.
+
+76. std::jthread (C++20):
+std::jthread is a class introduced in C++20 for representing joinable threads with integrated cancellation support.
+It provides a higher-level interface for managing threads compared to std::thread, with built-in support for joining or detaching threads and handling thread cancellation through interruption points.
+std::jthread simplifies thread management and improves safety and reliability when dealing with asynchronous tasks and concurrent execution.
+
+77. std::uniform_int_distribution:
+std::uniform_int_distribution is a class template provided by the C++ Standard Library for generating random integers uniformly distributed within a specified range.
+It's commonly used with the <random> header to produce random integers for various applications, including simulations, games, and statistical sampling.
+std::uniform_int_distribution ensures that random integers are generated with equal probability across the specified range, making it suitable for unbiased random number generation.
+
+78. std::uniform_real_distribution:
+std::uniform_real_distribution is a class template provided by the C++ Standard Library for generating random floating-point numbers uniformly distributed within a specified range.
+Like std::uniform_int_distribution, it's commonly used with the <random> header to produce random floating-point values for simulations, games, and statistical sampling.
+std::uniform_real_distribution ensures that random floating-point numbers are generated with equal probability across the specified range, providing unbiased random number generation.
+
+79. std::shuffle_order_engine (C++20):
+std::shuffle_order_engine is a template class introduced in C++20 that serves as a building block for creating random number engines with a customizable shuffling algorithm.
+It allows developers to specify the shuffling algorithm used by the engine, enabling more control over the randomness generation process.
+std::shuffle_order_engine is commonly used when a specific shuffling algorithm is desired, such as for cryptographic applications or specialized simulations.
+
+80. std::format (C++20):
+std::format is a function introduced in C++20 for performing type-safe string formatting.
+It provides a modern alternative to printf-style formatting and std::stringstream, offering improved type safety, performance, and extensibility.
+std::format supports a wide range of formatting options and integrates seamlessly with user-defined types and formatting specifications.
+
+81. std::source_location (C++20):
+std::source_location is a structure introduced in C++20 for capturing information about the source code location where a function is called.
+It provides access to details such as the file name, line number, function name, and column number of the calling code.
+std::source_location is commonly used in debugging, logging, and error reporting frameworks to provide contextual information about the origin of function calls.
+
+82. std::jthread (C++20):
+std::jthread is a class introduced in C++20 for representing joinable threads with integrated cancellation support.
+It provides a higher-level interface for managing threads compared to std::thread, with built-in support for joining or detaching threads and handling thread cancellation through interruption points.
+std::jthread simplifies thread management and improves safety and reliability when dealing with asynchronous tasks and concurrent execution.
+
+83. std::uniform_int_distribution:
+std::uniform_int_distribution is a class template provided by the C++ Standard Library for generating random integers uniformly distributed within a specified range.
+It's commonly used with the <random> header to produce random integers for various applications, including simulations, games, and statistical sampling.
+std::uniform_int_distribution ensures that random integers are generated with equal probability across the specified range, making it suitable for unbiased random number generation.
+
+84. std::uniform_real_distribution:
+std::uniform_real_distribution is a class template provided by the C++ Standard Library for generating random floating-point numbers uniformly distributed within a specified range.
+Like std::uniform_int_distribution, it's commonly used with the <random> header to produce random floating-point values for simulations, games, and statistical sampling.
+std::uniform_real_distribution ensures that random floating-point numbers are generated with equal probability across the specified range, providing unbiased random number generation.
+
+85. std::uniform_int_distribution:
+std::uniform_int_distribution is a class template provided by the C++ Standard Library for generating random integers uniformly distributed within a specified range.
+It's commonly used with the <random> header to produce random integers for various applications, including simulations, games, and statistical sampling.
+std::uniform_int_distribution ensures that random integers are generated with equal probability across the specified range, making it suitable for unbiased random number generation.
+
+86. std::uniform_real_distribution:
+std::uniform_real_distribution is a class template provided by the C++ Standard Library for generating random floating-point numbers uniformly distributed within a specified range.
+Like std::uniform_int_distribution, it's commonly used with the <random> header to produce random floating-point values for simulations, games, and statistical sampling.
+std::uniform_real_distribution ensures that random floating-point numbers are generated with equal probability across the specified range, providing unbiased random number generation.
+
+87. std::bernoulli_distribution:
+std::bernoulli_distribution is a class template provided by the C++ Standard Library for generating random boolean values according to a Bernoulli distribution.
+It's commonly used to simulate random events with a binary outcome, such as coin flips or success/failure experiments.
+std::bernoulli_distribution allows for the probability of success to be specified, making it suitable for modeling various probabilistic scenarios.
+
+88. std::geometric_distribution:
+std::geometric_distribution is a class template provided by the C++ Standard Library for generating random integers following a geometric distribution.
+It models the number of trials needed to achieve the first success in a sequence of independent Bernoulli trials, where each trial has a constant probability of success.
+std::geometric_distribution is commonly used in simulations and statistical modeling to represent processes with a constant success probability.
+
+89. std::piecewise_constant_distribution:
+std::piecewise_constant_distribution is a class template provided by the C++ Standard Library for generating random floating-point values distributed according to a piecewise constant probability density function.
+It allows developers to specify intervals and corresponding probabilities, and the distribution generates random values according to the specified distribution.
+std::piecewise_constant_distribution is commonly used in statistical simulations and modeling where data follows a non-uniform distribution.
+
+90. std::piecewise_linear_distribution:
+std::piecewise_linear_distribution is a class template provided by the C++ Standard Library for generating random floating-point values distributed according to a piecewise linear probability density function.
+It allows developers to specify intervals, corresponding probabilities, and slopes, and the distribution generates random values according to the specified distribution.
+std::piecewise_linear_distribution is commonly used in statistical simulations and modeling where data follows a non-uniform distribution.
+
+91. std::discrete_distribution:
+std::discrete_distribution is a class template provided by the C++ Standard Library for generating random integers following a discrete distribution.
+It allows developers to specify a set of values and corresponding probabilities, and the distribution generates random values according to the specified probabilities.
+std::discrete_distribution is commonly used in simulations and statistical modeling where data follows a discrete probability distribution.
+
+92. std::piecewise_constant_distribution:
+std::piecewise_constant_distribution is a class template provided by the C++ Standard Library for generating random floating-point values distributed according to a piecewise constant probability density function.
+It allows developers to specify intervals and corresponding probabilities, and the distribution generates random values according to the specified distribution.
+std::piecewise_constant_distribution is commonly used in statistical simulations and modeling where data follows a non-uniform distribution.
+
+93. std::piecewise_linear_distribution:
+std::piecewise_linear_distribution is a class template provided by the C++ Standard Library for generating random floating-point values distributed according to a piecewise linear probability density function.
+It allows developers to specify intervals, corresponding probabilities, and slopes, and the distribution generates random values according to the specified distribution.
+std::piecewise_linear_distribution is commonly used in statistical simulations and modeling where data follows a non-uniform distribution.
+
+94. std::midpoint (C++20):
+std::midpoint is a function template introduced in C++20 for calculating the midpoint of two values.
+It returns the arithmetic mean of two values, preserving the precision of the original data types.
+std::midpoint is commonly used in mathematical computations, algorithms, and geometric calculations where finding the midpoint of two values is required.
+
+95. std::cyl_bessel_i (C++17):
+std::cyl_bessel_i is a mathematical function introduced in C++17 for computing the modified Bessel function of the first kind of a specified order.
+It's part of the <cmath> header and allows for the evaluation of modified Bessel functions, which arise frequently in various mathematical and engineering contexts.
+std::cyl_bessel_i is commonly used in scientific computing, signal processing, and physics simulations for solving differential equations and modeling physical phenomena.
+
+96. std::cyl_bessel_k (C++17):
+std::cyl_bessel_k is a mathematical function introduced in C++17 for computing the modified Bessel function of the second kind of a specified order.
+Like std::cyl_bessel_i, it's part of the <cmath> header and is used for evaluating modified Bessel functions in mathematical and engineering contexts.
+std::cyl_bessel_k is commonly used in scientific computing, signal processing, and physics simulations for solving differential equations and modeling physical phenomena.
+
+91. std::poisson_distribution:
+std::poisson_distribution is a class template provided by the C++ Standard Library for generating random integers following a Poisson distribution.
+It models the number of events occurring in a fixed interval of time or space, given the average rate of occurrence.
+std::poisson_distribution is commonly used in simulations and statistical modeling to represent processes with a known average rate of occurrence.
+
+92. std::exponential_distribution:
+std::exponential_distribution is a class template provided by the C++ Standard Library for generating random floating-point values following an exponential distribution.
+It models the time between events occurring at a constant average rate, such as the arrival of requests in a queue or the decay of radioactive atoms.
+std::exponential_distribution is commonly used in simulations and statistical modeling to represent processes with exponentially distributed waiting times.
+
+93. std::gamma_distribution:
+std::gamma_distribution is a class template provided by the C++ Standard Library for generating random floating-point values following a gamma distribution.
+It generalizes the exponential distribution to allow for a non-constant average rate of occurrence, incorporating a shape parameter to control the distribution's shape.
+std::gamma_distribution is commonly used in simulations and statistical modeling to represent processes with non-constant or variable rates of occurrence.
+
+94. std::weibull_distribution:
+std::weibull_distribution is a class template provided by the C++ Standard Library for generating random floating-point values following a Weibull distribution.
+It models the time until failure for systems or components subject to wear and aging, with parameters controlling the distribution's shape and scale.
+std::weibull_distribution is commonly used in reliability engineering and survival analysis to model the failure behavior of systems and 
+components.
+
+95. std::extreme_value_distribution:
+std::extreme_value_distribution is a class template provided by the C++ Standard Library for generating random floating-point values following an extreme value distribution.
+It models the extreme values of a set of independent and identically distributed random variables, typically representing the maximum or minimum values observed.
+std::extreme_value_distribution is commonly used in risk assessment, environmental modeling, and finance to model extreme events and tail behavior.
+
+96. std::normal_distribution:
+std::normal_distribution is a class template provided by the C++ Standard Library for generating random floating-point values following a normal (Gaussian) distribution.
+It models continuous random variables with a bell-shaped probability density function, characterized by mean and standard deviation parameters.
+std::normal_distribution is commonly used in various fields, including statistics, finance, and engineering, due to its ubiquity and mathematical properties.
+
+97. std::chi_squared_distribution:
+std::chi_squared_distribution is a class template provided by the C++ Standard Library for generating random floating-point values following a chi-squared distribution.
+It is commonly used in statistical hypothesis testing, particularly for testing the goodness of fit of an observed distribution to an expected distribution.
+std::chi_squared_distribution has a single parameter representing the degrees of freedom.
+
+98. std::cauchy_distribution:
+std::cauchy_distribution is a class template provided by the C++ Standard Library for generating random floating-point values following a Cauchy distribution.
+It is characterized by its heavy tails, which make it useful in modeling situations with outliers or extreme events.
+std::cauchy_distribution has two parameters representing the location and scale of the distribution.
+
+99. std::fisher_f_distribution:
+std::fisher_f_distribution is a class template provided by the C++ Standard Library for generating random floating-point values following a Fisher F-distribution.
+It is commonly used in statistical analysis, particularly in analysis of variance (ANOVA) and regression analysis.
+std::fisher_f_distribution has two parameters representing the degrees of freedom of two independent chi-squared distributions.
+
+100. std::student_t_distribution:
+std::student_t_distribution is a class template provided by the C++ Standard Library for generating random floating-point values following a Student's t-distribution.
+It is commonly used in statistical hypothesis testing, particularly for estimating the mean of a normally distributed population when the sample size is small and the population standard deviation is unknown.
+std::student_t_distribution has one parameter representing the degrees of freedom.
+
+101. std::discrete_distribution:
+std::discrete_distribution is a class template provided by the C++ Standard Library for generating random integers following a discrete distribution.
+It is used when each integer value has a specific probability of occurrence, allowing for weighted random selection.
+std::discrete_distribution takes a sequence of probabilities as input.
+
+102. std::midpoint (C++20):
+std::midpoint is a function template introduced in C++20 for computing the midpoint of two values.
+It calculates the midpoint in a type-safe and efficient manner, taking into account the type and precision of the input values.
+std::midpoint is commonly used in algorithms and mathematical operations where finding the middle point between two values is required.
+
+103. std::erf and std::erfc:
+std::erf and std::erfc are functions provided by the C++ Standard Library for computing the error function and its complement, respectively.
+The error function (std::erf) is used in probability theory and statistics to model the probability of a Gaussian random variable falling within a certain range.
+The complementary error function (std::erfc) is used to compute the probability of a Gaussian random variable falling outside a certain range.
+Both functions are commonly used in mathematical and statistical computations.
+
+104. std::gcd and std::lcm:
+std::gcd and std::lcm are functions provided by the C++ Standard Library for computing the greatest common divisor (GCD) and the least common multiple (LCM) of two integers, respectively.
+The GCD is the largest positive integer that divides both input integers without leaving a remainder, while the LCM is the smallest positive integer that is divisible by both input integers.
+Both functions are commonly used in mathematical and algorithmic computations, such as in number theory, cryptography, and optimization problems.
+
+105. std::clamp (C++17):
+std::clamp is a function provided by the C++ Standard Library for constraining a value to lie within a specified range.
+It takes three arguments: the value to be clamped, the lower bound of the range, and the upper bound of the range.
+std::clamp returns the value itself if it falls within the specified range, otherwise it returns the nearest bound of the range.
+std::clamp is commonly used in scenarios where a value needs to be restricted to a certain range, such as in graphics programming, input validation, and numerical simulations.
+
+106. std::ispow2 (C++20):
+std::ispow2 is a function provided by the C++ Standard Library for checking if an integer is a power of two.
+It returns true if the input integer is a power of two, and false otherwise.
+std::ispow2 is commonly used in algorithms and optimizations that require knowledge about powers of two, such as bitwise operations, data structures like binary trees and hash tables, and performance optimizations in low-level programming.
+
+107. std::midpoint (C++20):
+std::midpoint is a function template introduced in C++20 for computing the midpoint of two values.
+It calculates the midpoint in a type-safe and efficient manner, taking into account the type and precision of the input values.
+std::midpoint is commonly used in algorithms and mathematical operations where finding the middle point between two values is required.
+
+108. std::cyl_bessel_i, std::cyl_bessel_j, std::cyl_bessel_k, std::cyl_neumann:
+These functions are provided by the C++ Standard Library for computing various Bessel functions.
+Bessel functions are solutions to Bessel's differential equation and are used in various fields of physics and engineering, including wave propagation, heat conduction, and quantum mechanics.
+The functions std::cyl_bessel_i, std::cyl_bessel_j, std::cyl_bessel_k, and std::cyl_neumann compute the modified Bessel functions of the first and second kind, and the modified spherical Bessel functions of the first and second kind, respectively.x`
+
+109. std::hermite, std::laguerre, std::legendre:
+These functions are provided by the C++ Standard Library for computing various orthogonal polynomials: Hermite polynomials, Laguerre polynomials, and Legendre polynomials.
+Orthogonal polynomials have important applications in mathematical physics, numerical analysis, and approximation theory.
+The functions std::hermite, std::laguerre, and std::legendre compute the respective orthogonal polynomials for given parameters.
+
+110. std::hypot:
+std::hypot is a function provided by the C++ Standard Library for computing the square root of the sum of squares of its arguments.
+It calculates the length of the hypotenuse of a right-angled triangle given the lengths of the other two sides.
+std::hypot is commonly used in geometry, physics, and computer graphics to compute distances and magnitudes.
+
+111. std::clamp (C++17):
+std::clamp is a function provided by the C++ Standard Library for constraining a value to lie within a specified range.
+It takes three arguments: the value to be clamped, the lower bound of the range, and the upper bound of the range.
+std::clamp returns the value itself if it falls within the specified range, otherwise, it returns the nearest bound of the range.
+std::clamp is commonly used in scenarios where a value needs to be restricted to a certain range, such as in graphics programming, input validation, and numerical simulations.
+
+112. std::midpoint (C++20):
+std::midpoint is a function template introduced in C++20 for computing the midpoint of two values.
+It calculates the midpoint in a type-safe and efficient manner, taking into account the type and precision of the input values.
+std::midpoint is commonly used in algorithms and mathematical operations where finding the middle point between two values is required.
+
+113. std::cyl_bessel_i, std::cyl_bessel_j, std::cyl_bessel_k, std::cyl_neumann:
+These functions are provided by the C++ Standard Library for computing various Bessel functions.
+Bessel functions are solutions to Bessel's differential equation and are used in various fields of physics and engineering, including wave propagation, heat conduction, and quantum mechanics.
+The functions std::cyl_bessel_i, std::cyl_bessel_j, std::cyl_bessel_k, and std::cyl_neumann compute the modified Bessel functions of the first and second kind, and the modified spherical Bessel functions of the first and second kind, respectively.
+
+114. std::hermite, std::laguerre, std::legendre:
+These functions are provided by the C++ Standard Library for computing various orthogonal polynomials: Hermite polynomials, Laguerre polynomials, and Legendre polynomials.
+Orthogonal polynomials have important applications in mathematical physics, numerical analysis, and approximation theory.
+The functions std::hermite, std::laguerre, and std::legendre compute the respective orthogonal polynomials for given parameters.
+
+115. std::hypot:
+std::hypot is a function provided by the C++ Standard Library for computing the square root of the sum of squares of its arguments.
+It calculates the length of the hypotenuse of a right-angled triangle given the lengths of the other two sides.
+std::hypot is commonly used in geometry, physics, and computer graphics to compute distances and magnitudes.
+
+116. std::clamp (C++17):
+std::clamp is a function provided by the C++ Standard Library for constraining a value to lie within a specified range.
+It takes three arguments: the value to be clamped, the lower bound of the range, and the upper bound of the range.
+std::clamp returns the value itself if it falls within the specified range, otherwise, it returns the nearest bound of the range.
+std::clamp is commonly used in scenarios where a value needs to be restricted to a certain range, such as in graphics programming, input validation, and numerical simulations.
+
+117. std::gcd and std::lcm:
+std::gcd and std::lcm are functions provided by the C++ Standard Library for computing the greatest common divisor (GCD) and the least common multiple (LCM) of two integers, respectively.
+The GCD is the largest positive integer that divides both input integers without leaving a remainder, while the LCM is the smallest positive integer that is divisible by both input integers.
+Both functions are commonly used in mathematical and algorithmic computations, such as in number theory, cryptography, and optimization problems.
+std::bernoulli_distribution:
+
+Represents a distribution for generating random boolean values according to a Bernoulli distribution.
+Commonly used for simulating random events with two possible outcomes.
+
+std::geometric_distribution:
+
+Represents a distribution for generating random integers following a geometric distribution.
+Models the number of trials needed to achieve the first success in a sequence of independent Bernoulli trials.
+
+std::piecewise_constant_distribution:
+
+Represents a distribution for generating random floating-point values distributed according to a piecewise constant probability density function.
+Allows specifying intervals and corresponding probabilities for generating random values.
+std::piecewise_linear_distribution:
+
+Represents a distribution for generating random floating-point values distributed according to a piecewise linear probability density function.
+Allows specifying intervals, corresponding probabilities, and slopes for generating random values.
+
+std::poisson_distribution:
+
+Represents a distribution for generating random integers following a Poisson distribution.
+Models the number of events occurring in a fixed interval of time or space, given the average rate of occurrence.
+
+std::exponential_distribution:
+
+Represents a distribution for generating random floating-point values following an exponential distribution.
+Models the time between events occurring at a constant average rate.
+
+std::gamma_distribution:
+
+Represents a distribution for generating random floating-point values following a gamma distribution.
+Generalizes the exponential distribution to allow for a non-constant average rate of occurrence.
+
+std::weibull_distribution:
+
+Represents a distribution for generating random floating-point values following a Weibull distribution.
+Models the time until failure for systems or components subject to wear and aging.
+
+std::extreme_value_distribution:
+
+Represents a distribution for generating random floating-point values following an extreme value distribution.
+Models the extreme values of a set of independent and identically distributed random variables.
+
+std::chi_squared_distribution:
+
+Represents a distribution for generating random floating-point values following a chi-squared distribution.
+Commonly used in statistical hypothesis testing, particularly for testing goodness of fit.
+
+std::cauchy_distribution:
+
+Represents a distribution for generating random floating-point values following a Cauchy distribution.
+Characterized by its heavy tails, making it useful for modeling situations with outliers or extreme events.
+
+std::fisher_f_distribution:
+
+Represents a distribution for generating random floating-point values following a Fisher F-distribution.
+Commonly used in statistical analysis, particularly in analysis of variance (ANOVA) and regression analysis.
+
+std::student_t_distribution:
+
+Represents a distribution for generating random floating-point values following a Student's t-distribution.
+Commonly used in statistical hypothesis testing, particularly for estimating the mean of a normally distributed population with small sample sizes.
+
+std::discrete_distribution:
+
+Represents a distribution for generating random integers following a discrete distribution.
+Used when each integer value has a specific probability of occurrence, allowing for weighted random selection.
