@@ -1,6 +1,24 @@
+In this lecture we have done binary search interview level questions and learned how to solve array searching problems using binary search in O(logN) time complexity.
 
+In coding rounds and interviews, recognizing whether a problem can be solved using binary search often comes down to understanding the problem constraints and patterns. Here are some signs and keywords that might indicate that binary search could be applicable:
 
+Sorted Array/List: If the problem mentions that the input array or list is sorted, it's a strong indication that binary search might be applicable. Binary search is particularly efficient on sorted data because it leverages the property of sortedness to eliminate half of the search space at each step.
 
+Finding an Element in a Data Structure: Problems that involve finding an element (or determining if it exists) within a data structure, such as an array or a matrix, often lend themselves to binary search. Examples include finding a target element in a sorted array, searching in a sorted matrix, or searching in a rotated sorted array.
+
+Monotonicity: If the problem exhibits a property of monotonicity, where the values either increase or decrease consistently, binary search can be applied. This includes problems like finding peaks or valleys in a dataset, or locating a target value in a monotonic function.
+
+Search Space Reduction: Problems where the search space can be halved at each step or where a decision can be made based on whether a condition holds true or false are good candidates for binary search. This could include problems like finding the smallest/largest element that satisfies a condition, searching for a target element in a range, or finding a point of transition in a dataset.
+
+Time Complexity Constraints: If the problem specifies certain time complexity constraints (e.g., O(log N)), it often indicates that a more efficient algorithm like binary search is expected. Binary search typically has logarithmic time complexity.
+
+Keywords: Look out for keywords such as "search", "find", "locate", "range", "peak", "valley", "sorted", "monotonic", "pivot", etc. These keywords often indicate that the problem might be a good fit for binary search.
+
+Decision Making: Problems that involve making binary decisions or determining a boundary point can often be solved with binary search. This includes problems like finding the point where a condition changes from true to false or vice versa.
+
+By paying attention to these signs, you can quickly identify when binary search might be applicable and apply it to solve the problem efficiently during coding rounds and interviews.
+
+Then for fun we decided to do some research on the different datatypes that can be used in c++ to solve problems after we encountered an error in a testcase and got stuck due to datatype issue.
 
 datatypes list:-
 
