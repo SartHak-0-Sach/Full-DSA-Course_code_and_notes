@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": true,
-      "cwd": "c:/Users/saksh/OneDrive/Desktop/github/365-day_daily-problem_challenge/050-19th_feb-Power_of_two",
-      "program": "c:/Users/saksh/OneDrive/Desktop/github/365-day_daily-problem_challenge/050-19th_feb-Power_of_two/build/Debug/outDebug",
+      "cwd": "c:/Users/saksh/OneDrive/Desktop/github/Love-babbar-dsa-code_and_notes/lecture-015=Leetcode_session",
+      "program": "c:/Users/saksh/OneDrive/Desktop/github/Love-babbar-dsa-code_and_notes/lecture-015=Leetcode_session/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [
