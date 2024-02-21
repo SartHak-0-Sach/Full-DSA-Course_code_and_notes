@@ -1,0 +1,7 @@
+In this lecture we solved array problems from leetcode and codestudio and found the optimized approach to solve such problems.
+
+In reversing an array problem, we can also do that by using stack by pushing and popping elements and storing them in the array to reverse it.
+
+In merging 2 sorted arrays, we can also do that by adding all elements to an array and using sort function.
+
+In the move zeroes to the end of the array, we cannot use sort as we have to preserve the order of non zero elements so instead we can use map to map them to their respective index and after single traversal we can add them in respective order to the array and add rest of the elements as zero at the end of array.(counting sort technique).
