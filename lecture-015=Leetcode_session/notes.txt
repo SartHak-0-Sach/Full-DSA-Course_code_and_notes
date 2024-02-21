@@ -1,0 +1,4 @@
+How do we know that we are going to use binary search??
+
+Whenever terms like maximum solution, minimum solution, floor, valley, ceiling, sorted array etc are used and the constraints are high then we can think of using binary search. Also in problems where we can see that if the answer is not one specific number and I can neglect all numbers smaller and bigger than that, cutting off a possible pathway from the search space given for finding the solution, then also we can think of applying binary search to the problem.
+
