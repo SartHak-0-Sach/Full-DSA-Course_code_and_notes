@@ -2,3 +2,45 @@ How do we know that we are going to use binary search??
 
 Whenever terms like maximum solution, minimum solution, floor, valley, ceiling, sorted array etc are used and the constraints are high then we can think of using binary search. Also in problems where we can see that if the answer is not one specific number and I can neglect all numbers smaller and bigger than that, cutting off a possible pathway from the search space given for finding the solution, then also we can think of applying binary search to the problem.
 
+Aggresive cows problem approach explanation-
+1. LINEAR SEARCH: MUST READ TO UNDERSTAND CONCEPT 
+
+So we are given position of stalls and cows to place in those stalls.   
+
+Condition 1:
+ If there are more cows than the position of stalls, there is no place to keep all the cows.  
+
+Condition 2:  
+a. As we have to find the difference between stalls, best way is to sort them so that we can code easily. It helps to iterate without confusion. 
+
+b. Now, lets think, I have a sorted array. If i place first cow at first position of sorted stalls(array), where can I keep the second cow?  Obviously after that, after 1 distance. Similarly, another cow after that. This solution is possible. So it can be our answer. 
+
+c. But our question says largest distance, so lets check if its possible in 2 distance or not.  We again place first cow at first position and increase distance by 2 this time. First cow, add 2 positions then second cow and so on. If all cow fit, that is better solution than distance 1. 
+
+d. Again we try for distance is 3 and check if all cow fit. In this way at point where our total number of cow cannot fit, the previous distance is our answer (means, if my all cows don't fit in given number of limited stalls while i keep them at distance of 3, my largest possible distance I can place them is 2). 
+
+ 
+
+2. BINARY SEARCH 
+
+a. As you understood linear search, you saw that, if cow didn't fit at distance of 3, then it obviously won't fit when I apply the distance of 4, 5, 6, 7,……. . This shows, we can remove half part of the array which comes after 3 just by checking on 3. That's why we apply binary search.  
+
+b. In linear search we were checking distance one by one; firstly 1 then 2 and so on. To avoid that we use binary search.  For binary search we need, start which is minimum and end which is maximum possible distance. 
+
+c. Our minimum distance at which I can place all the cows is 0 (means all cow are together in same stall without any distance). Our maximum distance is between, when we keep one cow at first stall and another cow at last stall. So maximum distance is (maximum/last element of sorted array - minimum/first element sorted of array). So we got minimum maximum, we apply binary search and find mid. 
+
+d. Max and min value were distance right ? So , mid value is also distance.  
+
+e. In linear search we were checking for distance 1, then 2 and 3 right, so here we check for distance of mid value. 
+
+f. While mid is the distance between our cows stall, will all cows fit in those limited number of stalls?? If yes, that is our possible answer. We have to find the largest distance right ? So we know if it satisfies for mid, it will satisfy for every value less than mid. That's why we again run binary search from mid+1 to end distance (meaning start position will be mid+1 now). In this way we check by taking out mid and if for that distance we can place cow update answer as that mid distance. 
+
+g. ELSE PART: We check to find largest in mid+1 position. Else  If mid distance doesn't fit all cows in those limited number of stalls, we know any distance above that mid distance can't fit cows. So we take end to mid-1 and repeat binary search. So, like this we find the largest minimum distance.
+
+ I didn't explain the code cause if you understand this theory, you can write code yourself.  Also don't get confused as bool function is used there. 
+
+We could do in same function also but coders are lazy and don't want to right many lines of code so they just make one function and call it. 
+
+Time complexity= O(logN) (binary search) * O(N) (checking distance is possible or not) so; O(NlogN)
+
+Space Complexity= Has our code used any extra space, meaning any extra memory?? Not at all. We just play with the numbers by sometimes sorting, or sometimes diving so its O(1) (as no extra space).
