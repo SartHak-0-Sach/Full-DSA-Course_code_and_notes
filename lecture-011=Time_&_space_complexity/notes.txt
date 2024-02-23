@@ -340,3 +340,70 @@ Values such as 10^9 or larger may still indicate complexities beyond constant ti
 Larger values like 10^18 could suggest complexities like linearithmic (O(NlogN)), quadratic (O(N^2)), or even higher, depending on the problem and algorithm.
 
 In summary, the magnitude of a value alone does not determine its complexity class; rather, it's the behavior of the algorithm with respect to the input size that dictates the complexity.
+
+The time complexity analysis considers the worst-case scenario, but in practice, the actual performance may vary based on factors such as the size of the input, the specific implementation, and the efficiency of the underlying operations.
+
+For this particular problem, even though the brute force approach has a time complexity of O(n^2), where n is the number of people in the town, it may still perform reasonably well for moderate input sizes. The reason could be that the input size on LeetCode test cases might not be large enough to significantly impact the performance difference between the brute force and optimized approaches.
+
+Additionally, other factors such as the efficiency of the underlying operations, the compiler optimizations, and the specific test cases used by LeetCode can also influence the runtime performance. It's possible that for the given test cases, the brute force approach performs adequately and the difference in runtime between the brute force and optimized solutions is not significant.
+
+However, in general, for larger input sizes, the optimized approach will have a clear advantage in terms of runtime efficiency compared to the brute force approach. It's always a good practice to prefer optimized algorithms, especially for problems with larger inputs or when performance is critical.
+
+There could be several reasons why your code might have taken longer to execute compared to the code of the person who got the answer in 0ms:
+
+Hardware Differences: The environment in which the code runs can affect its execution time. Factors such as the server load, processor speed, memory availability, and other hardware resources can all influence how quickly a program executes.
+
+Network Latency: The time it takes for your code to communicate with the online judge's servers can vary based on network conditions. If there's high network latency or congestion at the time you submitted your code, it could result in a longer execution time.
+
+Caching: The online judge system may cache the results of previously run submissions. If the code you copied was submitted earlier and the system has cached its result, subsequent submissions might appear faster as they can retrieve the cached result.
+
+Algorithmic Complexity: Even if your code is functionally similar to the code you copied, it's possible that there are subtle differences that affect its performance. Small changes in algorithmic efficiency, such as using a more optimal data structure or algorithm, can lead to significant differences in execution time.
+
+Language or Compiler Differences: The programming language you're using and its specific compiler or interpreter can impact performance. Different languages have different levels of optimization and efficiency, and some may be better suited for certain types of tasks than others.
+
+Optimizations: The person who submitted the code might have optimized it in some way that you didn't notice. This could be through micro-optimizations, loop unrolling, or other techniques that improve performance but aren't immediately obvious from the code itself.
+
+Overall, there are many factors at play when it comes to the execution time of code on an online judge platform, and it's not uncommon for seemingly identical code to exhibit different performance characteristics.
+
+The variance in execution times between two submissions of seemingly identical code can also occur due to differences in Single Core (SC) performance. Here's how it can happen:
+
+CPU Load: The CPU load at the time of submission can affect the execution time. If the server where your code runs is under heavy load due to concurrent submissions or other processes, it can take longer for your code to be scheduled for execution, thus resulting in a longer execution time.
+
+Resource Allocation: The online judge platform might dynamically allocate resources such as CPU time and memory to each submission. Your submission and the one you copied could have been assigned different amounts of CPU time, affecting their execution times.
+
+CPU Speed Variability: Even within the same processor model, there can be slight variations in the actual clock speed due to factors like temperature and voltage fluctuations. These differences can cause variations in execution times for identical code.
+
+Cache and Memory Effects: The behavior of CPU caches and memory can also contribute to variations in execution time. If your code or the code you copied exhibits different memory access patterns, it can result in differences in cache hits and misses, affecting performance.
+
+Compiler Optimizations: Even if the code appears identical, subtle differences in compiler optimizations, such as instruction scheduling or register allocation, can lead to differences in assembly code generation and ultimately affect execution time.
+
+Operating System Interference: The underlying operating system handling the execution of your code may introduce variability in execution times due to factors such as interrupt handling, process scheduling, and resource contention with other processes running on the system.
+
+In summary, while the code may seem identical, various factors related to the execution environment, CPU characteristics, and system-level operations can lead to differences in execution times for submissions on an online judge platform.
+
+let's delve deeper into each of these reasons with technical specifics:
+
+CPU Load:
+
+Technical Explanation: When a processor is under high load, it has to schedule tasks efficiently, and your code might not get immediate CPU time, causing a delay in execution.
+Technical Specifics: In a multi-tasking environment, the operating system (OS) schedules processes based on their priority and available resources. If the CPU is heavily loaded, your process might be put into a queue and not executed immediately, leading to a longer turnaround time.
+Resource Allocation:
+
+Technical Explanation: The online judge platform allocates resources like CPU time and memory to each submission based on its requirements and system load.
+Technical Specifics: The platform may use techniques such as cgroups (control groups) in Linux to limit resource usage for each process. If your submission and the one you copied are assigned different amounts of CPU time, it can lead to variations in execution time.
+CPU Speed Variability:
+
+Technical Explanation: CPUs can have slight variations in clock speeds due to manufacturing differences and dynamic adjustments made by the CPU itself.
+Technical Specifics: Within the same processor model, there are tolerances in clock speed specified by the manufacturer. For example, a CPU might have a base clock speed of 2.4 GHz, but actual speeds can vary slightly, like 2.37 GHz or 2.43 GHz. These variations affect how quickly instructions are processed, leading to differences in execution times.
+Cache and Memory Effects:
+
+Technical Explanation: CPU caches and memory access patterns significantly impact program performance. Differences in cache hits and misses can lead to variations in execution time.
+Technical Specifics: Modern CPUs have multiple levels of cache (L1, L2, L3), each with different access speeds and sizes. If your code or the copied code has different memory access patterns, it can result in different cache utilization. For instance, if one code accesses memory in a more cache-friendly manner, it will have fewer cache misses and execute faster.
+Compiler Optimizations:
+
+Technical Explanation: Compilers optimize code during the compilation process, which can result in different assembly code and execution characteristics.
+Technical Specifics: Compilers apply optimizations such as loop unrolling, instruction scheduling, and register allocation to improve performance. Even if the code appears identical, subtle differences in compiler settings or versions can lead to variations in the generated assembly code, affecting execution time.
+Operating System Interference:
+
+Technical Explanation: The underlying operating system can introduce variability in execution times due to process scheduling, interrupt handling, and resource contention.
+Technical Specifics: The OS scheduler assigns CPU time to processes based on their priority, time quantum, and scheduling algorithm (e.g., Round Robin, Completely Fair Scheduler). Interrupts from hardware devices and system calls from processes can also interrupt the execution of your code, introducing variability in execution times. Additionally, resource contention with other processes running on the system can affect CPU availability for your code execution.
