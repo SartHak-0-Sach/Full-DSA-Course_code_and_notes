@@ -19,6 +19,7 @@ c. But our question says largest distance, so lets check if its possible in 2 di
 
 d. Again we try for distance is 3 and check if all cow fit. In this way at point where our total number of cow cannot fit, the previous distance is our answer (means, if my all cows don't fit in given number of limited stalls while i keep them at distance of 3, my largest possible distance I can place them is 2). 
 
+Another important point mentioned in all the questions was that the sub-arrays that we have to take have to be contiguous else we would not have been able to implement binary search.
  
 
 2. BINARY SEARCH 
@@ -44,3 +45,6 @@ We could do in same function also but coders are lazy and don't want to right ma
 Time complexity= O(logN) (binary search) * O(N) (checking distance is possible or not) so; O(NlogN)
 
 Space Complexity= Has our code used any extra space, meaning any extra memory?? Not at all. We just play with the numbers by sometimes sorting, or sometimes diving so its O(1) (as no extra space).
+
+
+All the other problems also share the same logic either its book allocation to students or it is painter's partition problem. The only difference being in those we were finding the minimum distance and here we are finding the maximum distance.
