@@ -1,0 +1,1 @@
+In this lecture we solved 3 leetcode questions in most optimized way. Code is available in the code file.
