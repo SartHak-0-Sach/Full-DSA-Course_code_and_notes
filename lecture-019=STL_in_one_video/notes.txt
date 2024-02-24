@@ -7,244 +7,454 @@ Certainly! Here's an extensive list of various functionalities and commands prov
 
 Input/output stream objects:
 
-std::cin: Standard input stream, used for reading input from the console.
-std::cout: Standard output stream, used for writing output to the console.
-std::cerr: Standard error stream, used for writing error messages to the console.
-std::clog: Standard logging stream, used for writing log messages to the console.
-Stream manipulators and formatting:
+Classes:
+std::ios_base: The base class for input and output streams.
+std::basic_ios: The base class for I/O streams of various character types.
+std::basic_istream: The base class for input streams.
+std::basic_ostream: The base class for output streams.
+std::basic_iostream: The base class for both input and output streams.
+std::iostream: The instantiation of std::basic_iostream for characters of type char.
+Objects:
+std::cin: The standard input stream.
+std::cout: The standard output stream.
+std::cerr: The standard error stream.
+std::clog: The standard logging stream.
+Functions and Utilities:
+Input/Output Manipulators:
 
-std::endl: Manipulator for inserting a newline character into the output stream and flushing the stream buffer.
-std::flush: Manipulator for flushing the output buffer, ensuring that all buffered characters are written to the output device.
+std::endl: Manipulator for inserting a new line character into the output stream and flushing the buffer.
+std::flush: Manipulator for flushing the output buffer.
+std::unitbuf: Manipulator to flush the buffer after each output operation.
+std::nounitbuf: Manipulator to disable automatic flushing of the output buffer.
+std::skipws: Manipulator to skip leading whitespace characters during input operations.
+std::noskipws: Manipulator to disable skipping of whitespace characters during input operations.
 std::setw(): Manipulator for setting the width of the next output field.
-std::setfill(): Manipulator for setting the fill character used in output formatting.
 std::setprecision(): Manipulator for setting the precision of floating-point output.
 std::fixed: Manipulator to output floating-point numbers in fixed-point notation.
 std::scientific: Manipulator to output floating-point numbers in scientific notation.
-std::boolalpha: Manipulator to output boolean values as "true" or "false" instead of 1 or 0.
+std::boolalpha: Manipulator to output boolean values as true or false instead of 1 or 0.
+std::showbase: Manipulator to show the base prefix for integer output.
+std::noshowbase: Manipulator to hide the base prefix for integer output.
 std::showpoint: Manipulator to force the decimal point to always be displayed for floating-point numbers.
 std::uppercase: Manipulator to output uppercase letters for hexadecimal notation and for floating-point exponents.
 std::nouppercase: Manipulator to output lowercase letters for hexadecimal notation and for floating-point exponents.
 std::hex: Manipulator to output integers in hexadecimal base.
 std::oct: Manipulator to output integers in octal base.
-std::dec: Manipulator to output integers in decimal base (resets the base to decimal).
+std::dec: Manipulator to output integers in decimal base.
 std::ws: Manipulator to skip leading whitespace characters during input operations.
-Other stream-related functions and classes:
+std::left: Manipulator to left-align output within the specified width.
+std::right: Manipulator to right-align output within the specified width.
+std::internal: Manipulator for internal alignment of output within the specified width.
+Other Functions:
 
-std::streambuf: Base class for stream buffers.
-std::filebuf: Stream buffer associated with a file.
-std::stringstream: Stream class to operate on strings.
-std::ifstream: Stream class to read from files.
-std::ofstream: Stream class to write to files.
-std::fstream: Stream class to read from and write to files.
-std::ios_base: Base class for input/output stream state management.
-std::basic_ios: Template class for managing input/output stream state.
-std::ios: Base class for formatting and error handling state.
-std::basic_ios::copyfmt(): Member function to copy formatting flags and other formatting parameters from one stream to another.
-std::streamsize: Type used to represent sizes and positions within streams.
-std::streampos: Type used to represent positions within streams.
-std::streamoff: Type used to represent offsets within streams.
+std::getline(): Function to read a line of input from the standard input stream.
+std::cin.get(): Function to get a character from the standard input stream.
+std::cin.ignore(): Function to ignore characters from the input stream.
+std::cin.peek(): Function to peek at the next character in the input stream without extracting it.
+std::cin.putback(): Function to put a character back into the input stream.
+std::cin.unget(): Function to push back a character into the input stream.
+std::cin.clear(): Function to clear the error state of the input stream.
+std::cin.eof(): Function to check if the end-of-file (EOF) indicator has been set on the input stream.
+std::cin.fail(): Function to check if a failure occurred on the input stream.
+std::cin.bad(): Function to check if a fatal error occurred on the input stream.
+std::cin.good(): Function to check if the input stream is in a good state.
 
 Let's delve into the <array> header file in C++. Here's a list of common commands and their meanings:
 
-
+Classes:
+std::array<T, N>: Template class representing a fixed-size array of elements of type T with a compile-time constant size N.
+Member Functions:
+std::array::at(): Accesses the element at a specified position in the array, throwing an exception if the index is out of bounds.
+std::array::operator[]: Accesses the element at a specified position in the array. No bounds checking is performed.
+std::array::front(): Returns a reference to the first element in the array.
+std::array::back(): Returns a reference to the last element in the array.
+std::array::fill(): Assigns the given value to all elements in the array.
+std::array::size(): Returns the number of elements in the array.
+std::array::empty(): Checks whether the array is empty (contains no elements).
+std::array::begin(): Returns an iterator pointing to the first element in the array.
+std::array::end(): Returns an iterator pointing to the past-the-end element in the array.
+std::array::rbegin(): Returns a reverse iterator pointing to the last element in the array (reverse beginning).
+std::array::rend(): Returns a reverse iterator pointing to the element preceding the first element in the array (reverse end).
+Non-member Functions:
+std::get<N>(array): Accesses the element at index N in the array.
+std::swap(array1, array2): Swaps the contents of two arrays.
 
 Let's explore the <stack> header file in C++. Here's a list of common commands and their meanings:
 
-std::stack<T>: Template class representing a stack data structure that provides LIFO (Last In, First Out) access to elements of type T.
-std::stack::push(): Adds an element to the top of the stack.
-std::stack::pop(): Removes the element from the top of the stack.
-std::stack::top(): Returns a reference to the top element of the stack without removing it.
+Classes:
+std::stack<T, Container>: Template class representing a stack data structure. It is a container adapter that provides a LIFO (Last In, First Out) data structure.
+Member Functions:
 std::stack::empty(): Checks whether the stack is empty (contains no elements).
 std::stack::size(): Returns the number of elements in the stack.
-std::stack::emplace(): Constructs and inserts a new element at the top of the stack.
-std::stack::swap(): Exchanges the contents of two stacks.
-std::stack::operator==, std::stack::operator!=, std::stack::operator<, etc.: Comparison operators for stacks.
-std::stack::container_type: Type of the underlying container used by the stack (usually std::deque by default).
-These commands allow you to manipulate and access elements in a stack, making it easy to implement algorithms and data structures that require Last In, First Out behavior.
+std::stack::top(): Returns a reference to the top element of the stack (the most recently added element).
+std::stack::push(const T& value): Inserts a new element at the top of the stack.
+std::stack::push(T&& value): Moves a new element at the top of the stack.
+std::stack::pop(): Removes the top element from the stack.
+std::stack::emplace(Args&&... args): Constructs a new element in-place at the top of the stack.
+Non-member Functions:
+std::swap(stack1, stack2): Swaps the contents of two stacks.
 
 Let's examine the <queue> header file in C++. Here's a list of common commands and their meanings:
 
-std::queue<T>: Template class representing a queue data structure that provides FIFO (First In, First Out) access to elements of type T.
-std::queue::push(): Adds an element to the back of the queue.
-std::queue::pop(): Removes the element from the front of the queue.
-std::queue::front(): Returns a reference to the front element of the queue.
-std::queue::back(): Returns a reference to the back element of the queue.
+Classes:
+std::queue<T, Container>: Template class representing a queue data structure. It is a container adapter that provides a FIFO (First In, First Out) data structure.
+Member Functions:
 std::queue::empty(): Checks whether the queue is empty (contains no elements).
 std::queue::size(): Returns the number of elements in the queue.
-std::queue::emplace(): Constructs and inserts a new element at the back of the queue.
-std::queue::swap(): Exchanges the contents of two queues.
-std::queue::operator==, std::queue::operator!=, std::queue::operator<, etc.: Comparison operators for queues.
-std::queue::container_type: Type of the underlying container used by the queue (usually std::deque by default).
-These commands enable you to manipulate and access elements in a queue, facilitating the implementation of algorithms and data structures that require First In, First Out behavior.
+std::queue::front(): Returns a reference to the front element of the queue (the oldest element).
+std::queue::back(): Returns a reference to the back element of the queue (the newest element).
+std::queue::push(const T& value): Inserts a new element at the back of the queue.
+std::queue::push(T&& value): Moves a new element at the back of the queue.
+std::queue::pop(): Removes the front element from the queue.
+Non-member Functions:
+std::swap(queue1, queue2): Swaps the contents of two queues.
 
 Let's explore the <vector> header file in C++. Here's a list of common commands and their meanings:
 
-std::vector<T>: Template class representing a dynamic array that can resize itself automatically to accommodate the number of elements of type T.
-std::vector::push_back(): Adds an element to the end of the vector.
-std::vector::pop_back(): Removes the last element from the vector.
+Classes:
+std::vector<T>: Template class representing a dynamic array of elements of type T.
+Member Functions:
 std::vector::at(): Accesses the element at a specified position in the vector, throwing an exception if the index is out of bounds.
 std::vector::operator[]: Accesses the element at a specified position in the vector. No bounds checking is performed.
 std::vector::front(): Returns a reference to the first element in the vector.
 std::vector::back(): Returns a reference to the last element in the vector.
-std::vector::begin(): Returns an iterator pointing to the first element in the vector.
-std::vector::end(): Returns an iterator pointing to the past-the-end element in the vector.
-std::vector::empty(): Checks whether the vector is empty (contains no elements).
-std::vector::size(): Returns the number of elements in the vector.
-std::vector::resize(): Changes the size of the vector, optionally initializing new elements.
-std::vector::clear(): Removes all elements from the vector.
-std::vector::insert(): Inserts elements into the vector at a specified position.
-std::vector::erase(): Removes elements from the vector at a specified position or within a range.
-std::vector::swap(): Exchanges the contents of two vectors.
-std::vector::emplace_back(): Constructs and adds a new element to the end of the vector.
-std::vector::reserve(): Increases the capacity of the vector to at least a specified number of elements.
-std::vector::shrink_to_fit(): Reduces the capacity of the vector to fit its size.
 std::vector::data(): Returns a pointer to the underlying array serving as storage.
-These commands provide comprehensive functionality for manipulating and accessing elements in a dynamic array, making std::vector a versatile and widely-used container in C++.
+std::vector::push_back(): Adds an element to the end of the vector, increasing its size by one.
+std::vector::pop_back(): Removes the last element from the vector, reducing its size by one.
+std::vector::insert(): Inserts elements into the vector before a specified position.
+std::vector::erase(): Removes elements from the vector.
+std::vector::clear(): Removes all elements from the vector.
+std::vector::resize(): Changes the size of the vector, potentially adding or removing elements.
+std::vector::reserve(): Requests that the vector capacity be at least enough to contain a specified number of elements.
+std::vector::size(): Returns the number of elements in the vector.
+std::vector::empty(): Checks whether the vector is empty (contains no elements).
+std::vector::capacity(): Returns the number of elements that the vector has currently allocated space for.
+std::vector::shrink_to_fit(): Reduces the capacity of the vector to match its size.
+std::vector::swap(): Swaps the contents of two vectors.
+Non-member Functions:
+std::swap(vector1, vector2): Swaps the contents of two vectors.
 
 Let's examine the <unordered_map> header file in C++. Here's a list of common commands and their meanings:
 
-std::unordered_map<Key, T>: Template class representing an associative container that stores key-value pairs in an unordered manner. It provides fast access to elements based on their keys.
-std::unordered_map::insert(): Inserts a key-value pair into the unordered_map.
-std::unordered_map::erase(): Removes an element from the unordered_map specified by its key.
-std::unordered_map::find(): Searches for an element with a specified key in the unordered_map.
-std::unordered_map::count(): Counts the number of elements with a specified key in the unordered_map (which can only be 0 or 1 in an unordered_map).
+Classes:
+std::unordered_map<Key, T>: Template class representing an unordered associative container that stores elements formed by the combination of a key and a mapped value.
+Member Functions:
+std::unordered_map::at(const Key& key): Accesses the element with the specified key, throwing an exception if the key does not exist.
+std::unordered_map::operator[]: Accesses or inserts the element with the specified key. If the key does not exist, a new element is inserted with a default-constructed value.
+std::unordered_map::begin(): Returns an iterator pointing to the beginning of the container.
+std::unordered_map::end(): Returns an iterator pointing to the end of the container.
 std::unordered_map::empty(): Checks whether the unordered_map is empty (contains no elements).
 std::unordered_map::size(): Returns the number of elements in the unordered_map.
+std::unordered_map::max_size(): Returns the maximum number of elements the unordered_map can hold.
 std::unordered_map::clear(): Removes all elements from the unordered_map.
-std::unordered_map::bucket_count(): Returns the number of buckets in the unordered_map.
-std::unordered_map::bucket_size(): Returns the number of elements in a specific bucket of the unordered_map.
-std::unordered_map::bucket(): Returns the bucket index of a specified key.
-std::unordered_map::load_factor(): Returns the average number of elements per bucket.
-std::unordered_map::max_load_factor(): Sets or returns the maximum load factor of the unordered_map.
-std::unordered_map::rehash(): Sets the number of buckets in the unordered_map to the most appropriate size to contain at least the specified number of elements.
-std::unordered_map::reserve(): Sets the number of buckets in the unordered_map to accommodate at least the specified number of elements without rehashing.
-These commands provide a convenient way to manipulate and access key-value pairs in an unordered_map, offering fast lookup times for associative data structures.
+std::unordered_map::insert(const value_type& value): Inserts a new element into the unordered_map.
+std::unordered_map::erase(const Key& key): Removes the element with the specified key from the unordered_map.
+std::unordered_map::erase(iterator position): Removes the element at the specified position from the unordered_map.
+std::unordered_map::erase(iterator first, iterator last): Removes the elements in the range [first, last) from the unordered_map.
+std::unordered_map::find(const Key& key): Finds an element with a specified key.
+std::unordered_map::count(const Key& key): Counts the number of elements with a specified key.
+Hash Policy Functions:
+std::unordered_map::hash_function(): Returns the hash function object used by the unordered_map.
+std::unordered_map::key_eq(): Returns the equality comparison object used by the unordered_map.
+Non-member Functions:
+std::swap(unordered_map1, unordered_map2): Swaps the contents of two unordered_maps.
 
 Let's explore the <unordered_set> header file in C++. Here's a list of common commands and their meanings:
 
-std::unordered_set<T>: Template class representing an unordered set container that stores unique elements in an unordered manner. It provides fast access to elements and does not allow duplicates.
-std::unordered_set::insert(): Inserts an element into the unordered_set.
-std::unordered_set::erase(): Removes an element from the unordered_set.
-std::unordered_set::find(): Searches for an element in the unordered_set.
-std::unordered_set::count(): Counts the number of occurrences of an element in the unordered_set (which can only be 0 or 1 in an unordered_set).
+Classes:
+std::unordered_set<T>: Template class representing an unordered associative container that stores unique elements.
+Member Functions:
+std::unordered_set::begin(): Returns an iterator pointing to the beginning of the container.
+std::unordered_set::end(): Returns an iterator pointing to the end of the container.
 std::unordered_set::empty(): Checks whether the unordered_set is empty (contains no elements).
 std::unordered_set::size(): Returns the number of elements in the unordered_set.
+std::unordered_set::max_size(): Returns the maximum number of elements the unordered_set can hold.
 std::unordered_set::clear(): Removes all elements from the unordered_set.
-std::unordered_set::bucket_count(): Returns the number of buckets in the unordered_set.
-std::unordered_set::bucket_size(): Returns the number of elements in a specific bucket of the unordered_set.
-std::unordered_set::bucket(): Returns the bucket index of a specified key.
-std::unordered_set::load_factor(): Returns the average number of elements per bucket.
-std::unordered_set::max_load_factor(): Sets or returns the maximum load factor of the unordered_set.
-std::unordered_set::rehash(): Sets the number of buckets in the unordered_set to the most appropriate size to contain at least the specified number of elements.
-std::unordered_set::reserve(): Sets the number of buckets in the unordered_set to accommodate at least the specified number of elements without rehashing.
-These commands provide a convenient way to manipulate and access elements in an unordered_set, offering fast lookup times for unique elements.
+std::unordered_set::insert(const value_type& value): Inserts a new element into the unordered_set.
+std::unordered_set::erase(const value_type& value): Removes the element with the specified value from the unordered_set.
+std::unordered_set::erase(iterator position): Removes the element at the specified position from the unordered_set.
+std::unordered_set::erase(iterator first, iterator last): Removes the elements in the range [first, last) from the unordered_set.
+std::unordered_set::find(const value_type& value): Finds an element with a specified value.
+std::unordered_set::count(const value_type& value): Counts the number of elements with a specified value.
+Hash Policy Functions:
+std::unordered_set::hash_function(): Returns the hash function object used by the unordered_set.
+std::unordered_set::key_eq(): Returns the equality comparison object used by the unordered_set.
+Non-member Functions:
+std::swap(unordered_set1, unordered_set2): Swaps the contents of two unordered_sets.
 
 Let's explore the <deque> header file in C++. Here's a list of common commands and their meanings:
 
-std::deque<T>: Template class representing a double-ended queue (deque) container that allows efficient insertion and deletion operations at both ends.
-std::deque::push_back(): Adds an element to the back of the deque.
-std::deque::push_front(): Adds an element to the front of the deque.
-std::deque::pop_back(): Removes the last element from the deque.
-std::deque::pop_front(): Removes the first element from the deque.
+Classes:
+std::deque<T>: Template class representing a double-ended queue data structure. It allows for efficient insertion and deletion at both ends of the queue.
+Member Functions:
 std::deque::at(): Accesses the element at a specified position in the deque, throwing an exception if the index is out of bounds.
 std::deque::operator[]: Accesses the element at a specified position in the deque. No bounds checking is performed.
 std::deque::front(): Returns a reference to the first element in the deque.
 std::deque::back(): Returns a reference to the last element in the deque.
-std::deque::begin(): Returns an iterator pointing to the first element in the deque.
-std::deque::end(): Returns an iterator pointing to the past-the-end element in the deque.
-std::deque::empty(): Checks whether the deque is empty (contains no elements).
+std::deque::push_front(const T& value): Inserts a new element at the beginning of the deque.
+std::deque::push_front(T&& value): Moves a new element at the beginning of the deque.
+std::deque::push_back(const T& value): Inserts a new element at the end of the deque.
+std::deque::push_back(T&& value): Moves a new element at the end of the deque.
+std::deque::pop_front(): Removes the first element from the deque.
+std::deque::pop_back(): Removes the last element from the deque.
 std::deque::size(): Returns the number of elements in the deque.
+std::deque::empty(): Checks whether the deque is empty (contains no elements).
 std::deque::clear(): Removes all elements from the deque.
-std::deque::insert(): Inserts elements into the deque at a specified position.
-std::deque::erase(): Removes elements from the deque at a specified position or within a range.
-std::deque::swap(): Exchanges the contents of two deques.
-std::deque::emplace_back(): Constructs and adds a new element to the back of the deque.
-std::deque::emplace_front(): Constructs and adds a new element to the front of the deque.
-std::deque::resize(): Changes the size of the deque, optionally initializing new elements.
-These commands provide comprehensive functionality for manipulating and accessing elements in a deque, making it a versatile container for various scenarios where efficient insertion and deletion at both ends are required.
+std::deque::resize(): Changes the size of the deque, potentially adding or removing elements.
+std::deque::swap(): Swaps the contents of two deques.
+Non-member Functions:
+std::swap(deque1, deque2): Swaps the contents of two deques.
 
 Let's examine the <list> header file in C++. Here's a list of common commands and their meanings:
 
-std::list<T>: Template class representing a doubly linked list container that allows efficient insertion and deletion operations anywhere within the list.
-std::list::push_back(): Adds an element to the back of the list.
-std::list::push_front(): Adds an element to the front of the list.
-std::list::pop_back(): Removes the last element from the list.
-std::list::pop_front(): Removes the first element from the list.
-std::list::insert(): Inserts an element into the list at a specified position.
-std::list::erase(): Removes elements from the list at a specified position or within a range.
-std::list::clear(): Removes all elements from the list.
-std::list::size(): Returns the number of elements in the list.
+Classes:
+std::list<T>: Template class representing a doubly-linked list data structure. It allows for efficient insertion and deletion at any position in the list.
+Member Functions:
+std::list::begin(): Returns an iterator pointing to the beginning of the list.
+std::list::end(): Returns an iterator pointing to the end of the list.
+std::list::rbegin(): Returns a reverse iterator pointing to the last element of the list (reverse beginning).
+std::list::rend(): Returns a reverse iterator pointing to the element preceding the first element of the list (reverse end).
 std::list::empty(): Checks whether the list is empty (contains no elements).
-std::list::begin(): Returns an iterator pointing to the first element in the list.
-std::list::end(): Returns an iterator pointing to the past-the-end element in the list.
-std::list::rbegin(): Returns a reverse iterator pointing to the last element in the list (reverse beginning).
-std::list::rend(): Returns a reverse iterator pointing to the element preceding the first element in the list (reverse end).
+std::list::size(): Returns the number of elements in the list.
 std::list::front(): Returns a reference to the first element in the list.
 std::list::back(): Returns a reference to the last element in the list.
-std::list::emplace_front(): Constructs and adds a new element to the front of the list.
-std::list::emplace_back(): Constructs and adds a new element to the back of the list.
-std::list::emplace(): Constructs and inserts a new element into the list at a specified position.
-std::list::splice(): Transfers elements from one list to another or within the same list.
-These commands provide comprehensive functionality for manipulating and accessing elements in a doubly linked list, making it suitable for scenarios where frequent insertion and deletion operations are required at any position within the container.
+std::list::push_front(const T& value): Inserts a new element at the beginning of the list.
+std::list::push_front(T&& value): Moves a new element at the beginning of the list.
+std::list::push_back(const T& value): Inserts a new element at the end of the list.
+std::list::push_back(T&& value): Moves a new element at the end of the list.
+std::list::pop_front(): Removes the first element from the list.
+std::list::pop_back(): Removes the last element from the list.
+std::list::insert(): Inserts elements into the list at a specified position.
+std::list::erase(): Removes elements from the list at a specified position.
+std::list::clear(): Removes all elements from the list.
+std::list::resize(): Changes the size of the list, potentially adding or removing elements.
+std::list::remove(const T& value): Removes all elements equal to the given value from the list.
+std::list::sort(): Sorts the elements of the list.
+std::list::merge(): Merges two sorted lists into one sorted list.
+std::list::reverse(): Reverses the order of elements in the list.
+Non-member Functions:
+std::swap(list1, list2): Swaps the contents of two lists.
 
 Let's explore the <algorithm> header file in C++. Here's a list of common commands and their meanings:
 
-std::sort(): Sorts elements in a range in ascending order.
-std::binary_search(): Searches for a value in a sorted range using binary search algorithm.
-std::reverse(): Reverses the order of elements in a range.
-std::rotate(): Rotates the elements in a range.
-std::find(): Searches for a value in a range.
-std::min_element(): Finds the smallest element in a range.
-std::max_element(): Finds the largest element in a range.
-std::copy(): Copies elements from one range to another.
-std::unique(): Removes consecutive duplicate elements in a range.
-std::remove(): Removes all elements equal to a specified value from a range.
-std::replace(): Replaces all occurrences of a value in a range with another value.
+Functions:
+Non-modifying Sequence Operations:
+
+std::all_of(): Checks if all elements in a range satisfy a condition.
+std::any_of(): Checks if any element in a range satisfies a condition.
+std::none_of(): Checks if no elements in a range satisfy a condition.
+std::for_each(): Applies a function to each element in a range.
 std::count(): Counts the occurrences of a value in a range.
 std::count_if(): Counts the elements in a range that satisfy a condition.
-std::for_each(): Applies a function to each element in a range.
+std::find(): Finds the first occurrence of a value in a range.
+std::find_if(): Finds the first element in a range that satisfies a condition.
+std::find_if_not(): Finds the first element in a range that does not satisfy a condition.
+std::find_end(): Finds the last subsequence in a range.
+std::find_first_of(): Finds the first occurrence of any of the elements in one range in another range.
+std::search(): Searches for a subrange within another range.
+std::search_n(): Searches for a sequence of a specified count of elements within a range.
+Modifying Sequence Operations:
+
+std::copy(): Copies elements from one range to another.
+std::copy_if(): Copies elements from one range to another if they satisfy a condition.
+std::copy_n(): Copies a specified number of elements from one range to another.
+std::copy_backward(): Copies elements from one range to another in reverse order.
+std::move(): Moves elements from one range to another.
+std::move_backward(): Moves elements from one range to another in reverse order.
+std::swap(): Swaps the values of two elements.
+std::swap_ranges(): Swaps elements between two ranges.
 std::transform(): Applies a function to each element in a range and stores the result in another range.
-std::accumulate(): Computes the sum of elements in a range.
-std::min(): Returns the minimum of two values.
-std::max(): Returns the maximum of two values.
-std::lower_bound(): Finds the first element not less than a specified value in a sorted range.
-std::upper_bound(): Finds the first element greater than a specified value in a sorted range.
-These commands provide a wide range of algorithms for manipulating and operating on sequences of elements, making it easier to perform common tasks efficiently in C++.
+std::replace(): Replaces all occurrences of a value in a range with another value.
+std::replace_if(): Replaces all elements in a range that satisfy a condition with another value.
+std::replace_copy(): Copies a range, replacing occurrences of a value with another value.
+std::replace_copy_if(): Copies a range, replacing elements that satisfy a condition with another value.
+std::fill(): Assigns a value to all elements in a range.
+std::fill_n(): Assigns a value to a specified number of elements in a range.
+std::generate(): Assigns values generated by a function to elements in a range.
+std::generate_n(): Assigns values generated by a function to a specified number of elements in a range.
+Removing/Replacing Operations:
+
+std::remove(): Removes all occurrences of a value from a range.
+std::remove_if(): Removes all elements from a range that satisfy a condition.
+std::remove_copy(): Copies a range, removing occurrences of a value.
+std::remove_copy_if(): Copies a range, removing elements that satisfy a condition.
+std::unique(): Removes consecutive duplicate elements from a range.
+std::unique_copy(): Copies a range, removing consecutive duplicate elements.
+std::reverse(): Reverses the order of elements in a range.
+std::reverse_copy(): Copies a range, reversing the order of elements.
+std::rotate(): Rotates the elements in a range.
+std::rotate_copy(): Copies a range, rotating the elements.
+Mutating Operations:
+
+std::transform(): Applies a function to each element in a range and stores the result in another range.
+std::generate(): Assigns values generated by a function to elements in a range.
+std::generate_n(): Assigns values generated by a function to a specified number of elements in a range.
+std::sort(): Sorts the elements in a range.
+std::stable_sort(): Sorts the elements in a range, preserving the relative order of equal elements.
+std::partial_sort(): Sorts the first n elements of a range.
+std::partial_sort_copy(): Copies and partially sorts elements from a range.
+std::nth_element(): Rearranges elements in a range so that the nth element is in its sorted position.
+std::random_shuffle(): Randomly shuffles the elements in a range.
+std::shuffle(): Shuffles the elements in a range using a random number generator.
+std::partition(): Divides elements in a range into two groups based on a condition.
+std::stable_partition(): Divides elements in a range into two groups based on a condition, preserving the relative order of elements.
+std::is_partitioned(): Checks if a range is partitioned according to a given condition.
+std::partition_copy(): Copies elements from a range into two different ranges based on a condition.
+std::partition_point(): Finds the partition point of a partitioned range.
+Binary Search Operations:
+
+std::binary_search(): Checks if a value exists in a sorted range.
+std::lower_bound(): Finds the first element not less than a value in a sorted range.
+std::upper_bound(): Finds the first element greater than a value in a sorted range.
+std::equal_range(): Finds a range of elements matching a value in a sorted range.
+Heap Operations:
+
+std::make_heap(): Constructs a heap from a range of elements.
+std::push_heap(): Inserts an element into a heap.
+std::pop_heap(): Removes the largest element from a heap and places it at the end of the range.
+std::sort_heap(): Sorts a heap.
+Set Operations:
+
+std::includes(): Checks if one sorted range includes another sorted range.
+std::set_union(): Computes the union of two sorted ranges.
+std::set_intersection(): Computes the intersection of two sorted ranges.
+std::set_difference(): Computes the difference between two sorted ranges.
+std::set_symmetric_difference(): Computes the symmetric difference between two sorted ranges.
+Other Operations:
+
+std::min(): Returns the smaller of two values.
+std::max(): Returns the larger of two values.
+std::min_element(): Finds the smallest element in a range.
+std::max_element(): Finds the largest element in a range.
+std::clamp(): Clamps a value between a minimum and maximum.
+Non-member Functions:
+std::swap(): Swaps the values of two objects.
 
 Let's explore the <map> header file in C++. Here's a list of common commands and their meanings:
 
-std::map<Key, T>: Template class representing an associative container that stores key-value pairs in a sorted order based on the keys.
-std::map::insert(): Inserts a key-value pair into the map.
-std::map::erase(): Removes an element from the map specified by its key.
-std::map::find(): Searches for an element with a specified key in the map.
-std::map::count(): Counts the number of occurrences of a key in the map (which can only be 0 or 1 in a map).
+Classes:
+std::map<Key, T>: Template class representing an associative container that stores key-value pairs. Keys are unique and sorted.
+Member Functions:
+std::map::begin(): Returns an iterator pointing to the beginning of the map.
+std::map::end(): Returns an iterator pointing to the end of the map.
 std::map::empty(): Checks whether the map is empty (contains no elements).
 std::map::size(): Returns the number of elements in the map.
 std::map::clear(): Removes all elements from the map.
-std::map::begin(): Returns an iterator pointing to the first element in the map (ordered by keys).
-std::map::end(): Returns an iterator pointing to the past-the-end element in the map.
-std::map::rbegin(): Returns a reverse iterator pointing to the last element in the map (reverse ordered by keys).
-std::map::rend(): Returns a reverse iterator pointing to the element preceding the first element in the map (reverse end).
-std::map::lower_bound(): Returns an iterator to the first element in the map not less than a specified key.
-std::map::upper_bound(): Returns an iterator to the first element in the map greater than a specified key.
-std::map::equal_range(): Returns a range of elements matching a specified key.
-These commands provide a convenient way to manipulate and access key-value pairs in a map, offering efficient search and retrieval based on keys.
+std::map::insert(): Inserts an element (key-value pair) into the map.
+std::map::emplace(): Constructs and inserts an element into the map.
+std::map::erase(): Removes elements from the map.
+std::map::count(): Counts the number of elements with a specific key in the map.
+std::map::find(): Finds an element with a specific key in the map.
+std::map::at(): Accesses the element with a specific key in the map.
+Non-member Functions:
+std::swap(map1, map2): Swaps the contents of two maps.
 
 Let's explore the <set> header file in C++. Here's a list of common commands and their meanings:
 
+Classes:
 std::set<T>: Template class representing an associative container that stores unique elements in a sorted order.
-std::set::insert(): Inserts an element into the set.
-std::set::erase(): Removes an element from the set.
-std::set::find(): Searches for an element in the set.
-std::set::count(): Counts the number of occurrences of an element in the set (which can only be 0 or 1 in a set).
+Member Functions:
+std::set::begin(): Returns an iterator pointing to the beginning of the set.
+std::set::end(): Returns an iterator pointing to the end of the set.
 std::set::empty(): Checks whether the set is empty (contains no elements).
 std::set::size(): Returns the number of elements in the set.
 std::set::clear(): Removes all elements from the set.
-std::set::begin(): Returns an iterator pointing to the first element in the set.
-std::set::end(): Returns an iterator pointing to the past-the-end element in the set.
-std::set::rbegin(): Returns a reverse iterator pointing to the last element in the set (reverse ordered).
-std::set::rend(): Returns a reverse iterator pointing to the element preceding the first element in the set (reverse end).
-std::set::lower_bound(): Returns an iterator to the first element in the set not less than a specified value.
-std::set::upper_bound(): Returns an iterator to the first element in the set greater than a specified value.
-std::set::equal_range(): Returns a range of elements matching a specified value.
-These commands provide a convenient way to manipulate and access elements in a set, offering efficient search and retrieval with sorted ordering and uniqueness constraints.
+std::set::insert(): Inserts an element into the set.
+std::set::emplace(): Constructs and inserts an element into the set.
+std::set::erase(): Removes elements from the set.
+std::set::count(): Counts the number of elements with a specific value in the set.
+std::set::find(): Finds an element with a specific value in the set.
+Non-member Functions:
+std::swap(set1, set2): Swaps the contents of two sets.
+
+----------------------------------------------------------------
+<algorithm>: Provides a collection of functions for a variety of common tasks such as sorting, searching, and modifying elements in containers.
+<any>: Provides a class std::any that can hold instances of any type.
+<array>: Provides the std::array container for fixed-size arrays.
+<atomic>: Provides facilities for atomic operations, ensuring that certain operations are performed indivisibly.
+<bitset>: Provides the std::bitset class for manipulating sets of bits.
+<cassert>: Provides macros for assertion testing, allowing you to add debugging checks to your code.
+<ccomplex>: Provides facilities for working with complex numbers.
+<cctype>: Provides functions for character classification and manipulation, such as checking if a character is alphanumeric, uppercase, lowercase, etc.
+<cerrno>: Provides error codes set by system or library functions.
+<cfenv>: Provides facilities for floating-point environment manipulation.
+<cfloat>: Provides constants related to floating-point types.
+<charconv>: Provides facilities for character conversions.
+<chrono>: Provides facilities for measuring time.
+<cinttypes>: Provides facilities for fixed-width integer types.
+<ciso646>: Defines several macros that correspond to the ISO 646:1991 standard.
+<climits>: Provides constants related to integer types.
+<clocale>: Provides facilities for working with locales.
+<cmath>: Provides mathematical functions and constants.
+<codecvt>: Provides facilities for character conversions.
+<complex>: Provides the std::complex class for complex numbers and associated operations.
+<condition_variable>: Provides facilities for thread synchronization using condition variables.
+<csetjmp>: Provides facilities for implementing non-local jumps.
+<csignal>: Provides facilities for handling signals.
+<cstdarg>: Provides facilities for variable argument lists.
+<cstdbool>: Defines a macro for the Boolean type.
+<cstddef>: Provides definitions of various types and macros.
+<cstdint>: Provides fixed-width integer types.
+<cstdio>: Provides facilities for input/output operations.
+<cstdlib>: Provides general utilities and functions.
+<cstring>: Provides functions for working with C-style strings.
+<ctgmath>: Provides mathematical functions for both real and complex numbers.
+<ctime>: Provides facilities for working with date and time.
+<cuchar>: Provides facilities for working with Unicode characters.
+<cwchar>: Provides facilities for working with wide characters and strings.
+<cwctype>: Provides functions for working with wide characters.
+<deque>: Provides the std::deque container for double-ended queues.
+<exception>: Provides facilities for handling exceptions.
+<filesystem>: Provides facilities for performing file system operations.
+<forward_list>: Provides the std::forward_list container for singly-linked lists.
+<fstream>: Provides classes and functions for working with files using file streams.
+<functional>: Provides facilities for working with function objects and function pointers.
+<future>: Provides facilities for asynchronous programming with futures and promises.
+<initializer_list>: Provides facilities for working with initializer lists.
+<iomanip>: Provides manipulators for stream formatting.
+<ios>: Provides base classes and utilities for I/O streams.
+<iosfwd>: Provides forward declarations of types used in I/O streams.
+<iostream>: Provides facilities for input and output operations.
+<istream>: Provides facilities for input operations.
+<iterator>: Provides facilities for working with iterators.
+<limits>: Provides facilities for querying properties of fundamental types.
+<list>: Provides the std::list container for doubly-linked lists.
+<locale>: Provides facilities for handling localization and formatting of text.
+<map>: Provides the std::map container for associative arrays.
+<memory>: Provides facilities for dynamic memory management and smart pointers.
+<memory_resource>: Provides facilities for customizable memory allocation.
+<mutex>: Provides facilities for multi-threading synchronization, including mutexes.
+<new>: Provides facilities for dynamic memory allocation and deallocation.
+<numeric>: Provides numeric algorithms.
+<optional>: Provides the std::optional class for optional values.
+<ostream>: Provides facilities for output operations.
+<queue>: Provides the std::queue container for queues.
+<random>: Provides facilities for generating random numbers.
+<ranges>: Provides components for ranges and range-based algorithms.
+<ratio>: Provides facilities for working with compile-time rational arithmetic.
+<regex>: Provides facilities for working with regular expressions.
+<scoped_allocator>: Provides facilities for scoped allocators.
+<set>: Provides the std::set container for sorted sets.
+<shared_mutex>: Provides facilities for multi-threading synchronization, including shared mutexes.
+<stdexcept>: Provides standard exception classes.
+<streambuf>: Provides facilities for stream buffering.
+<string>: Provides facilities for working with strings.
+<string_view>: Provides the std::string_view class for string-like objects that do not own their storage.
+<system_error>: Provides facilities for working with system error codes and error categories.
+<thread>: Provides facilities for creating and managing threads.
+<tuple>: Provides the std::tuple class for heterogeneous collections of values.
+<type_traits>: Provides facilities for compile-time type information and type traits.
+<typeindex>: Provides facilities for working with type information.
+<typeinfo>: Provides facilities for working with type information.
+<unordered_map>: Provides the std::unordered_map container for unordered associative arrays.
+<unordered_set>: Provides the std::unordered_set container for unordered sets.
+<utility>: Provides various utility components, such as std::pair, std::move, and std::forward.
+<valarray>: Provides facilities for numeric arrays.
+<variant>: Provides the std::variant class for type-safe unions.
+<vector>: Provides the std::vector container for dynamic arrays.
+<version>: Provides version information for the C++ standard library.
+<wchar.h>: Provides facilities for wide character handling.
+<wctype.h>: Provides facilities for wide character classification and conversion.
+
+Add notes for these header files too
+----------------------------------------------------------------
