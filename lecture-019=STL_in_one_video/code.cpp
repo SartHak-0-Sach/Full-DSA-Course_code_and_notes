@@ -118,9 +118,12 @@ void dequeImplementation()
 
     // d.emplace_back();
     // d.emplace_front();
-    // d.emplace(3, 4); // add documentation of these commands also
+    // d.emplace(3, 4);
 
+    
 }
+
+
 
 // add meaning of this below mentioned code also
 
