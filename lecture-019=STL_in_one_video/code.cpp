@@ -116,13 +116,20 @@ void dequeImplementation()
 
     cout<<"Empty or not:- "<<d.empty()<<endl;
 
-    cout<<"Size of "
+    cout<<"Size of deque:- "<<d.size()<<endl;
 
     // d.emplace_back();
     // d.emplace_front();
     // d.emplace(3, 4);
 
+    for (auto i : d)
+        cout << i << " ";
 
+    cout<<"\nErasing elements from deque:-\n";
+    d.clear();
+
+    for (auto i : d)
+        cout << i << " ";
 }
 
 void listImplementation()
