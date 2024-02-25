@@ -2,3 +2,21 @@ https://stackoverflow.com/questions/40716515/do-stdstrings-end-in-0-when-initial
 
 https://cplusplus.com/reference/string/string/
 
+In this lecture we are going to be studying about char arrays, strings and solved relevant questions to the topics.
+
+We started off by learning what char arrays, strings are and why are they useful.
+
+In C++, strings are typically terminated by a null character, denoted by '\0', indicating the end of the string within the memory allocated to it. This null character holds an ASCII value of 0. Adding a null character at any point in the string instructs the compiler to cease looking further ahead, effectively reducing the size of the string.
+
+Furthermore, string literals serve as a convenient means to represent strings within the allocated memory. They are enclosed within double quotes (" "). When using string literals, the compiler initializes a string with the specified text.
+
+In C++, there are various methods to initialize strings. One such method involves utilizing string literals. These literals, enclosed within double quotes, allow for concise initialization of strings with predetermined text.
+
+If you declare a string or char array of size 10 and fill all 9 characters in it but add a null character ('\0') at the 5th index, the string will effectively be terminated at the 5th index.
+
+Before adding the null character, if you check the length of the string (assuming you're using a std::string object), it will return the number of characters inserted into the string. In this case, it will return 9.
+
+After adding the null character at the 5th index, the length of the string (if you check using std::string::length()) will be 5, as it counts the characters until it reaches the null terminator.
+
+As for accessing characters beyond the 5th index, they won't be accessible directly via the string object or array indexing because the null character signifies the end of the string. However, the memory locations are still accessible, so you can technically access them directly through pointers or array indexing. But it's important to note that these characters are not part of the string itself and are not reliable or meaningful as part of the string content.
+
