@@ -116,11 +116,18 @@ void dequeImplementation()
 
     cout<<"Empty or not:- "<<d.empty()<<endl;
 
+    cout<<"Size of "
+
     // d.emplace_back();
     // d.emplace_front();
     // d.emplace(3, 4);
 
-    
+
+}
+
+void listImplementation()
+{
+
 }
 
 
