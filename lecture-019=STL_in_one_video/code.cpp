@@ -243,20 +243,54 @@ void queueImplementation()
 
 void priority_queueImplementation()
 {
-    priority_queue<int> pq;
-    pq.push(5);
-    pq.push(1);
-    pq.push(10);
-    pq.push(30);
-    pq.push(20);
+    priority_queue<int> maxi;
+    priority_queue<int, vector<int>, greater<int>> mini;
 
-    cout << "Size of priority queue:- " << pq.size() << endl;
-    cout << "Topmost element:- " << pq.top() << endl;
+    maxi.push(5);
+    maxi.push(1);
+    maxi.push(10);
+    maxi.push(30);
+    maxi.push(20);
 
-    pq.pop();
-    cout << "Topmost element after pop:- " << pq.top() << endl;
+    cout << "Size of priority queue:- " << maxi.size() << endl;
+    cout << "Topmost element:- " << maxi.top() << endl;
 
-    cout << "Size of priority queue:- " << pq.size() << endl;
+    maxi.pop();
+    cout << "Topmost element after pop:- " << maxi.top() << endl;
+
+    cout << "Size of priority queue:- " << maxi.size() << endl;
+
+    int n = maxi.size();
+
+    // for (int i = 0; i < maxi.size(); i++) // this condition looks right but is wrong for traversal as we are popping so size is changing
+    for (int i = 0; i < n; i++)
+    {
+        cout << maxi.top() << " ";
+        maxi.pop();
+    }
+    cout << endl;
+
+    mini.push(0);
+    mini.push(2);
+    mini.push(1);
+    mini.push(5);
+    mini.push(8);
+
+    int m = mini.size();
+
+    for (int i = 0; i < m; i++)
+    {
+        cout << mini.top() << " ";
+        mini.pop();
+    }
+    cout << endl;
+
+    cout << "Empty or not? " << mini.empty() << endl;
+}
+
+void setImplementation()
+{
+    
 }
 
 
@@ -266,18 +300,18 @@ struct A
 
     A(std::string str) : s(std::move(str)) { std::cout << " constructed\n"; }
 
-    A(const A& o) : s(o.s) { std::cout << " copy constructed\n"; }
+    A(const A &o) : s(o.s) { std::cout << " copy constructed\n"; }
 
-    A(A&& o) : s(std::move(o.s)) { std::cout << " move constructed\n"; } // understand this code also
+    A(A &&o) : s(std::move(o.s)) { std::cout << " move constructed\n"; } // understand this code also
 
-    A& operator=(const A& other)
+    A &operator=(const A &other)
     {
         s = other.s;
         std::cout << " copy assigned\n";
         return *this;
     }
 
-    A& operator=(A&& other)
+    A &operator=(A &&other)
     {
         s = std::move(other.s);
         std::cout << " move assigned\n";
@@ -289,9 +323,9 @@ int main()
 {
     std::deque<A> container;
 
-    std::cout << "construct 2 times A:\n"; 
-    A two { "two" };
-    A three { "three" };
+    std::cout << "construct 2 times A:\n";
+    A two{"two"};
+    A three{"three"};
 
     std::cout << "emplace:\n";
     container.emplace(container.end(), "one");
@@ -303,11 +337,10 @@ int main()
     container.emplace(container.end(), std::move(three));
 
     std::cout << "content:\n";
-    for (const auto& obj : container)
+    for (const auto &obj : container)
         std::cout << ' ' << obj.s;
     std::cout << '\n';
 }
-
 
 /*
 Reason is:-
@@ -320,3 +353,62 @@ On the other hand, queues adhere to the First In, First Out (FIFO) principle, wh
 
 To iterate through a stack or queue, you would typically resort to traditional methods such as using loops with specific operations like popping elements from the stack or dequeuing elements from the queue until they are empty. Alternatively, you could copy the contents of the stack or queue into a different container like a vector, which does support range-based for loops, and then iterate over that container instead. This approach allows you to achieve the desired iteration behavior while working within the constraints of the STL containers.
 */
+
+// So we do it this way
+void iterateContainers()
+{
+    // Stack
+    std::stack<int> myStack;
+    // Push some elements onto the stack
+    myStack.push(1);
+    myStack.push(2);
+    myStack.push(3);
+
+    std::cout << "Stack: ";
+    // To iterate through the stack, you need to pop elements until it's empty
+    while (!myStack.empty())
+    {
+        int element = myStack.top(); // Access the top element
+        // Process the element as needed
+        std::cout << element << " ";
+        myStack.pop(); // Remove the top element
+    }
+    std::cout << std::endl;
+
+    // Queue
+    std::queue<int> myQueue;
+    // Enqueue some elements into the queue
+    myQueue.push(1);
+    myQueue.push(2);
+    myQueue.push(3);
+
+    std::cout << "Queue: ";
+    // To iterate through the queue, you dequeue elements until it's empty
+    while (!myQueue.empty())
+    {
+        int element = myQueue.front(); // Access the front element
+        // Process the element as needed
+        std::cout << element << " ";
+        myQueue.pop(); // Remove the front element
+    }
+    std::cout << std::endl;
+
+    // Priority Queue
+    std::priority_queue<int> myPriorityQueue;
+    // Insert some elements into the priority queue
+    myPriorityQueue.push(3);
+    myPriorityQueue.push(1);
+    myPriorityQueue.push(2);
+
+    std::cout << "Priority Queue: ";
+    // To iterate through the priority queue, you can't directly access elements in sorted order
+    // Instead, you need to dequeue elements until it's empty
+    while (!myPriorityQueue.empty())
+    {
+        int element = myPriorityQueue.top(); // Access the top (highest priority) element
+        // Process the element as needed
+        std::cout << element << " ";
+        myPriorityQueue.pop(); // Remove the top element
+    }
+    std::cout << std::endl;
+}
