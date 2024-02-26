@@ -290,9 +290,115 @@ void priority_queueImplementation()
 
 void setImplementation()
 {
-    
+    set<int> s;
+
+    s.insert(5);
+    s.insert(5);
+    s.insert(5);
+    s.insert(5);
+    s.insert(6);
+    s.insert(6);
+    s.insert(6);
+    s.insert(7);
+    s.insert(8);
+    s.insert(9);
+    s.insert(3);
+
+    for (auto i : s)
+        cout << i << " ";
+    cout << endl;
+
+    set<int>::iterator it = s.begin();
+    it++;
+
+    s.erase(it);
+
+    for (auto i : s)
+        cout << i << " ";
+    cout << endl;
+
+    cout << "Is -5 present or not? " << s.count(-5) << endl;
+
+    set<int>::iterator itr = s.find(5);
+
+    for (auto it = itr; it != s.end(); it++)
+    {
+        cout << *it << " ";
+    }
+    cout << endl;
 }
 
+void mapImplementation()
+{
+    map<int, string> m;
+
+    m[1] = "love";
+    m[2] = "babbar";
+    m[3] = "course";
+
+    m.insert({5, "bheem"});
+
+    string myName = "Sarthak";
+
+    m.insert({7, myName});
+
+    cout << "Elements before erase:- " << endl;
+
+    for (auto i : m)
+        cout << i.first << " " << i.second << endl;
+    cout << endl
+         << endl;
+
+    auto it = m.find(5);
+
+    for (auto i = it; i != m.end(); i++)
+        cout << (*i).first << endl;
+    // can also be done by declaring iterator as done in set
+}
+
+void algoImplementation()
+{
+    vector<int> v;
+
+    v.push_back(1);
+    v.push_back(2);
+    v.push_back(3);
+    v.push_back(4);
+    v.push_back(5);
+    v.push_back(6);
+    v.push_back(8);
+    v.push_back(4);
+
+    cout << "Finding 6-> " << binary_search(v.begin(), v.end(), 6) << endl;
+
+    cout << "Lower bound of 4:- " << lower_bound(v.begin(), v.end(), 4) - v.begin() << endl;
+    cout << "Upper bound of 4:- " << upper_bound(v.begin(), v.end(), 4) - v.begin() << endl;
+
+    int a = 3;
+    int b = 5;
+
+    cout << "max element out of a and b is:- " << max(a, b) << endl;
+    cout << "min element out of a and b is:- " << min(a, b) << endl;
+
+    swap(a, b);
+
+    cout << endl
+         << "a-> " << a << endl;
+
+    string sample = "abcddcbaabcddcba";
+
+    reverse(v.begin(), v.begin() + 8);
+
+    cout << sample << endl;
+
+    rotate(v.begin(), v.end() - 3, v.end());
+
+    cout << "Vector after rotating:- " << endl;
+
+    for (auto i : v)
+        cout << i << " ";
+    cout << endl;
+}
 
 struct A
 {
