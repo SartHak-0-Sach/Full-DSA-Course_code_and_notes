@@ -15,7 +15,251 @@ STL Queue:
 The STL queue is commonly implemented using a deque (double-ended queue) or a list, similar to the stack. However, in contrast to the stack, elements are added to the back of the deque or list when enqueued and removed from the front when dequeued. This design adheres to the FIFO (First In, First Out) principle, ensuring that elements are processed in the order they were added. Iterating through a queue typically involves dequeuing elements one by one until the queue is empty, as direct iteration isn't directly supported due to the specific nature of the queue data structure.
 
 STL Priority Queue:
-A priority queue in the STL is often implemented using a binary heap data structure, which allows efficient insertion, deletion, and access to the highest priority element. In a binary heap, elements are arranged such that the highest priority element is at the root, and each node's priority is greater than or equal to its children's priorities. When elements are inserted into the priority queue, they are placed at an appropriate position in the heap based on their priority. When elements are removed (typically the highest priority element), the heap is restructured to maintain the heap property. While priority queues support iteration, it's not guaranteed to iterate in any specific order, as it's based on the internal organization of the binary heap. Hence, direct iteration using a range-based for loop might not produce elements in a sorted order, as it depends on the underlying heap structure.
+A priority queue in the STL is often implemented using a binary heap data structure, which allows efficient insertion, deletion, and access to the highest priority element. In a binary heap, elements are arranged such that the highest priority element is at the root, and each node's priority is greater than or equal to its children's priorities. When elements are inserted into the priority queue, they are placed at an appropriate position in the heap based on their priority. When elements are removed (typically the highest priority element), the heap is restructured to maintain the heap property. While priority queues support iteration, it's not guaranteed to iterate in any specific order, as it's based on the internal organization of the binary heap. Hence, direct iteration using a range-based for loop might not produce elements in a sorted order, as it depends on the underlying heap structure. We use max heap or min heap according to our use in case of priority queue.
+
+
+Each of these STL containers is implemented differently to serve specific needs efficiently:
+
+Set: The std::set in the C++ Standard Library is typically implemented as a balanced binary search tree, most commonly a Red-Black Tree. This implementation ensures that elements are sorted in a specific order and supports efficient operations like insertion, deletion, and search, all with a time complexity of O(log n). The tree structure allows for quick traversal of elements in sorted order, making it suitable for applications where sorted data and efficient search operations are required.
+
+NOTE: In set STL, it only stores unique elements and even if we insert the same element multiple times, still it would only includ it once. Its implementation is done by using BST. Also in this we cannot modify any element, either we can add them to the set or delete them from it. The elements are always returned in a sorted order whenever we start removing or traversing through the set. The difference between set and unordered set is set is a bit slow in functioning but the disadvantage in using unordered set is that elements are not returned in sorted order.
+
+Map: The std::map is usually implemented as a balanced binary search tree similar to std::set. However, in the case of std::map, each element consists of a key-value pair. This key-value pair is typically stored within the nodes of the tree, sorted by keys. As with std::set, operations like insertion, deletion, and search have a time complexity of O(log n), making it efficient for managing key-value associations and performing lookups based on keys.
+
+Unordered Set: The std::unordered_set is implemented using a hash table data structure. In this implementation, elements are stored in buckets based on their hash values, allowing for constant-time average-case complexity for insertion, deletion, and search operations (O(1)). However, in the worst-case scenario, these operations can have a time complexity of O(n) if there are many collisions. Hash functions are used to compute the hash values of elements, and collision resolution techniques such as chaining or open addressing are employed to handle collisions.
+
+Unordered Map: Similar to std::unordered_set, std::unordered_map utilizes a hash table for storing key-value pairs. Each key is hashed to determine the bucket where its associated value will be stored. This allows for constant-time average-case complexity for operations like insertion, deletion, and search (O(1)). However, as with std::unordered_set, the worst-case complexity can be O(n) due to collisions. To handle collisions, techniques such as chaining or open addressing are employed, where elements with the same hash value are stored in linked lists or alternative positions within the table.
+
+Here's an overview of how the non-modifying sequence operations in the C++ Standard Library are typically implemented:
+
+Loop-based approach:
+Functions like std::all_of(), std::any_of(), and std::none_of() are often implemented using a loop that iterates over each element in the range and checks the specified condition for each element. These functions typically return early if the condition is not met or satisfied based on the operation being performed.
+
+Algorithmic approach:
+Functions like std::count(), std::count_if(), std::find(), std::find_if(), std::find_if_not(), std::find_end(), std::find_first_of(), std::search(), and std::search_n() are often implemented using variations of common algorithms like linear search, binary search, or pattern matching algorithms. For example, std::count() might use a loop to iterate through the range and increment a counter each time the specified value is encountered, while std::find() might use a linear search algorithm to locate the first occurrence of the specified value.
+
+Function objects:
+Many of these functions accept function objects or callable objects as parameters, such as predicates for std::count_if() and std::find_if(). The implementation typically involves invoking these function objects on each element in the range and using their return values to determine the result of the operation.
+
+Iterator-based traversal:
+These functions operate on ranges defined by iterators. They use iterators to traverse the elements of the range and perform the specified operations. Algorithms like std::for_each() apply a given function to each element in the range by iterating through the range using iterators.
+
+Optimizations:
+Standard library implementations often include optimizations to improve the efficiency of these operations. For example, algorithms like std::find() may employ techniques like early termination or branch prediction to enhance performance. Additionally, algorithms may be implemented to take advantage of specific properties of the data structures involved, such as sortedness or randomness.
+
+
+Certainly, here's a continuation of how some other algorithms from the list may be implemented:
+
+Modifying Sequence Operations:
+
+Loop-based approach:
+Functions like std::copy(), std::copy_if(), std::copy_n(), std::copy_backward(), std::move(), std::move_backward(), std::swap(), and std::swap_ranges() often use loops to iterate through the source range and copy or move elements to the destination range. These functions may also utilize iterators to traverse the ranges efficiently.
+
+Function objects:
+Algorithms like std::transform(), std::replace(), std::replace_if(), std::replace_copy(), and std::replace_copy_if() apply a specified operation or transformation to each element in the source range. They may use function objects or lambda functions to perform the transformation.
+
+Optimizations:
+Standard library implementations may employ optimizations such as loop unrolling, memory prefetching, or SIMD instructions to improve the performance of these operations, especially for large ranges or when dealing with complex data types.
+
+Removing/Replacing Operations:
+
+Loop-based approach:
+Functions like std::remove(), std::remove_if(), std::remove_copy(), and std::remove_copy_if() often use loops to iterate through the range, removing elements that meet certain criteria. They may rearrange the elements to ensure that the removed elements are placed at the end of the range.
+
+In-place modification:
+Algorithms like std::unique() and std::unique_copy() remove consecutive duplicate elements from the range. They may rearrange the elements in-place to eliminate duplicates or copy elements to another range while eliminating duplicates.
+
+Mutating Operations:
+
+Loop-based approach:
+Functions like std::generate(), std::generate_n(), and std::sort() often use loops to iterate through the range and perform the specified operations. For example, std::generate() assigns values generated by a function to elements in the range, while std::sort() rearranges the elements to put them in sorted order.
+
+Efficient sorting algorithms:
+Sorting algorithms like std::sort() and std::stable_sort() typically use efficient sorting algorithms such as quicksort, mergesort, or introsort. These algorithms may be implemented recursively or iteratively and may include optimizations to improve performance, such as adaptive behavior or hybrid approaches.
+
+Binary Search Operations:
+
+Algorithmic approach:
+Functions like std::binary_search(), std::lower_bound(), std::upper_bound(), and std::equal_range() typically utilize binary search algorithms to efficiently search for elements in sorted ranges. These algorithms exploit the sorted nature of the ranges to reduce the search space logarithmically, resulting in faster search times compared to linear search algorithms.
+
+Iterator-based traversal:
+These functions operate on sorted ranges defined by iterators. They use iterators to traverse the elements of the range and perform the specified search operations. Algorithms like std::lower_bound() and std::upper_bound() may employ variations of binary search to locate elements efficiently while maintaining the sorted order of the range.
+
+Heap Operations:
+
+Heap algorithms:
+Functions like std::make_heap(), std::push_heap(), std::pop_heap(), and std::sort_heap() are typically implemented using heap data structures and related algorithms. These algorithms maintain the heap property, which ensures that the largest (or smallest) element is always at the root of the heap. Operations like insertion, removal, and sorting are then performed by adjusting the heap structure accordingly.
+
+Efficiency considerations:
+Heap operations are often implemented with efficiency in mind, leveraging properties of heap data structures to achieve optimal time complexity. For example, std::make_heap() constructs a heap from a range of elements in linear time, while std::pop_heap() removes the largest element from the heap and places it at the end of the range in logarithmic time.
+
+Set Operations:
+
+Set algorithms:
+Functions like std::includes(), std::set_union(), std::set_intersection(), std::set_difference(), and std::set_symmetric_difference() are typically implemented using set theory principles. These algorithms compute set operations such as union, intersection, difference, and symmetric difference efficiently by exploiting properties of sorted sets or using efficient data structures like balanced binary search trees or hash sets.
+
+Optimizations:
+Standard library implementations may include optimizations to improve the efficiency of set operations, such as early termination or short-circuiting when possible. For example, std::set_intersection() may stop processing elements once one of the input ranges is exhausted, as there cannot be any more common elements beyond that point.
+
+Other Operations:
+
+Minimum and Maximum: Functions like std::min(), std::max(), std::min_element(), and std::max_element() are typically implemented using comparisons to find the minimum or maximum value or element within a range. These functions may utilize loop-based approaches or algorithmic techniques depending on the specific requirements.
+
+Clamping: std::clamp() restricts a value to a specified range. This function is typically implemented using comparisons to ensure that the value falls within the specified bounds. If the value is outside the range, it is adjusted accordingly.
+
+Non-member Functions:
+
+Swap: The std::swap() function swaps the values of two objects. This function is often implemented using move semantics or by directly swapping the internal representations of the objects. It provides a generic way to exchange the contents of two variables efficiently.
+These implementations are designed to provide essential functionality and utility functions for working with data structures and algorithms in C++. They aim to be efficient, flexible, and easy to use, adhering to the principles of the C++ Standard Library. Implementations may vary across different standard library implementations, but they generally follow these principles to provide consistent behavior and performance.
+
+Summary-
+
+Non-modifying Sequence Operations:
+
+std::all_of(): Loop through the range, checking if all elements satisfy the condition.
+std::any_of(): Loop through the range, checking if any element satisfies the condition.
+std::none_of(): Loop through the range, checking if no element satisfies the condition.
+std::for_each(): Apply a function to each element in the range.
+std::count(): Loop through the range, counting occurrences of a value.
+std::count_if(): Loop through the range, counting elements satisfying a condition.
+std::find(): Loop through the range, searching for a value.
+std::find_if(): Loop through the range, searching for an element satisfying a condition.
+std::find_if_not(): Loop through the range, searching for an element not satisfying a condition.
+std::find_end(), std::find_first_of(), std::search(), std::search_n(): Use algorithmic approaches for searching patterns or subsequences in ranges.
+Modifying Sequence Operations:
+
+std::copy(), std::copy_if(), std::copy_n(), std::copy_backward(): Loop through ranges, copying or moving elements.
+std::move(), std::move_backward(): Move elements from one range to another.
+std::swap(), std::swap_ranges(): Swap elements or ranges.
+std::transform(): Apply a function to each element, storing results in another range.
+std::replace(), std::replace_if(), std::replace_copy(), std::replace_copy_if(): Replace elements based on conditions.
+std::fill(), std::fill_n(), std::generate(), std::generate_n(): Assign values to elements or generate values for elements.
+Removing/Replacing Operations:
+
+std::remove(), std::remove_if(), std::remove_copy(), std::remove_copy_if(): Remove elements based on conditions.
+std::unique(), std::unique_copy(): Remove consecutive duplicates.
+std::reverse(), std::reverse_copy(), std::rotate(), std::rotate_copy(): Reverse or rotate elements or ranges.
+Mutating Operations:
+
+std::transform(), std::generate(), std::generate_n(): Apply functions or generate values for elements.
+std::sort(), std::stable_sort(), std::partial_sort(), std::partial_sort_copy(), std::nth_element(): Sort elements.
+std::random_shuffle(), std::shuffle(), std::partition(), std::stable_partition(): Shuffle or partition elements.
+std::is_partitioned(), std::partition_copy(), std::partition_point(): Check, copy, or find partition points.
+Binary Search Operations:
+
+std::binary_search(), std::lower_bound(), std::upper_bound(), std::equal_range(): Use binary search or related algorithms on sorted ranges.
+Heap Operations:
+
+std::make_heap(), std::push_heap(), std::pop_heap(), std::sort_heap(): Construct and manipulate heaps.
+Set Operations:
+
+std::includes(), std::set_union(), std::set_intersection(), std::set_difference(), std::set_symmetric_difference(): Perform set operations efficiently on sorted ranges.
+Other Operations:
+
+std::min(), std::max(), std::min_element(), std::max_element(), std::clamp(): Find minimum or maximum values or elements, or clamp values within a range.
+Non-member Functions:
+
+std::swap(): Swap the values of two objects.
+
+Complexities-
+Non-modifying Sequence Operations:
+
+std::all_of(), std::any_of(), std::none_of(): O(n)
+std::for_each(): O(n)
+std::count(): O(n)
+std::count_if(): O(n)
+std::find(): O(n)
+std::find_if(), std::find_if_not(): O(n)
+std::find_end(), std::find_first_of(): O(n+m)
+std::search(): O(n*m)
+std::search_n(): O(n)
+Modifying Sequence Operations:
+
+std::copy(), std::copy_if(), std::copy_n(), std::copy_backward(): O(n)
+std::move(), std::move_backward(): O(n)
+std::swap(), std::swap_ranges(): O(1)
+std::transform(): O(n)
+std::replace(), std::replace_if(), std::replace_copy(), std::replace_copy_if(): O(n)
+std::fill(), std::fill_n(): O(n)
+std::generate(), std::generate_n(): O(n)
+Removing/Replacing Operations:
+
+std::remove(), std::remove_if(), std::remove_copy(), std::remove_copy_if(): O(n)
+std::unique(), std::unique_copy(): O(n)
+std::reverse(), std::reverse_copy(): O(n)
+std::rotate(), std::rotate_copy(): O(n)
+Mutating Operations:
+
+std::transform(), std::generate(), std::generate_n(): O(n)
+std::sort(): O(n log n) (average case), O(n^2) (worst case)
+std::stable_sort(): O(n log n)
+std::partial_sort(): O(n log k) where k is the number of elements to sort
+std::partial_sort_copy(): O(n log k) where k is the number of elements to sort
+std::nth_element(): O(n)
+std::random_shuffle(), std::shuffle(): O(n)
+std::partition(), std::stable_partition(): O(n)
+std::is_partitioned(), std::partition_copy(), std::partition_point(): O(n)
+Binary Search Operations:
+
+std::binary_search(), std::lower_bound(), std::upper_bound(): O(log n)
+std::equal_range(): O(log n) (average case), O(n) (worst case)
+Heap Operations:
+
+std::make_heap(): O(n)
+std::push_heap(), std::pop_heap(), std::sort_heap(): O(log n)
+Set Operations:
+
+std::includes(): O(n + m)
+std::set_union(), std::set_intersection(), std::set_difference(), std::set_symmetric_difference(): O(n + m)
+Other Operations:
+
+std::min(), std::max(), std::min_element(), std::max_element(), std::clamp(): O(n)
+Non-member Functions:
+
+std::swap(): O(1)
+
+Here's the updated list with the arguments each function takes:
+
+Non-modifying Sequence Operations:
+
+std::all_of(), std::any_of(), std::none_of(): Range, Unary predicate
+std::for_each(): Range, Unary function
+std::count(), std::count_if(), std::find(), std::find_if(), std::find_if_not(), std::find_end(), std::find_first_of(), std::search(), std::search_n(): Range, Value or Unary predicate
+std::find_end(), std::find_first_of(), std::search(), std::search_n(): Range, Subrange
+Modifying Sequence Operations:
+
+std::copy(), std::copy_if(), std::copy_n(), std::copy_backward(), std::swap_ranges(): Source range, Destination range
+std::move(), std::move_backward(): Source range, Destination range
+std::swap(): Two values or objects
+std::transform(), std::replace(), std::replace_if(), std::replace_copy(), std::replace_copy_if(), std::fill(), std::generate(): Range, Output iterator or Unary function
+std::fill_n(), std::generate_n(): Output iterator, Size, Value or Unary function
+Removing/Replacing Operations:
+
+std::remove(), std::remove_if(), std::remove_copy(), std::remove_copy_if(): Range, Value or Unary predicate
+std::unique(), std::unique_copy(): Range
+std::reverse(), std::reverse_copy(), std::rotate(), std::rotate_copy(): Range
+Mutating Operations:
+
+std::transform(), std::replace(), std::replace_if(), std::replace_copy(), std::replace_copy_if(), std::fill(), std::generate(): Range, Output iterator or Unary function
+std::sort(), std::stable_sort(), std::partial_sort(), std::partial_sort_copy(), std::nth_element(): Range
+std::random_shuffle(), std::shuffle(), std::partition(), std::stable_partition(), std::is_partitioned(), std::partition_copy(), std::partition_point(): Range, Value or Unary predicate
+Binary Search Operations:
+
+std::binary_search(), std::lower_bound(), std::upper_bound(), std::equal_range(): Sorted range, Value or Unary predicate
+Heap Operations:
+
+std::make_heap(), std::push_heap(), std::pop_heap(), std::sort_heap(): Random-access iterator, Random-access iterator
+Set Operations:
+
+std::includes(), std::set_union(), std::set_intersection(), std::set_difference(), std::set_symmetric_difference(): Sorted ranges
+Other Operations:
+
+std::min(), std::max(), std::min_element(), std::max_element(), std::clamp(): Range or two values
+Non-member Functions:
+
+std::swap(): Two values or objects
+These arguments represent the inputs required by each function to perform its operation. The specific types of arguments may vary depending on the function and its requirements.
+
 
 
 
