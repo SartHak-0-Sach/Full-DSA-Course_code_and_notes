@@ -26,6 +26,8 @@ NOTE: In set STL, it only stores unique elements and even if we insert the same 
 
 Map: The std::map is usually implemented as a balanced binary search tree similar to std::set. However, in the case of std::map, each element consists of a key-value pair. This key-value pair is typically stored within the nodes of the tree, sorted by keys. As with std::set, operations like insertion, deletion, and search have a time complexity of O(log n), making it efficient for managing key-value associations and performing lookups based on keys.
 
+NOTE: In map STL, all the values are stored as key-value pairs. The significance of this is that each key is only mapped to only one single value and it is not possible to map multiple values to the same key but it is possible to map single value to multiple keys. The map STL is implemented using red black tree or balanced tree, and thus complexities are O(logN) which instead is O(1) in case of unordered map STL that is implemented using hash table.
+
 Unordered Set: The std::unordered_set is implemented using a hash table data structure. In this implementation, elements are stored in buckets based on their hash values, allowing for constant-time average-case complexity for insertion, deletion, and search operations (O(1)). However, in the worst-case scenario, these operations can have a time complexity of O(n) if there are many collisions. Hash functions are used to compute the hash values of elements, and collision resolution techniques such as chaining or open addressing are employed to handle collisions.
 
 Unordered Map: Similar to std::unordered_set, std::unordered_map utilizes a hash table for storing key-value pairs. Each key is hashed to determine the bucket where its associated value will be stored. This allows for constant-time average-case complexity for operations like insertion, deletion, and search (O(1)). However, as with std::unordered_set, the worst-case complexity can be O(n) due to collisions. To handle collisions, techniques such as chaining or open addressing are employed, where elements with the same hash value are stored in linked lists or alternative positions within the table.
@@ -259,6 +261,78 @@ Non-member Functions:
 
 std::swap(): Two values or objects
 These arguments represent the inputs required by each function to perform its operation. The specific types of arguments may vary depending on the function and its requirements.
+
+here's a list of various operations performed using the STL header files you've mentioned, along with their time and space complexities:
+
+array:
+
+Access: O(1)
+Search: O(n)
+Insertion/Deletion (at end): O(1)
+Insertion/Deletion (at beginning or middle): O(n)
+Space Complexity: O(n)
+stack:
+
+Access: N/A
+Search: O(n)
+Insertion/Deletion (at top): O(1)
+Space Complexity: O(n)
+queue:
+
+Access: N/A
+Search: O(n)
+Insertion (at end): O(1)
+Deletion (from front): O(1)
+Space Complexity: O(n)
+vector:
+
+Access: O(1)
+Search: O(n)
+Insertion/Deletion (at end, amortized): O(1)
+Insertion/Deletion (at beginning or middle): O(n)
+Space Complexity: O(n)
+unordered_map:
+
+Access: O(1) average, O(n) worst case
+Search: O(1) average, O(n) worst case
+Insertion/Deletion: O(1) average, O(n) worst case
+Space Complexity: O(n)
+unordered_set:
+
+Access: O(1) average, O(n) worst case
+Search: O(1) average, O(n) worst case
+Insertion/Deletion: O(1) average, O(n) worst case
+Space Complexity: O(n)
+deque:
+
+Access: O(1)
+Search: O(n)
+Insertion/Deletion (at beginning or end): O(1)
+Insertion/Deletion (in middle): O(n)
+Space Complexity: O(n)
+list:
+
+Access: O(n)
+Search: O(n)
+Insertion/Deletion: O(1)
+Space Complexity: O(n)
+algorithm:
+
+Time Complexity varies depending on the algorithm used.
+Space Complexity: Depends on the specific algorithm.
+map:
+
+Access: O(log n)
+Search: O(log n)
+Insertion/Deletion: O(log n)
+Space Complexity: O(n)
+set:
+
+Access: O(log n)
+Search: O(log n)
+Insertion/Deletion: O(log n)
+Space Complexity: O(n)
+These complexities are based on typical implementations and assumptions of the STL containers and algorithms. Actual performance may vary depending on factors such as the specific implementation, the size of the data, and the characteristics of the operations being performed.
 
 
 
