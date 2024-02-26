@@ -20,3 +20,7 @@ After adding the null character at the 5th index, the length of the string (if y
 
 As for accessing characters beyond the 5th index, they won't be accessible directly via the string object or array indexing because the null character signifies the end of the string. However, the memory locations are still accessible, so you can technically access them directly through pointers or array indexing. But it's important to note that these characters are not part of the string itself and are not reliable or meaningful as part of the string content.
 
+The execution of taking input from user is stopped by the cin command whenever it encounters a space, tab, or new line command/character.
+
+So to take input of strings involving any of the above mentioned characters we use getline() function in C++ which is a member function(Member functions are operators and functions that are declared as members of a class. Member functions do not include operators and functions declared with the friend specifier. These are called friends of a class. You can declare a member function as static ; this is called a static member function).
+
