@@ -4,6 +4,7 @@
 #include <algorithm>
 #include <sstream>
 #include <climits>
+#include <unordered_map>
 using namespace std;
 
 int getLength(string &s) { return s.length(); }
@@ -404,13 +405,13 @@ string removeOccurrences2(string s, string part)
 // premium question of leetcode
 /*
 186. Reverse Words in a String II
-Given an input string , reverse the string word by word. 
+Given an input string , reverse the string word by word.
 
 Example:
 
 Input:  ["t","h","e"," ","s","k","y"," ","i","s"," ","b","l","u","e"]
 Output: ["b","l","u","e"," ","i","s"," ","s","k","y"," ","t","h","e"]
-Note: 
+Note:
 
 A word is defined as a sequence of non-space characters.
 The input string does not contain leading or trailing spaces.
@@ -432,6 +433,208 @@ void reverseWords(vector<char> &s)
         }
     }
     reverse(s.begin() + start, s.end());
+}
+
+void addString(string &ans, string str, int start, int end)
+{
+    for (int i = start; i < end; i++)
+        ans = ans + str[i];
+
+    ans += "@40";
+}
+string replaceSpaces(string &str)
+{
+    int start = 0;
+    string ans = "";
+
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (str[i] == ' ' || str[i] == '\n')
+        {
+            int end = i;
+            addString(ans, str, start, end);
+            start = i + 1;
+        }
+    }
+
+    int end = str.length();
+    addString(ans, str, start, end);
+
+    ans.erase(ans.length() - 3, ans.length());
+
+    return ans;
+} // slower approach for doing replace space problem
+
+// Faster approach is mentioned below
+
+string replaceSpaces(string &str)
+{
+    for (int i = 0; i < str.length(); i++)
+    {
+        if (str[i] == ' ' || str[i] == '\n')
+        {
+            str[i] = '@';
+            str.insert(i + 1, "40");
+            i += 2;
+        }
+    }
+    return str;
+}
+
+int compress(vector<char> &s)
+{
+    vector<char> r;
+    int ctr = 1;
+
+    for (int i = 0; i < s.size(); i++)
+    {
+        if (i + 1 < s.size() && s[i] == s[i + 1])
+        {
+            // If the current character is the same as the next character, increment the counter
+            ctr++;
+        }
+        else
+        {
+            // If the current character is different from the next character or we reach the end of the string
+            r.push_back(s[i]); // Add the character to the result vector
+
+            // Append the count of consecutive characters if greater than 1
+            if (ctr > 1)
+            {
+                if (ctr <= 9)
+                {
+                    r.push_back('0' + ctr);
+                }
+                else
+                {
+                    string count_str = to_string(ctr);
+                    for (char c : count_str)
+                    {
+                        r.push_back(c);
+                    }
+                }
+            }
+
+            // Reset the counter for the next character
+            ctr = 1;
+        }
+    }
+    std::copy(r.begin(), r.end(), s.begin());
+    return r.size();
+}
+
+int compress2(vector<char> &s)
+{
+    int n = s.size();
+    int i = 0;
+    int j = 0;
+    while (i < n)
+    {
+        int count = 0;
+        char c = s[i];
+        while (i < n && s[i] == c)
+        {
+            i++;
+            count++;
+        }
+        s[j++] = c;
+        if (count > 1)
+        {
+            for (char ch : to_string(count))
+            {
+                s[j++] = ch;
+            }
+        }
+    }
+    return j;
+}
+
+bool checkInclusion(string s1, string s2)
+{
+    int len1 = s1.length(), len2 = s2.length();
+    if (len1 > len2)
+        return false;
+
+    // Frequency maps for characters in s1 and the current window of s2
+    unordered_map<char, int> s1Freq, s2Freq;
+
+    // Initialize frequency map for s1
+    for (char c : s1)
+        s1Freq[c]++;
+
+    // Initialize frequency map for the first window of s2
+    for (int i = 0; i < len1; ++i)
+        s2Freq[s2[i]]++;
+
+    // Check if the first window of s2 contains a permutation of s1
+    if (s1Freq == s2Freq)
+        return true;
+
+    // Sliding window approach to check for permutations in the rest of s2
+    for (int i = len1; i < len2; ++i)
+    {
+        // Remove the leftmost character from the current window
+        char leftChar = s2[i - len1];
+        if (s2Freq[leftChar] == 1)
+            s2Freq.erase(leftChar);
+        else
+            s2Freq[leftChar]--;
+
+        // Add the rightmost character to the current window
+        s2Freq[s2[i]]++;
+
+        // Check if the current window contains a permutation of s1
+        if (s1Freq == s2Freq)
+            return true;
+    }
+
+    return false;
+}
+
+bool isSubsequence(string s, string t)
+{
+    int i = 0;
+    int j = 0;
+    while (i < s.size() && j < t.size())
+    {
+        if (s[i] == t[j])
+        {
+            i++;
+        }
+        j++;
+    }
+    return i == s.size();
+}
+
+int lengthOfLongestSubstring(string s)
+{
+    int n = s.size();
+    int ans = 0;
+    vector<int> index(128, -1);
+    for (int i = 0, j = 0; j < n; j++)
+    {
+        i = max(index[s[j]] + 1, i);
+        ans = max(ans, j - i + 1);
+        index[s[j]] = j;
+    }
+    return ans;
+}
+
+int lengthOfLongestSubstring2(string s)
+{
+    int n = s.size();
+    int ans = 0;
+    unordered_map<char, int> index;
+    for (int i = 0, j = 0; j < n; j++)
+    {
+        if (index.find(s[j]) != index.end())
+        {
+            i = max(index[s[j]] + 1, i);
+        }
+        ans = max(ans, j - i + 1);
+        index[s[j]] = j;
+    }
+    return ans;
 }
 
 
