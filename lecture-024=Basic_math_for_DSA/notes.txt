@@ -1,0 +1,136 @@
+In this lecture we are going to study about math used in dsa.
+
+We started this lecture by implementing one of the most basic problem that is to count the primes between 1 and n.
+
+Let's delve into the details of the problem of counting prime numbers up to a given number n, covering both the brute force and optimized approaches, including the Sieve of Eratosthenes. We'll also discuss related concepts and implementation details in C++.
+
+1. Brute Force Approach:
+The brute force approach involves checking each number individually to determine whether it's a prime number. Here's how you might implement it in C++:
+
+cpp
+Copy code
+#include <iostream>
+
+bool isPrime(int num) {
+    if (num <= 1)
+        return false;
+    for (int i = 2; i * i <= num; ++i) {
+        if (num % i == 0)
+            return false;
+    }
+    return true;
+}
+
+int countPrimes(int n) {
+    int count = 0;
+    for (int i = 2; i < n; ++i) {
+        if (isPrime(i))
+            ++count;
+    }
+    return count;
+}
+
+int main() {
+    int n;
+    std::cout << "Enter the value of n: ";
+    std::cin >> n;
+    std::cout << "Number of primes between 1 and " << n << ": " << countPrimes(n) << std::endl;
+    return 0;
+}
+This code defines a function isPrime() to check whether a number is prime and then counts primes up to a given number using a loop.
+
+2. Optimized Approach - Sieve of Eratosthenes:
+The Sieve of Eratosthenes is an ancient algorithm for finding all prime numbers up to any given limit. It works by iteratively marking the multiples of each prime number starting from 2 as composite (not prime). Here's how it works:
+
+Create a boolean array called "isPrime" with a size of "n + 1", initializing all elements to "true".
+Set "isPrime[0]" and "isPrime[1]" to "false", as they are not prime numbers.
+Iterate over each number "i" from 2 to "n".
+For each value of "i", perform the following steps:
+If "isPrime[i]" is "true", indicating that "i" is a prime number:
+Mark all multiples of "i" from "i * i" to "n" as "false" in the "isPrime" array, as they are composite numbers.
+Once the loop is complete, the "isPrime" array will contain "true" at indices corresponding to prime numbers between 2 and "n", and "false" at indices corresponding to composite numbers.
+​
+If isPrime[i] is true, mark all multiples of i from i*i to n as false, as they are composite numbers.
+Count the number of primes (the count of true values in isPrime).
+Here's how you can implement the Sieve of Eratosthenes in C++:
+
+cpp
+Copy code
+#include <iostream>
+#include <vector>
+
+int countPrimes(int n) {
+    if (n <= 1) return 0;
+
+    std::vector<bool> isPrime(n + 1, true);
+    isPrime[0] = isPrime[1] = false;
+
+    for (int i = 2; i * i <= n; ++i) {
+        if (isPrime[i]) {
+            for (int j = i * i; j <= n; j += i) {
+                isPrime[j] = false;
+            }
+        }
+    }
+
+    int count = 0;
+    for (int i = 2; i <= n; ++i) {
+        if (isPrime[i]) ++count;
+    }
+    return count;
+}
+
+int main() {
+    int n;
+    std::cout << "Enter the value of n: ";
+    std::cin >> n;
+    std::cout << "Number of primes between 1 and " << n << ": " << countPrimes(n) << std::endl;
+    return 0;
+}
+This code defines a function countPrimes() that implements the Sieve of Eratosthenes algorithm to count prime numbers up to a given limit.
+
+Sieve of Eratosthenes Optimization: There are various optimizations possible, such as starting marking composite numbers from i×i instead of 2×i, which can further improve performance.
+
+This optimization is based on the fact that all composite numbers less than i×i would have already been marked by their prime factors smaller than i. Therefore, there is no need to mark the multiples of i starting from 2×i since they have already been marked by the prime factor less than i.
+
+Implementing this optimization in the Sieve of Eratosthenes algorithm can reduce the number of iterations and thus improve the overall performance of the algorithm.
+
+Prime Testing: There are more efficient algorithms for primality testing, like Miller-Rabin primality test, which is probabilistic but significantly faster for large numbers.
+
+Bitwise Operations: For memory optimization, you could use bitwise operations instead of boolean arrays to mark primes, packing multiple boolean values into a single byte or word.
+
+Parallelization: The Sieve of Eratosthenes can be parallelized effectively to utilize multiple processor cores efficiently for large ranges of numbers.
+
+These are advanced topics that can significantly enhance the efficiency of prime number generation, especially for larger ranges or when prime numbers need to be generated frequently.
+
+The Sieve of Eratosthenes is a simple and ancient algorithm used to find all prime numbers up to a specified integer n. It's an efficient way to generate a list of primes, especially for relatively small values of n. Here's how it works:
+
+Sieve of Eratosthenes Algorithm:
+Initialization:
+
+Create a boolean array called "isPrime" of size n+1, initially marking all elements as true.
+Mark "isPrime[0]" and "isPrime[1]" as false, as they are not prime numbers.
+Sieve Process:
+
+Iterate over each number i from 2 to n:
+If "isPrime[i]" is true (indicating that i is a prime number):
+Mark all multiples of i starting from i × i up to n as false in the "isPrime" array.
+Output:
+
+After the sieve process, the "isPrime" array will contain true at indices corresponding to prime numbers and false at indices corresponding to composite numbers.
+Analysis of Sieve of Eratosthenes:
+Time Complexity: The algorithm runs in O(n log log n) time.
+Space Complexity: It requires O(n) space for the boolean array.
+Related Concepts and Similar Algorithms:
+Segmented Sieve: An optimization of the Sieve of Eratosthenes that allows finding primes in a range [a, b] where a and b are large numbers. Instead of sieving the entire range, it divides the range into smaller segments and applies the sieve process to each segment.
+
+Sieve of Sundaram: Another ancient algorithm for finding all prime numbers up to a given integer n. It works by generating a list of integers 1 to n and removing numbers of the form i + j + 2ij, where 1 ≤ i ≤ j and i + j + 2ij ≤ n. After this process, the remaining numbers (except 2) are primes.
+
+Sieve of Atkin: A modern algorithm for finding prime numbers, named after its inventor, A. O. L. Atkin. It works by marking certain patterns in a sieve array based on quadratic forms, resulting in a more efficient algorithm compared to the Sieve of Eratosthenes for large ranges.
+
+Miller-Rabin Primality Test: An efficient probabilistic algorithm to determine whether a given number is prime. It's based on the properties of modular exponentiation and is widely used in practice for large numbers.
+
+Lucas-Lehmer Test: A primality test specifically designed for Mersenne numbers (numbers of the form 2^p - 1, where p is prime). It's used to check the primality of such numbers efficiently.
+
+Each of these algorithms has its advantages and applications depending on the specific requirements of the problem at hand. They form essential tools in the domain of number theory and are frequently used in various areas of computer science and cryptography.
+
