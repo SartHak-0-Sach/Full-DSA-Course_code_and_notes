@@ -637,6 +637,82 @@ int lengthOfLongestSubstring2(string s)
     return ans;
 }
 
+string removeAdjacent(string s)
+{
+    bool removed = false;
+    for (int i = 1; i < s.length();)
+    {
+        if (s[i] == s[i - 1])
+        {
+            s.erase(i - 1, 2);
+            removed = true; // MLE solution (memory limit exceeded)
+        }
+        else
+        {
+            ++i;
+        }
+    }
+    // If any adjacent duplicates were removed, recursively call removeAdjacent again
+    // to check for further adjacent duplicates
+    if (removed)
+    {
+        return removeAdjacent(s);
+    }
+    else
+    {
+        // No adjacent duplicates left, return the modified string
+        return s;
+    }
+}
+
+string removeDuplicates(string s)
+{
+    return removeAdjacent(s);
+}
+
+void removeAdjacent2(string &s)
+{
+    for (int i = 1; i < s.length();)
+    {
+        if (s[i] == s[i - 1])
+            s.erase(i - 1, 2); // TLE solution (Time limit exceeded)
+        else
+            ++i;
+    }
+}
+
+string removeDuplicates2(string s)
+{
+    string ans = s; // to make ans and temp unequal
+    string temp = "";
+    while (ans != temp)
+    {
+        temp = ans;
+        removeAdjacent(s);
+        ans = s;
+    }
+    return ans;
+}
+
+string removeDuplicates3(string s)
+{
+    cin.tie(0);
+    cout.sync_with_stdio(0);
+
+    char *stack = new char[s.size()];
+    int i = 0;
+
+    for (char letter : s)
+    {
+        if (i && stack[i - 1] == letter) // Most optimized solution
+            --i; 
+        else
+            stack[i++] = letter;
+    }
+
+    return string(stack, i);
+}
+
 
 
 int main(int argc, char const *argv[])
