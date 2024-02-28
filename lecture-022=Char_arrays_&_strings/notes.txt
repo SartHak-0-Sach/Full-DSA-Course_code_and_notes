@@ -24,3 +24,59 @@ The execution of taking input from user is stopped by the cin command whenever i
 
 So to take input of strings involving any of the above mentioned characters we use getline() function in C++ which is a member function(Member functions are operators and functions that are declared as members of a class. Member functions do not include operators and functions declared with the friend specifier. These are called friends of a class. You can declare a member function as static ; this is called a static member function).
 
+std::string stores its data internally in the form of a null-terminated C string, but in normal usage it does not allow you to access the null terminator, more info about this can be read from the stack-overflow link added at the top of this notes file.
+
+String vs. Character Array:
+Data Type:
+
+String: string is a class in C++ Standard Library (STL) used to represent a sequence of characters.
+Character Array: A character array (char[]) is a contiguous sequence of characters stored in memory.
+Termination:
+
+String: string objects are terminated by a null character ('\0'), and the STL handles this termination internally.
+Character Array: In character arrays, the null character must be explicitly added to mark the end of the string.
+Mutability:
+
+String: string objects are mutable. You can modify the contents of a string using various member functions.
+Character Array: Character arrays are mutable too. You can directly modify individual characters in the array.
+Length:
+
+String: The length of a string can be obtained using the length() or size() member functions.
+Character Array: To get the length of a character array, you need to iterate through the array until you encounter the null character.
+Size:
+
+String: string objects dynamically adjust their memory allocation as needed. Their size can grow or shrink dynamically.
+Character Array: The size of a character array is fixed and needs to be explicitly allocated.
+Library Functions:
+
+String: Strings offer a wide range of member functions for various operations like concatenation, comparison, substring extraction, etc.
+Character Array: You often need to use library functions like strcpy(), strcat(), strcmp(), etc., for operations on character arrays.
+Standard Library Support:
+
+String: string is a part of the C++ Standard Library (<string> header).
+Character Array: Character arrays are part of the core language and do not require any additional library inclusion.
+Other Related Concepts:
+C-Style Strings:
+
+C-style strings are character arrays terminated by a null character.
+They are commonly used in C programming and are compatible with many C++ functions.
+Dynamic Memory Allocation:
+
+Character arrays often require manual memory management using functions like malloc() and free() for dynamic memory allocation.
+string objects handle memory management automatically.
+Null Termination:
+
+Null termination is crucial for character arrays to ensure proper string termination and prevent buffer overflows.
+string objects manage null termination internally, abstracting it away from the user.
+Unicode Support:
+
+string objects provide better support for Unicode characters and multibyte characters compared to character arrays.
+Performance:
+
+string operations are generally safer and more convenient but may have a slight performance overhead compared to character arrays.
+Standard Template Library (STL):
+
+string is a part of the Standard Template Library (STL) and integrates well with other STL containers and algorithms.
+Character arrays lack the rich functionality and interoperability provided by STL containers.
+In summary, string objects offer safer, more convenient, and feature-rich string manipulation compared to character arrays. However, character arrays provide lower-level control and compatibility with legacy codebases and C-style functions. The choice between them depends on the specific requirements of your application.
+
