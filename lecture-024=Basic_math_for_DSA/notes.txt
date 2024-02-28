@@ -134,3 +134,164 @@ Lucas-Lehmer Test: A primality test specifically designed for Mersenne numbers (
 
 Each of these algorithms has its advantages and applications depending on the specific requirements of the problem at hand. They form essential tools in the domain of number theory and are frequently used in various areas of computer science and cryptography.
 
+More such algorithms-
+Depth-First Search (DFS)
+Breadth-First Search (BFS)
+Dijkstra's Algorithm
+Bellman-Ford Algorithm
+Floyd-Warshall Algorithm
+Kruskal's Algorithm
+Prim's Algorithm
+A* Search Algorithm
+Greedy Algorithms
+Binary Search
+Linear Search
+Quick Sort
+Merge Sort
+Radix Sort
+Bucket Sort
+Counting Sort
+Bubble Sort
+Insertion Sort
+Selection Sort
+Cocktail Shaker Sort
+Shell Sort
+Cycle Sort
+Pancake Sorting
+Bogosort
+Stooge Sort
+Gnome Sort
+Topological Sort
+Ford-Fulkerson Algorithm
+Edmonds-Karp Algorithm
+Hopcroft-Karp Algorithm
+Maximum Flow Algorithms
+Minimum Cost Flow Algorithms
+Knuth-Morris-Pratt Algorithm (KMP)
+Rabin-Karp Algorithm
+Boyer-Moore Algorithm
+Z Algorithm
+Longest Common Subsequence (LCS)
+Longest Increasing Subsequence (LIS)
+Manhattan Distance Algorithm
+Levenshtein Distance Algorithm
+Minimum Spanning Tree Algorithms
+Travelling Salesman Problem (TSP) Algorithms
+Hamiltonian Path and Circuit Algorithms
+All-Pairs Shortest Path Algorithms
+Bresenham's Line Algorithm
+Midpoint Circle Algorithm
+Convex Hull Algorithms (Graham Scan, Jarvis March, Quickhull, etc.)
+Smith-Waterman Algorithm
+Needleman-Wunsch Algorithm
+Viterbi Algorithm
+Bellman-Held-Karp Algorithm
+Rete Algorithm
+CYK Algorithm
+Hashing Algorithms (MD5, SHA-1, SHA-256, etc.)
+RSA Algorithm
+Diffie-Hellman Key Exchange Algorithm
+ElGamal Encryption
+Lucas-Lehmer Test
+Fermat Primality Test
+Pollard's Rho Algorithm
+Miller-Rabin Primality Test
+Lucas-Lehmer-Riesel Test
+Jacobi Symbol
+Rijndael (AES) Encryption
+DES Encryption
+Huffman Coding
+LZW Compression
+Burrows-Wheeler Transform
+Rabin Cryptosystem
+McEliece Cryptosystem
+Shamir's Secret Sharing
+ElGamal Signature Scheme
+RSA Signature Scheme
+Merkle Tree
+Bloom Filter
+Skip List
+B+ Tree
+AVL Tree
+Red-Black Tree
+Splay Tree
+Trie
+Cartesian Tree
+Fenwick Tree
+Segment Tree
+B-Tree
+Interval Tree
+K-D Tree
+Van Emde Boas Tree
+Burrows-Wheeler Tree
+Persistent Data Structures
+Rete Algorithm
+CYK Algorithm
+Cuckoo Hashing
+Burrows-Wheeler Transform
+Boyer-Moore-Horspool Algorithm
+Smith-Waterman-Gotoh Algorithm
+Shellsort
+Merge Insertion Sort
+Iterative Deepening Depth-First Search
+Phase Retrieval Algorithm
+Ford–Fulkerson Algorithm
+Edmonds–Karp Algorithm
+Hopcroft–Karp Algorithm
+Gale–Shapley Algorithm (Stable Marriage Problem)
+Hungarian Algorithm (Assignment Problem)
+Karger's Algorithm (Minimum Cut)
+Karp's Algorithm (Minimum Mean Cycle)
+Tarjan's Algorithm (Strongly Connected Components)
+Cholesky Decomposition
+LU Decomposition
+QR Decomposition
+Singular Value Decomposition (SVD)
+Principal Component Analysis (PCA)
+Expectation-Maximization Algorithm (EM Algorithm)
+Gibbs Sampling
+Metropolis–Hastings Algorithm
+Belief Propagation Algorithm
+Ford–Fulkerson–Tarjan Algorithm
+Dinic's Algorithm
+Karatsuba Algorithm (Fast Multiplication)
+Schönhage–Strassen Algorithm (Fast Integer Multiplication)
+Strassen's Algorithm (Matrix Multiplication)
+Coppersmith–Winograd Algorithm (Matrix Multiplication)
+Fast Fourier Transform (FFT)
+Cooley–Tukey FFT Algorithm
+Shor's Algorithm (Quantum Factorization)
+Grover's Algorithm (Quantum Search)
+Simon's Algorithm (Quantum Algorithm)
+Shor's Discrete Logarithm Algorithm (Quantum Algorithm)
+LLL Algorithm (Lenstra–Lenstra–Lovász Lattice Basis Reduction Algorithm)
+AKS Primality Test (Agrawal-Kayal-Saxena Primality Test)
+Quadratic Sieve Algorithm
+Number Field Sieve Algorithm
+AKS Sorting Network
+Leaky Bucket Algorithm
+Randomized Incremental Construction Algorithm
+Online Algorithms
+XOR Linked List Algorithm
+KMP Online Algorithm
+Boyer-Moore Online Algorithm
+
+You can see more such algorithms in the following resources-
+Textbooks: There are numerous textbooks available on algorithms covering various topics and domains. Some popular ones include:
+
+"Introduction to Algorithms" by Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, and Clifford Stein.
+"Algorithms" by Robert Sedgewick and Kevin Wayne.
+"The Algorithm Design Manual" by Steven S. Skiena.
+"Data Structures and Algorithms in Java" by Robert Lafore.
+Online Courses: Platforms like Coursera, edX, Udacity, and Khan Academy offer online courses on algorithms and data structures. These courses are often taught by experts in the field and provide a structured learning experience.
+
+Research Papers: If you're interested in more advanced or specialized algorithms, reading research papers can be beneficial. Websites like Google Scholar, IEEE Xplore, and arXiv are excellent resources for finding academic papers on algorithms.
+
+Open-Source Libraries and Projects: Exploring open-source projects on platforms like GitHub can provide insight into how various algorithms are implemented in real-world applications. You can search for projects related to algorithms, data structures, and computational problems.
+
+Online Forums and Communities: Websites like Stack Overflow, Reddit (e.g., r/algorithms), and Codeforces have active communities discussing algorithms, problem-solving techniques, and algorithmic challenges. Engaging with these communities can help you discover new algorithms and learn from others' experiences.
+
+Specialized Websites and Blogs: There are several websites and blogs dedicated to algorithms and data structures. Websites like GeeksforGeeks, HackerRank, and LeetCode offer tutorials, articles, and practice problems on algorithms and competitive programming.
+
+Academic Courses and Lectures: Many universities offer online lectures and course materials on algorithms and data structures as part of their computer science curriculum. These resources are often freely available on university websites or platforms like YouTube and MIT OpenCourseWare.
+
