@@ -329,24 +329,6 @@ bool isIsomorphic(string s, string t)
     return true;
 }
 
-bool checkPalindrome(string s)
-{
-    int i = 0;
-    int j = s.length() - 1;
-
-    while (i < j)
-    {
-        while (i < j && !isalnum(s[i])) // Skip non-alphanumeric characters from start
-            i++;
-        while (i < j && !isalnum(s[j])) // Skip non-alphanumeric characters from end
-            j--;
-
-        if (tolower(s[i++]) != tolower(s[j--])) // Ignore case
-            return false;
-    }
-    return true;
-}
-
 int findString(const string &s, const string &part)
 {
     int index = 0;
@@ -705,7 +687,7 @@ string removeDuplicates3(string s)
     for (char letter : s)
     {
         if (i && stack[i - 1] == letter) // Most optimized solution
-            --i; 
+            --i;
         else
             stack[i++] = letter;
     }
@@ -713,10 +695,143 @@ string removeDuplicates3(string s)
     return string(stack, i);
 }
 
-
-
-int main(int argc, char const *argv[])
+char getMaxOccuringChar(string str)
 {
+    vector<int> visited(26, 0);
+    for (char i : str)
+        visited[i - 'a']++;
+
+    char largest = INT_MIN;
+
+    for (int i = 0; i < visited.size(); i++)
+    {
+        if (visited[i] > visited[largest - 'a'])
+            largest = i + 'a';
+    }
+    return largest;
+}
+
+char getMaxOccuringChar2(string str) // further optimizing above code, is the most optimized code for this type of problem
+{
+    int count[26] = {0}; // Array to store count of occurrences for each character
+
+    // Iterate over each character in the string and update the count
+    for (char c : str)
+    {
+        if (c >= 'a' && c <= 'z')
+        {
+            count[c - 'a']++;
+        }
+    }
+
+    char maxChar = 'a';      // Initialize maxChar to 'a'
+    int maxCount = count[0]; // Initialize maxCount to the count of 'a'
+
+    // Iterate over the count array and find the character with the maximum count
+    for (int i = 1; i < 26; i++)
+    {
+        if (count[i] > maxCount)
+        {
+            maxChar = 'a' + i;
+            maxCount = count[i];
+        }
+    }
+
+    return maxChar;
+}
+
+#include <cctype> // for tolower() and isalnum() functions
+
+bool checkPalindrome(const std::string &str)
+{
+    int left = 0, right = str.length() - 1;
+
+    while (left < right)
+    {
+        // Skip non-alphanumeric characters from the left
+        while (left < right && !isalnum(str[left]))
+            left++;
+
+        // Skip non-alphanumeric characters from the right
+        while (left < right && !isalnum(str[right]))
+            right--;
+
+        // If characters are not equal, return false
+        if (tolower(str[left]) != tolower(str[right]))
+            return false;
+
+        left++;
+        right--;
+    }
+
+    // If the loop completes without returning false, the string is a palindrome
+    return true;
+}
+
+bool checkPalindrome2(const std::string &str)
+{
+    int left = 0, right = str.length() - 1;
+
+    while (left < right)
+    {
+        // If characters are not equal, return false
+        if (tolower(str[left]) != tolower(str[right])) // on including non-alphanumeric characters we can check the way we were doing earlier
+            return false;
+
+        left++;
+        right--;
+    }
+
+    // If the loop completes without returning false, the string is a palindrome
+    return true;
+}
+
+// Writing every function used in the above code from scratch and implementing it into the code without using other unknown hearder files
+char toLower(char c) {
+    if (c >= 'A' && c <= 'Z')
+        return c - 'A' + 'a';
+    return c;
+}
+
+// Check if character is alphanumeric
+bool isAlnum(char c) {
+    return (c >= '0' && c <= '9') || (c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z');
+}
+
+bool isPalindrome(const std::string& str) {
+    int left = 0, right = str.length() - 1;
+
+    while (left < right) {
+        // Skip non-alphanumeric characters from the left
+        while (left < right && !isAlnum(str[left]))
+            left++;
+
+        // Skip non-alphanumeric characters from the right
+        while (left < right && !isAlnum(str[right]))
+            right--;
+
+        // If characters are not equal, return false
+        if (toLower(str[left]) != toLower(str[right]))
+            return false;
+
+        left++;
+        right--;
+    }
+
+    // If the loop completes without returning false, the string is a palindrome
+    return true;
+}
+
+int main()
+{
+    std::string str;
+    std::cout << "Enter a string: ";
+    std::getline(std::cin, str);
+
+    if (checkPalindrome(str))
+        std::cout << "Yes, it is a palindrome." << std::endl;
+    else
+        std::cout << "No, it is not a palindrome." << std::endl;
 
     return 0;
 }
