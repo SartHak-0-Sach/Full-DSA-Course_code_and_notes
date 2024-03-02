@@ -227,3 +227,218 @@ Be mindful of memory usage, especially when dynamically allocating memory for la
 
 Understanding these concepts is crucial for effectively working with 2D arrays in C++ and solving problems efficiently in various domains such as algorithmic programming, numerical computing, and image processing.
 
+The biggest application of 2D arrays is in solving dp questions where 2D arrays help us by better visualization and accessing data at specific indexes.
+
+Introduction to C / C++ Programming
+Arrays
+Overview
+An array is a collection of data items, all of the same type, accessed using a common name.
+A one-dimensional array is like a list;  A two dimensional array is like a table;  The C/C++ language places no limits on the number of dimensions in an array, though specific implementations may.
+Some texts refer to one-dimensional arrays as vectors, two-dimensional arrays as matrices, and use the general term arrays when the number of dimensions is unspecified or unimportant.
+Declaring Arrays
+Array variables are declared identically to variables of their data type, except that the variable name is followed by one pair of square [ ] brackets for each dimension of the array.
+Uninitialized arrays must have the dimensions of their rows, columns, etc. listed within the square brackets.
+Dimensions used when declaring arrays in C must be positive integral constants or constant expressions.
+In C++, dimensions must still be positive integers, but variables can be used, so long as the variable has a positive value at the time the array is declared.
+
+C/C++ Examples:
+        int i, j, intArray[ 10 ], number;
+        float floatArray[ 1000 ];
+        int tableArray[ 3 ][ 5 ];      /* 3 rows by 5 columns */
+        
+        const int NROWS = 100;      // ( Old code would use #define NROWS 100 )
+        const int NCOLS = 200;      // ( Old code would use #define NCOLS 200 )
+        float matrix[ NROWS ][ NCOLS ];
+C++ Only Example:
+        int numElements;
+        cout << "How big an array do you want? ";
+        cin >> numElements;
+        if( numElements <= 0 ) {
+            cerr << "Error - Quitting\n";
+            exit( 0 );
+        }
+        double data[ numElements ];    // This only works in C++, not in plain C
+Initializing Arrays
+Arrays may be initialized when they are declared, just as any other variables.
+Place the initialization data in curly {} braces following the equals sign.  Note the use of commas in the examples below.
+An array may be partially initialized, by providing fewer data items than the size of the array.  The remaining array elements will be automatically initialized to zero.
+If an array is to be completely initialized, the dimension of the array is not required.  The compiler will automatically size the array to fit the initialized data.  ( Variation:  Multidimensional arrays - see below. )
+Examples:
+        int i =  5, intArray[ 6 ] = { 1, 2, 3, 4, 5, 6 }, k;
+        float sum  = 0.0, floatArray[ 100 ] = { 1.0, 5.0, 20.0 };
+        double  piFractions[ ] = { 3.141592654, 1.570796327, 0.785398163 };
+Using Arrays
+Elements of an array are accessed by specifying the index ( offset ) of the desired element within square [ ] brackets after the array name.
+Array subscripts must be of integer type.  ( int, long int, char, etc. )
+VERY IMPORTANT: Array indices start at zero in C, and go to one less than the size of the array.  For example, a five element array will have indices zero through four.  This is because the index in C is actually an offset from the beginning of the array.  ( The first element is at the beginning of the array, and hence has zero offset. )
+Landmine:  The most common mistake when working with arrays in C is forgetting that indices start at zero and stop one less than the array size.
+Arrays are commonly used in conjunction with loops, in order to perform the same calculations on all ( or some part ) of  the data items in the array.
+Sample Programs Using 1-D Arrays
+The first sample program uses loops and arrays to calculate the first twenty Fibonacci numbers.  Fibonacci numbers are used to determine the sample points used in certain optimization methods.
+        /* Program to calculate the first 20 Fibonacci numbers. */
+        
+        #include <iostream> 
+        using namespace std;
+        
+        int main( void ) {
+            
+            int i, fibonacci[ 20 ];
+            
+            fibonacci[ 0 ] = 0;
+            fibonacci[ 1 ] = 1;
+            
+            for( i = 2; i < 20; i++ )
+                fibonacci[ i ] = fibonacci[ i - 2 ] + fibonacci[ i - 1 ];
+                
+            for( i = 0; i < 20; i++ )
+                cout << "Fibonacci[ " << i << " ] = " <<  fibonacci[ i ] << endl;
+            
+        } /* End of sample program to calculate Fibonacci numbers */  
+Exercise: What is the output of the following program:
+        /* Sample Program Using Arrays */
+        
+        #include <iostream>
+        using namespace std;
+        
+        int main( void ) {
+        
+            int numbers[ 10 ];
+            int i, index = 2;
+            
+            for( i = 0; i < 10; i++ ) 
+                numbers[ i ] = i * 10;
+            
+            numbers[ 8 ] = 25;
+            numbers[ 5 ] = numbers[ 9 ] / 3;
+            numbers[ 4 ] += numbers[ 2 ] / numbers[ 1 ];
+            numbers[ index ] = 5;
+            ++numbers[ index ];
+            numbers[ numbers[ index++ ] ] = 100;
+            numbers[ index ] = numbers[ numbers[ index + 1 ] / 7 ]--;
+            
+            for( index = 0; index < 10; index++ )
+                cout << "numbers[ " << index << " ] = " << numbers[ index ] << endl;
+            
+        } /* End of second sample program */
+
+  
+Multidimensional Arrays
+Multi-dimensional arrays are declared by providing more than one set of square [ ] brackets after the variable name in the declaration statement.
+One dimensional arrays do not require the dimension to be given if the array is to be completely initialized.  By analogy, multi-dimensional arrays do not require the first dimension to be given if the array is to be completely initialized.  All dimensions after the first must be given in any case.
+For two dimensional arrays, the first dimension is commonly considered to be the number of rows, and the second dimension the number of  columns.  We will use this convention when discussing two dimensional arrays.
+Two dimensional arrays are considered by C/C++ to be an array of ( single dimensional arrays ).  For example, "int numbers[ 5 ][ 6 ]"  would refer to a single dimensional array of 5 elements, wherein each element is a single dimensional array of 6 integers.  By extension, "int numbers[ 12 ][ 5 ][ 6 ]" would refer to an array of twelve elements, each of which is a two dimensional array, and so on.
+Another way of looking at this is that C stores two dimensional arrays by rows, with all elements of a row being stored together as a single unit.  Knowing this can sometimes lead to more efficient programs. 
+Multidimensional arrays may be completely initialized by listing all data elements within a single pair of curly {} braces, as with single dimensional arrays.
+It is better programming practice to enclose each row within a separate subset of curly {} braces, to make the program more readable.  This is required if any row other than the last is to be partially initialized.  When subsets of braces are used, the last item within braces is not followed by a comma, but the subsets are themselves separated by commas.
+Multidimensional arrays may be partially initialized by not providing complete initialization data.  Individual rows of a multidimensional array may be partially initialized, provided that subset braces are used.
+Individual data items in a multidimensional array are accessed by fully qualifying an array element.  Alternatively, a smaller dimensional array may be accessed by partially qualifying the array name.  For example, if  "data" has been declared as a three dimensional array of floats, then data[ 1 ][ 2 ][ 5 ] would refer to a float, data[ 1 ][ 2 ] would refer to a one-dimensional array of floats, and data[ 1 ] would refer to a two-dimensional array of floats.  The reasons for this and the incentive to do this relate to memory-management issues that are beyond the scope of these notes.
+Sample Program Using 2-D Arrays
+        /* Sample program Using 2-D Arrays */
+        
+        #include <iostream> 
+        using namespace std;
+        
+        int main( void ) {
+        
+            /* Program to add two multidimensional arrays */
+            /* Written May 1995 by George P. Burdell */
+            
+            int a[ 2 ][ 3 ] = { { 5, 6, 7 }, { 10, 20, 30 } };
+            int b[ 2 ][ 3 ] = { { 1, 2, 3 }, {  3,  2,  1 } };
+            int sum[ 2 ][ 3 ], row, column;
+            
+            /* First the addition */
+            
+            for( row = 0; row < 2; row++ )
+                for( column = 0; column < 3; column++ )
+                    sum[ row ][ column ] =  
+                        a[ row ][ column ] + b[ row ][ column ];
+            
+            /* Then print the results */
+            
+            cout <<  "The sum is: \n\n" ;
+            
+            for( row = 0; row < 2; row++ ) {
+                for( column = 0; column < 3; column++ )
+                    cout << "\t" <<  sum[ row ][ column ];
+                cout << endl;   /* at end of each row */
+            }
+            
+            return 0;
+        }
+Exercises
+See Attached
+Passing Arrays to Functions
+Recall that we know two methods for passing ordinary data to functions:
+Pass-by-Value, in which the function receives a copy and all changes are local, and
+Pass-by-Reference, in which the names of the variables in the called and calling functions become aliases, and changes made in the called function DO affect the variables in the calling function.
+If an individual element of an array is passed to a function, it is passed according to its underlying data type.
+So if nums was declared as a one-dimensional array of ints, then passing nums[ i ] to a function would behave the exact way as passing any other int - Either pass-by-value or pass-by-reference, depending on how the function is written.
+When an entire array is passed to a function, however, it is always passed by reference.
+( It is actually passed by pointer/address, which is not covered here, but functionally it is pass-by-reference. )
+The net result, is that when an entire array is passed to a function, and the function changes variables stored in that array, it does affect the data in the calling function's array.
+Because arrays are passed by reference, there is generally no need for a function to "return" an array. - It merely needs to fill in an array provided by the calling function. ( It is possible for functions to return arrays but it requires the use of pointers and addresses, and frequently dynamic memory allocation, all of which is beyond the scope of this course. )
+In order to prevent the function from changing the array values, the array parameter can be modified with the keyword const.
+When an entire array is passed to a function, the size of the array is usually passed as an additional argument.
+For a one dimensional array, the function's formal parameter list does not need to specify the dimension of the array.  If such a dimension is provided, the compiler will ignore it.
+For a multi-dimensional array, all dimensions except the first must be provided in a functions formal parameter list.  The first dimension is optional, and will be ignored by the compiler.
+A partially qualified multi-dimensional array may be passed to a function, and will be treated as an array of lower dimension.  For example, a single row of a two dimensional array may be passed to a function which is expecting a one dimensional array.  ( Question:  Why is it possible to pass a row this way, but not a column? )
+Examples:  Note the use of arrays and functions in the following sample program.  Note that in the calculation of max4, we have passed a two dimensional array containing two rows of three elements as if it were a single dimensional array of six elements.  This is cheating, but it happens to work because of the way that the rows of a multidimensional array are stored.
+        /* Program Illustrating the use of Arrays and Functions */
+        
+        #include <iostream>
+        using namespace std;
+        
+        // Finds max in the array
+        float maxArray( const float numbers[ ], int arraySize, int & errorCode ); 
+        
+        int main( void ) {
+        
+            float array1[ ] = { 10.0, 20.0, 100.0, 0.001 };
+            float array2[ 2 ][ 3 ] = { { 5.0, 10.0, 20.0 },
+                                       { 8.0, 15.0, 42.0 } };
+            
+            int sizes[ 2 ] = { 4, 3 }, err1, err2, err3, err4, err5;
+            float max1, max2, max3, max4, max5;
+            
+            max1 = maxArray( array1, 4, err1 );
+            max2 = maxArray( array1, sizes[ 0 ], err2 );
+            max3 = maxArray( array2[ 1 ], 3, err3 );
+            max4 = maxArray( array2[ 0 ], 6, err4 );
+            max5 = maxArray( array1, -4, err5 ); // Generates an error
+            
+            cout << "Maximums are " <<  max1 << ", " << max2 << ", " << max3 
+                 << ", " << max4 << ", " << max5 <<  endl;
+
+            cout << "( Error codes are " <<  err1 << ", " << err2 << ", " << err3 
+                 << ", " << err4 << ", " << err5 << " )\n" ;      
+      
+            return 0;
+            
+        }
+        
+        float maxArray( const float numbers[ ], int arraySize, int & errorCode ) {
+        
+            /* Function to find the maximum in an array of floats
+               Note the use of the keyword "const" to prevent changing array data */
+            
+            int i;
+            float max;
+
+            if( arraySize <= 0 ) {
+                errorCode = -1;
+                return 0.0;
+            }
+            
+            errorCode = 0;
+            
+            max = numbers[ 0 ];
+            
+            for( i = 1; i < arraySize; i++ )
+                max = ( numbers[ i ] > max ) ? numbers[ i ] : max;
+                
+            return max;
+            
+        }
+
+NOTE: A one-dimensional array is like a list; A two dimensional array is like a table; The C/C++ language places no limits on the number of dimensions in an array, though specific implementations may. Although an array can have as many as 32 dimensions, it is rare to have more than three. When you add dimensions to an array, the total storage needed by the array increases considerably, so use multidimensional arrays with care.
