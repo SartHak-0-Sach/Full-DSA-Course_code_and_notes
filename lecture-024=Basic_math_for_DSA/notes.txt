@@ -633,3 +633,190 @@ Bayesian Inference:
 Bayesian inference is a statistical method for updating beliefs or making predictions based on observed evidence and prior knowledge. It combines probability theory with decision theory to make optimal decisions under uncertainty.
 Conclusion:
 Probability theory is a fundamental tool in DSA and programming, enabling the analysis, design, and implementation of algorithms and systems that involve randomness, uncertainty, and statistical modeling. Understanding probability concepts and their applications is essential for solving complex problems, developing robust algorithms, and making informed decisions in various domains of computer science and engineering.
+
+Find the factorial of a large number. 
+
+What is Factorial of a number?
+Factorial of a non-negative integer, is the multiplication of all integers smaller than or equal to n. 
+
+Factorial of a number
+Factorial of a number
+
+Examples: 
+
+Input: 100
+Output: 933262154439441526816992388562667004-
+         907159682643816214685929638952175999-
+         932299156089414639761565182862536979-
+         208272237582511852109168640000000000-
+         00000000000000
+
+Input: 50
+Output: 3041409320171337804361260816606476884-
+         4377641568960512000000000000
+
+We have discussed a simple program for factorial.
+
+Why conventional way of computing factorial fails for large numbers?
+A factorial of 100 has 158 digits. It is not possible to store these many digits even if we use long int. 
+
+Recommended Problem
+Factorials of large numbers
+number-theory
+Strings
++2 more
+Morgan Stanley
+Microsoft
++6 more
+Solve Problem
+Submission count: 1.3L
+The idea is to use basic mathematics for multiplication.
+
+Illustration:
+
+Example to show working of multiply(res[], x)
+
+A number 5189 is stored in res[] as following: res[] = {9, 8, 1, 5}
+let x = 10
+Initialize carry = 0
+
+ 
+
+At i = 0, prod = res[0]*x + carry = 9*10 + 0 = 90.
+res[0] = 0, carry = 9
+
+ 
+
+
+ 
+
+At i = 1, prod = res[1]*x + carry = 8*10 + 9 = 89
+res[1] = 9, carry = 8
+
+ 
+
+
+ 
+
+At i = 2, prod = res[2]*x + carry = 1*10 + 8 = 18
+res[2] = 8, carry = 1
+
+ 
+
+
+ 
+
+At i = 3, prod = res[3]*x + carry = 5*10 + 1 = 51
+res[3] = 1, carry = 5
+
+
+ 
+
+res[4] = carry = 5
+res[] = {0, 9, 8, 1, 5} 
+
+Follow the steps below to solve the given problem:
+
+Create an array res[] of MAX size where MAX is a number of maximum digits in output. 
+Initialize value stored in res[] as 1 and initialize res_size (size of ‘res[]’) as 1. 
+Multiply x with res[] and update res[] and res_size to store the multiplication result for all the numbers from x = 2 to n.
+To multiply a number x with the number stored in res[], one by one multiply x with every digit of res[].
+To implement multiply function perform the following steps:
+Initialize carry as 0. 
+Do following for i = 0 to res_size – 1 
+Find value of res[i] * x + carry. Let this value be prod. 
+Update res[i] by storing the last digit of prod in it. 
+Update carry by storing the remaining digits in carry. 
+Put all digits of carry in res[] and increase res_size by the number of digits in carry.
+Below is the implementation of the above algorithm. 
+
+NOTE: In the below implementation, the maximum digits in the output are assumed as 500. To find a factorial of a much larger number ( > 254), increase the size of an array or increase the value of MAX. This can also be solved using Linked List instead of using res[] array which will not waste extra space.
+
+Time Complexity: O(N log (N!)), where O(N) is for loop and O(log N!) is for nested while loop
+Auxiliary Space: O(max(digits in factorial))
+
+Find the Factorial of a large number using Basic BigInteger
+This problem can be solved using the below idea:
+
+Big Integer can also be used to calculate the factorial of large numbers.
+
+Illustration:
+
+N = 5
+
+ans = 1
+
+At i = 2: ans = ans x i = 1 x 2 = 2
+At i = 3: ans = ans x i = 2 x 3 = 6
+At i = 4: ans = ans x i = 6 x 4 = 24
+At i = 5: ans = ans x i = 24 x 5 = 120
+
+Hence factorial of N is 120
+
+Follow the steps below to solve the given problem: 
+
+Declare a BigInteger f with 1 and perform the conventional way of calculating factorial
+Traverse a loop from x = 2 to N and multiply x with f and store the resultant value in f
+
+Time Complexity: O(N)
+Auxiliary Space: O(1) 
+
+Find Factorial of a number using Linked List :-
+So the basic idea is to multiply the next number ranging between 2 to N with the data stored in the current Node and also maintain a carry just like the array approach. And then move on to the next node.
+
+Let’s break it down into following steps :
+
+Initially we’ll create 1 single node containing 1 in it.
+Then initialized i of a for loop with 2.
+And for each value of i up till N, we’ll call a function multiply which takes 2 parameter, head of the list and value of i.
+And perform the below operation (See the image)
+
+
+
+
+1
+Operation
+
+
+
+The above operation will be carried out till our temp pointer becomes NULL.
+
+Now there are further 2 cases , The multiplication of i with the node’s data :
+
+Doesn’t exceed 1 digit
+Exceeds 1 digit
+If the multiplication of current node’s data with i – Exceeds 1 digit, then we won’t be storing it into a single node. Rather, we’ll be storing each digit into a single node. And if it doesn’t then we’ll simply replace current node’s data with it.
+
+So, by above explanation we can conclude and form the following steps to solve this problem :
+
+Algorithm:
+Find value of : node’s data * i + carry. Store it in a variable ‘prod’.
+Initialize 2 pointers let’s say prev and temp on the current node and Update the current node’s value by storing the last digit of the ‘prod’
+Update carry by storing the remaining digits in carry (excluding the last digit)
+Now, bring prev ptr on temp and move temp to the next node (if any) and then again perform, the previous steps until the carry becomes 0 or the temp ptr becomes NULL.
+Once the temp pointer reaches the NULL there is a possibility that carry is still not 0. So, until carry becomes 0 we have to again perform the same steps by creating a new node for every remaining digit.
+See the image below for the Dry run of above steps :
+
+(i) Node’s data = 1, i = 2, carry = 0.
+
+Screenshot-2023-08-02-002235
+
+(ii) Node’s Data : 2, i = 3, carry = 0
+
+
+
+Screenshot-2023-08-02-002539
+
+(iii) Node’s Data : 6, i = 4, carry = 2 (6*4 = 24, 24 % 10 = 4, 24/10 = 2)
+
+X = NULL in the below image :
+
+Screenshot-2023-08-02-003958
+6 × 4 = 24
+
+
+
+Just like this, we’ll do for the remaining digits, and each of the digit will be stored in a single node.
+
+Time Complexity : O(N²)
+Space Complexity : O(digits in factorial)
