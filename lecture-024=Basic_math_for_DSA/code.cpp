@@ -227,9 +227,413 @@ void factorial(int n)
     }
 }
 
+int modularExponentiation(int x, int n, int m)
+{
+    long long int product = 1; // slower approach
+    while (n--)
+    {
+        product *= x;
+        if (product > m)
+            product %= m;
+    }
+    return (product % m);
+}
 
+int modularExponentiation2(int x, int n, int m)
+{
+    int res = 1;
+    while (n > 0)
+    {
+        if (n & 1)
+        {
+            res = (1LL * (res) * (x)) % m; // faster approach
+        }
+        x = (1LL * (x) * (x)) % m;
+        n = n >> 1;
+    }
+    return (res);
+}
 
+long long int factorialAgain(long long int n, long long int p)
+{
+    // Calculate factorial of (3 * n)
+    long long int factorial = 1;
+    for (long long int i = 1; i <= 3 * n; ++i)
+    {
+        factorial = (factorial * i) % p;
+    }
+
+    // Calculate power of 6 raised to the power of n
+    long long int power = 1;
+    for (long long int i = 1; i <= n; ++i)
+    {
+        power = (power * 6) % p;
+    }
+
+    // Calculate modular inverse of power
+    long long int inverse_power = 1;
+    long long int base = power;
+    long long int exponent = p - 2;
+    while (exponent > 0)
+    {
+        if (exponent & 1)
+        {
+            inverse_power = (inverse_power * base) % p; // correct approach according to me
+        }
+        base = (base * base) % p;
+        exponent >>= 1;
+    }
+
+    // Calculate result
+    long long int result = (factorial * inverse_power) % p;
+    return result;
+}
+
+#define ll long long int
+ll power(ll b, ll p, ll m)
+{
+    ll r = 1;
+    b %= m;
+    while (p > 0)
+    {
+        if (p & 1)
+        {
+            r = r * b % m; // real solution to above problem using Wilson theorem as above solution gave wrong result
+        }
+        b = b * b % m;
+        p >>= 1;
+    }
+    return r;
+}
+
+ll factorialAgain2(ll n, ll p)
+{
+    n = ((n * 3) % p + p) % p; // most weird shit ever. Giving WA otherwise
+    ll dem = power(6, n / 3, p);
+    // weird cannot gives WA if dem is calculated before hand like power(6, n, p);
+    ll num = p - 1;
+    for (int i = n + 1; i <= p - 1; ++i)
+        num = (num * power(i, p - 2, p)) % p;
+    ll ans = num * power(dem, p - 2, p) % p;
+    return ans;
+}
+
+/*
+Time Complexity : O((N - P)*log(N))
+Space Complexity : O(1)
+
+Where ‘N’ is the number given and ‘P’ is the given prime number.
+*/
+
+long long int power(long long int x, long long int y, long long int p)
+{
+    long long int res = 1;
+
+    x = x % p;
+    while (y > 0)
+    {
+        // If y is odd, multiply x with result.
+        if (y & 1)
+        {
+            res = (res * x) % p;
+        }
+
+        // The y must be even now.
+        y = y >> 1;
+
+        x = (x * x) % p;
+    }
+
+    return res;
+}
+
+long long int modInverse(long long int a, long long int p)
+{
+    return power(a, p - 2, p);
+}
+
+long long int modMultiplication(long long int a, long long int b, long long int m)
+{
+    a = a % m;
+    b = b % m;
+
+    return (((a * b) % m) + m) % m;
+}
+
+long long int modDivision(long long int a, long long int b, long long int m)
+{
+    a = a % m;
+    b = b % m;
+
+    return (modMultiplication(a, modInverse(b, m), m) + m) % m;
+}
+
+long long int factorialAgain3(long long int n, long long int p) // another solution to above problem
+{
+    n = modMultiplication(n, 3, p);
+
+    long long int num = (p - 1);
+
+    for (long long int i = n + 1; i < p; i++)
+    {
+        num = (num * modInverse(i, p)) % p;
+    }
+
+    long long int den = 1;
+    den = power(6, n / 3, p);
+
+    long long int ans = modDivision(num, den, p);
+
+    return ans;
+}
+
+// C++ program to compute factorial of big numbers
+#include <iostream>
+using namespace std;
+
+// Maximum number of digits in output
+#define MAX 500
+
+int multiply(int x, int res[], int res_size);
+
+// This function finds factorial of large numbers
+// and prints them
+void factorial(int n)
+{
+    int res[MAX];
+
+    // Initialize result
+    res[0] = 1;
+    int res_size = 1;
+
+    // Apply simple factorial formula n! = 1 * 2 * 3
+    // * 4...*n
+    for (int x = 2; x <= n; x++)
+        res_size = multiply(x, res, res_size);
+
+    cout << "Factorial of given number is \n";
+    for (int i = res_size - 1; i >= 0; i--)
+        cout << res[i];
+}
+
+// This function multiplies x with the number
+// represented by res[].
+// res_size is size of res[] or number of digits in the
+// number represented by res[]. This function uses simple
+// school mathematics for multiplication.
+// This function returns the
+// new value of res_size
+int multiply(int x, int res[], int res_size)
+{
+    int carry = 0; // Initialize carry
+
+    // One by one multiply n with individual digits of res[]
+    for (int i = 0; i < res_size; i++)
+    {
+        int prod = res[i] * x + carry;
+
+        // Store last digit of 'prod' in res[]
+        res[i] = prod % 10;
+
+        // Put rest in carry
+        carry = prod / 10;
+    }
+
+    // Put carry in res and increase result size
+    while (carry)
+    {
+        res[res_size] = carry % 10;
+        carry = carry / 10;
+        res_size++;
+    }
+    return res_size;
+}
+
+// Driver program
 int main()
+{
+    factorial(100);
+    return 0;
+}
+
+/*
+Factorial of given number is
+93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+*/
+
+// C++ program to find large
+// factorials using BigInteger
+
+#define ull unsigned long long
+
+// Returns Factorial of N
+ull factorial2(int N)
+{
+
+    // Initialize result
+    ull f = 1; // Or BigInt 1
+
+    // Multiply f with 2, 3, ...N
+    for (ull i = 2; i <= N; i++)
+        f *= i;
+
+    return f;
+}
+
+// Driver method
+// int main()
+// {
+// 	int N = 20;
+// 	cout << factorial(N) << endl;
+// }
+
+/*
+Output
+2432902008176640000
+*/
+
+//* Node Class
+class Node
+{
+public:
+    int data;
+    Node *prev;
+    Node(int n)
+    {
+        data = n;
+        prev = NULL;
+    }
+};
+
+//* Function to perform desired operation
+void Multiply(Node *head, int i)
+{
+    Node *temp = head,
+         *prevPtr = head; // Temp variable for keeping head
+
+    int carry = 0;
+
+    //* Perform operation until temp becomes NULL
+    while (temp != NULL)
+    {
+        int prod = temp->data * i + carry;
+        temp->data = prod % 10; //* Stores the last digit
+        carry = prod / 10;
+        prevPtr = temp;    //* Change Links
+        temp = temp->prev; //* Moving temp to next node
+    }
+
+    //* If carry is greater than 0 then we create new nodes
+    //* to store remaining digits.
+    while (carry != 0)
+    {
+        prevPtr->prev = new Node((int)(carry % 10));
+        carry /= 10;
+        prevPtr = prevPtr->prev;
+    }
+}
+
+//* Using head recursion to print the linked list's data in reverse
+void print(Node *head)
+{
+    if (head == NULL)
+        return;
+    print(head->prev);
+    cout << head->data; // Print linked list in reverse order
+}
+
+// Driver code
+// int main()
+// {
+// 	int n = 100;
+// 	Node *head = new Node(1); // Create a node and initialise it by 1
+
+// 	for(int i = 2; i <= n; i++)
+// 		Multiply(head, i); // Run a loop from 2 to n and
+// 							// multiply with head's i
+// 	cout << "Factorial of " << n << " is : \n";
+// 	print(head); // Print the linked list
+// 	cout << endl;
+// 	return 0;
+// }
+
+/*
+Factorial of 100 is :
+93326215443944152681699238856266700490715968264381621468592963895217599993229915608941463976156518286253697920827223758251185210916864000000000000000000000000
+*/
+
+int count2 = 0;
+int count5 = 0;
+void updateCount(int n)
+{
+    while (true)
+    {
+        bool found = false;
+        if (n % 5 == 0)
+        {
+            count5++;
+            n /= 5;
+            found = true;
+        }
+        else if (n % 2 == 0) // my brute force solution
+        {
+            count2++;
+            n /= 2;
+            found = true;
+        }
+        if (!found)
+            break;
+    }
+}
+int trailingZeroes(int n)
+{
+    for (int i = 2; i <= n; i++)
+    {
+        if (i % 2 == 0 || i % 5 == 0)
+            updateCount(i);
+    }
+    int ans = min(count2, count5);
+    return ans;
+}
+
+// class Solution {
+// public:
+
+//     int findFactorial(int n){
+
+//         long long factorial=1;
+
+//         for(int i=1;i<=n;i++){
+//             factorial*=i;
+//         }
+//       return factorial;
+//     }
+
+//     int trailingZeroes(int n){
+
+//         if(n==0) return 0;
+//         int cntZeroes=0;
+
+//         int factorial=findFactorial(n);
+//          while (factorial % 10 == 0) {
+//             cntZeroes++;
+//             factorial /= 10;
+//         }
+//         return cntZeroes;
+//     }
+// };
+
+int trailingZeroes2(int n)
+{
+    int cntZeroes = 0;
+    for (int i = 5; n / i > 0; i *= 5) // most optimized approach solution of this problem
+    {
+        cntZeroes += n / i;
+    }
+    return cntZeroes;
+}
+
+int main(int argc, char const *argv[])
 {
     int n;
     cin >> n;
@@ -240,5 +644,10 @@ int main()
     cout << countPrimes5(n) << endl;
     findFactorial(n);
     factorial(n);
+    cout << modularExponentiation(2, 3, 3) << endl;
+    cout << modularExponentiation2(2, 3, 3) << endl;
+    cout << factorialAgain(3, 1000000007) << endl;
+    cout << factorialAgain2(3, 1000000007) << endl;
+    cout << factorialAgain3(3, 1000000007) << endl;
     return 0;
 }
