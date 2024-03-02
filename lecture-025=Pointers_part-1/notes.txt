@@ -1,0 +1,447 @@
+In this lecture we are going to study about pointers.
+
+We started off this lecture by understanding how a memory of a variable or any other data structure is allocated. The address of memory is in hexadecimal form and can be accessed by using the '&' keyword.
+
+Memory Allocation:
+Memory allocation refers to the process of reserving space in memory for storing data. When you declare a variable or allocate memory dynamically (using new in C++), the operating system allocates a specific amount of memory to hold that data.
+
+Address of Memory:
+Every variable or data structure stored in memory has a unique address associated with it. This address represents the location in memory where the data is stored. In C++, you can obtain the memory address of a variable using the address-of operator &. For example, &variable gives the memory address of variable.
+
+Hexadecimal Form:
+Hexadecimal is a base-16 numbering system that uses sixteen distinct symbols, 0-9 followed by A-F, to represent numbers. In computing, hexadecimal is commonly used because it provides a more compact representation of binary data and is easier for humans to read than binary. Memory addresses are often displayed in hexadecimal format.
+
+'&' Keyword:
+In C++, the ampersand (&) is the address-of operator. It returns the memory address of a variable when placed in front of the variable name. For example, &variable returns the memory address of variable.
+
+Now all these variables that are declared by us are stored in the symbol table and when we write the name of the variable, the compiler then checks this symbol table to see if it has been defined before. And thus there are various keywords that cannot be used as names of variables as they have already been defined in the symbol table by the header file or the author of syntax of language.
+
+What is Symbol Table?
+Symbol table is an important data structure created and maintained by the compiler in order to keep track of semantics of variables, that is, it stores info about scope and binding information about names, information about instances of various entities such as variable and function names, classes, objects etc.
+
+Let's break down each part:
+
+Symbol Table:
+A symbol table is a data structure used by compilers and interpreters to store information about the various symbols (identifiers) used in a program. It keeps track of the association between the names used in the program and their attributes or properties. These attributes may include the data type, scope, memory location, and other relevant information about each symbol.
+
+Role of Symbol Table:
+
+Scope Management: The symbol table helps manage the scope of variables, functions, classes, and other entities defined in a program. It tracks where each symbol is defined and where it is accessible.
+Name Resolution: It resolves references to symbols by mapping each symbol name to its corresponding definition or declaration. This ensures that the compiler can correctly identify and use the intended symbols throughout the program.
+Type Checking: The symbol table may also store information about the data type of each symbol, allowing the compiler to perform type checking and ensure type compatibility in expressions and assignments.
+Memory Management: For variables and objects, the symbol table may contain information about their memory allocation, such as stack or heap storage, and their memory addresses.
+Optimization: In some cases, symbol tables may be used by compilers to optimize code generation by analyzing the usage of symbols and identifying opportunities for optimization.
+Keyword Restrictions:
+Keywords are reserved words in a programming language that have special meanings and purposes. These keywords cannot be used as identifiers (variable names, function names, etc.) because they are already predefined in the language and are typically used for specific language constructs. Attempting to use a keyword as an identifier will result in a syntax error. The symbol table maintains information about these keywords and prevents their use as identifiers.
+
+In summary, the statement "Symbol table is an important data structure created and maintained by the compiler in order to keep track of semantics of variables" indicates that the symbol table plays a crucial role in managing the identifiers used in a program, ensuring proper scoping, name resolution, and type checking. It is essential for the correct interpretation and compilation of programming code.
+
+Then we moved onto learn more about the syntax part of it, that is, understanding how we declare, update, read and delete pointers.
+In that we learned that it is a bad practice to declare a pointer and not initialize it with some value, as this can potentially change something on some garbage memory that may or may not be of significant use to us, but can be risky in the future.
+
+Let's delve deeper into the concepts mentioned in the above text:
+
+Syntax and Usage of Pointers:
+Pointers in programming languages allow direct manipulation of memory addresses, enabling dynamic memory allocation and efficient data access. Here's an overview of the concepts related to pointers mentioned in the text:
+
+Declaration: Pointers are declared using an asterisk (*) symbol followed by the data type they point to. For example, int* ptr; declares a pointer to an integer.
+Initialization: It's considered a best practice to initialize pointers when declaring them, either with nullptr, a valid memory address, or by assigning them the address of a variable. Uninitialized pointers may contain garbage values, leading to undefined behavior when dereferenced.
+Updating: Pointers can be updated to point to different memory locations using assignment operations. For example, ptr = &variable; assigns the address of variable to the pointer ptr.
+Dereferencing: Dereferencing a pointer involves accessing the value stored at the memory address it points to. This is done using the dereference operator (*). For example, *ptr accesses the value stored at the address pointed to by ptr.
+Reading: Reading from a pointer involves accessing the value it points to using the dereference operator. This allows manipulation of data indirectly through pointers.
+Deletion: Pointers themselves are not deleted in the same way as objects or variables. However, dynamically allocated memory pointed to by pointers should be deallocated using delete or delete[] to avoid memory leaks.
+Best Practices:
+
+Initialization: Always initialize pointers when declaring them to avoid accessing uninitialized memory.
+Null Pointers: Use nullptr to represent null pointers, indicating that they do not point to any valid memory address.
+Memory Management: Be cautious when deallocating memory pointed to by pointers to avoid memory leaks or accessing deallocated memory.
+Risks of Uninitialized Pointers:
+
+Accessing uninitialized pointers can lead to undefined behavior, as they may contain garbage values that point to arbitrary memory locations.
+Dereferencing uninitialized pointers can result in segmentation faults, crashes, or data corruption, which can be difficult to debug and fix.
+In summary, understanding the syntax and best practices related to pointers is essential for writing safe and efficient code. Proper initialization, updating, reading, and deletion of pointers help prevent memory-related errors and ensure the reliability and stability of software applications.
+
+
+
+int a[] = {1, 2, 3, 4};
+int *p = a++;
+cout << *p << endl;
+
+Why is this code snippet giving error?
+
+This code snippet will result in a compilation error because you cannot increment an array (a++).
+
+Let's break it down:
+
+cpp
+Copy code
+int a[] = {1, 2, 3, 4};
+Here, you've declared an integer array a with four elements {1, 2, 3, 4}.
+
+cpp
+Copy code
+int *p = a++;
+In this line, you're trying to assign the address of the first element of the array a to a pointer p, and then incrementing a. However, incrementing an array is not allowed in C++.
+
+To fix this code, you can use a pointer to the array instead, like this:
+
+cpp
+Copy code
+int *p = &a[0];
+Or if you want p to point to the second element:
+
+cpp
+Copy code
+int *p = &a[1];
+This way, you're explicitly getting the address of the first or second element of the array a, respectively.
+
+int *ptr = 0;
+int a = 10;
+*ptr = a;
+cout << *ptr << endl;
+
+Why will this code snippet return error?
+This code snippet will likely result in a segmentation fault or a similar error at runtime. Let's break down why:
+
+cpp
+Copy code
+int *ptr = 0;
+Here, you're declaring a pointer ptr and initializing it to a null pointer (0 or nullptr), meaning it doesn't point to any valid memory location.
+
+cpp
+Copy code
+int a = 10;
+This line declares an integer variable a and assigns it the value 10.
+
+cpp
+Copy code
+*ptr = a;
+This line attempts to dereference the null pointer ptr and assign the value of a to the memory location it points to. Since ptr is null, you're trying to write to memory you don't have access to, which results in undefined behavior. Most likely, this will cause a segmentation fault because you're attempting to write to a memory address that your program doesn't own.
+
+cpp
+Copy code
+cout << *ptr << endl;
+This line tries to dereference the null pointer ptr again, attempting to read the value from the memory location it points to. Since ptr is null and hasn't been assigned to point to any valid memory location, this will also result in undefined behavior.
+
+To fix this code, you need to make sure ptr points to a valid memory location before dereferencing it. For example:
+
+cpp
+Copy code
+int *ptr = &a; // Assign ptr to the address of 'a'
+Now ptr points to the memory location of a, and dereferencing it (*ptr) will access the value of a.
+
+Introduction to Pointers
+
+Pointers are one of the most important aspects of C++. Pointers are another type of variable in CPP, and these variables store addresses of other variables.
+
+While creating a pointer variable, we need to mention the type of data whose address is stored in the pointer. e.g., to create a pointer that stores the address of an integer, we need to write:
+
+int* p;
+
+This means that p will contain the address of an integer. So, if a pointer is going to store the address of datatype X, it will be declared like this:
+
+int* p;
+
+Address of Operator (&)
+
+The address of a variable can be obtained by preceding the name of a variable with an ampersand sign (&), known as the address-of operator.
+
+Example:
+
+cout << (&var) << endl;
+
+This would print the address of variable var; by preceding the name of the variable var with the address-of operator (&), we are no longer printing the content of the variable itself but its address.
+
+Example:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int i = 10;
+    int * p;
+    p = & i;
+    cout << "Address of the variable i is " << p << endl;
+    cout << "Address of the pointer p is " << & p;
+    return 0;
+}
+ 
+Output:
+Address of the variable i is 0x7fff32eb4bb4
+Address of the pointer p is 0x7fff32eb4bb8
+ 
+Here,  we have an integer i and an integer pointer p. The address of(&) operator is used to address i in p that returns the variable’s address. e.g., &i will give us the address of variable i.
+
+Dereference Operator
+
+As just seen, a variable that stores the address of another variable is called a pointer. Pointers are said to "point to" the variable whose address they store.
+
+An exciting property of pointers is that they can access the variable they point to directly. This is done by preceding the pointer name with the dereference operator (*). The operator itself can be read as "value pointed to by.”
+
+The reference and dereference operators are thus complementary:
+
+& is the address-­of operator and can be read simply as "address of.”
+ 
+* is the dereference operator and can be read as "value pointed to by.”
+ 
+Note: The asterisk (*) used when declaring a pointer only means that it is a pointer (it is part of its type compound specifier) and should not be confused with the dereference operator seen above, but which is also written with an asterisk (*). They are simply two different things represented with the same sign.
+
+Example:
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    int firstvalue = 5, secondvalue = 15;
+    char thirdvalue = 'a';
+    int * p1, * p2;
+    char * p3;
+    p1 = & firstvalue; // p1 = address of firstvalue
+    p2 = & secondvalue; // p2 = address of secondvalue 
+    p3 = & thirdvalue; // p3 = address of thirdvalue
+    * p1 = 10; // value pointed to by p1 = 10
+    * p2 = * p1; // value pointed to by p2 = value pointed to by p1
+    p1 = p2; // p1 = p2 (value of pointer is copied)
+    * p1 = 20; // value pointed to by p1 = 20
+    * p3 = 'b'; // value pointed to by p3 = ‘b ’
+    cout << "firstvalue is " << firstvalue << endl;
+    cout << "secondvalue is " << secondvalue << endl;
+    cout << "thirdvalue is " << thirdvalue << endl;
+    return 0;
+}
+
+Output:
+firstvalue is 10
+secondvalue is 20
+thirdvalue is b
+ 
+Note: While solving pointers questions, you should use pen and paper and draw better ideas.
+
+Pointer Arithmetic
+
+Arithmetic operations on pointers behave differently than they do on simple data types we studied earlier. Only addition and subtraction operations are allowed; the others aren’t allowed on pointers. But both addition and subtraction have slightly different behavior with pointers, according to the size of the data type to which they point.
+
+For example, char always has a size of 1 byte, short is generally larger than that, and int and long are even larger; the exact size of these depends on the system. For example, let's imagine that in a given system, char takes 1 byte, short takes 2 bytes, and long takes 4.
+
+Suppose now that we define three-pointers:
+
+char *mychar; 
+
+short *myshort;
+
+long *mylong;
+
+and they point to the memory locations 1000, 2000, and 3000, respectively.
+
+Therefore, if we write:
+
+++mychar;
+
+++myshort;
+
+++mylong;
+
+mychar, as one would expect, would contain the value 1001. But not so obviously, myshort would contain the value 2002, and mylong would contain 3004, even though they have each been incremented only once. The reason is that, when adding one to a pointer, the pointer is made to point to the following element of the same type, and, therefore, the size in bytes of the type it points to is added to the pointer.
+
+This is applicable both when adding and subtracting any number to a pointer. It would happen the same if we wrote:
+
+mychar = mychar + 1; 
+
+myshort = myshort + 1; 
+
+mylong = mylong + 1;
+
+Essentially, these are the four possible combinations of the dereference operator with both the prefix and suffix versions of the increment operator (the same applies to the decrement operator).
+
+Pointers may be compared by using relational operators, such as ==, <, and >. If p1 and p2 point to variables related to each other, such as the same array of elements, then p1 and p2 can be meaningfully compared.
+
+Types of pointers in C++
+ 
+There are different types of pointers in C++, and they are as follows:
+
+Null Pointers
+Double Pointers
+Void Pointers
+Wild Pointers
+Dangling Pointer
+
+1. Null Pointers: 
+A NULL pointer is a pointer that is pointing to nothing. If we don’t have the address to be assigned to a pointer, we can use NULL.
+
+Advantages of Null pointer are:
+
+We can initialize a pointer variable when that pointer variable is not assigned any actual memory address.
+We can pass a null pointer to a function argument when we are unwilling to pass any actual memory address.
+ 
+Example:
+
+int *p; //Contains garbage value
+int *p = NULL; //NULL is constant with vaue 0
+int *q = 0; // Same as above
+ 
+Here, we have created a pointer variable that contains garbage values. To dereference the pointer, we have initialized it to NULL to avoid unexpected behavior.
+
+Note: An uninitialized pointer variable contains garbage; this will lead to unexpected results or segmentation faults. Hence, we should never leave a pointer uninitialized and instead.
+
+Example:
+
+#include <iostream>
+using namespace std;
+int main() {
+    // Null Pointer 
+    int * ptr = NULL;
+    cout << "The value of ptr is " << ptr;
+    return 0;
+}
+Output:
+The value of ptr is 0
+
+2. Double Pointers:  
+We can create a pointer to a pointer that in turn may point to data or another pointer. The first pointer is used to store the address of the variable. And the second pointer is used to store the address of the first pointer. That is why they are also known as double pointers.
+
+Example:
+
+int a = 10;
+int *p = &a; 
+int **q = &p;
+ 
+Here q is a pointer to a pointer, i.e., a double-pointer, as indicated by **.
+
+Example:
+
+#include<iostream>
+using namespace std;
+int main() {
+    int a = 10;
+    int * p = & a; //pointer
+    int ** q = & p; //pointer-to-pointer
+    /* Next three statements will print same value i.e. address of a */
+    cout << & a << endl;
+    cout << p << endl;
+    cout << * q << endl;
+    /* Next two statements will print same value i.e. address of p */
+    cout << & p << endl;
+    cout << q << endl;
+    /* Next three statements will print same value i.e. value of a */
+    cout << a << endl;
+    cout << * p << endl;
+    cout << ** q << endl;
+    return 0;
+}
+Output:
+0x7ffcab7af9ac
+0x7ffcab7af9ac
+0x7ffcab7af9ac
+0x7ffcab7af9b0
+0x7ffcab7af9b0
+10
+10
+10
+
+3. Void Pointers:
+A void pointer is a generic pointer; it has no associated type with it. A void pointer can hold an address of any type and can be typecasted to any type. Thus we can use the void pointer to store the address of any variable.
+
+Void pointer is declared by: 
+
+void *ptr;
+
+Note:
+
+1. void pointers cannot be dereferenced. It can, however, be done using typecasting the void pointer.
+
+2. Pointer arithmetic is not possible on pointers of void due to lack of concrete value and size.
+
+Example:
+
+#include <iostream>
+using namespace std;
+int main() {
+    void * ptr;
+    int i = 10;
+    // assign int address to void
+    ptr = & i;
+    cout << "Address of variable i " << & i << endl;
+    cout << "Address where the void pointer is pointing " << ptr <<  endl;
+    return 0;
+}
+Output:
+Address of variable i 0x7ffc848c25f4
+Address where the void pointer is pointing 0x7ffc848c25f4
+ 
+4. Wild Pointers:
+A pointer behaves like a wild pointer when declared but not initialized. So, they point to any random memory location.
+
+Example:
+
+int *ptr; //wild pointer
+*ptr = 5;
+
+Note: If a pointer p points to a known variable, it’s not a wild pointer.
+
+Example:
+
+int * p; /* wild pointer */
+int a = 10;
+p = & a; /* p is not a wild pointer now*/
+* p = 12; /* This is fine. Value of a is changed */
+ 
+In the above program, p is a wild pointer till this points to a.
+
+5. Dangling Pointers:
+A dangling pointer is a pointer pointing to a memory location that has been freed (or deleted). There are three different ways where Pointer acts as a dangling pointer.
+
+a)Function Call
+
+The pointer pointing to the local variable becomes dangling when the local variable is not static.
+
+Example:
+
+#include<iostream>
+using namespace std;
+int * fun() {
+    int x = 10;
+    return &x;
+}
+int main() {
+    int * p = fun();
+    // p points to something which is not 
+    // valid anymore 
+    cout << * p;
+    return 0;
+}
+
+b) Deallocation of memory
+
+Deallocating a memory pointed by a pointer causes a dangling pointer.
+
+Example:
+
+#include<iostream>
+using namespace std;
+int main() {
+    //dynamic memory allocation.
+    int * p = (int * ) malloc(sizeof(int));
+    //after calling free() p becomes a dangling pointer
+    free(p);
+    //now p no more a dangling pointer.
+    p = NULL;
+    return 0;
+}
+
+c) Variable goes out of scope
+
+When a pointer goes out of scope where it is valid, then it becomes a dangling pointer.
+
+Example:
+
+#include<iostream>
+using namespace std;
+void main() {
+    int * ptr;
+    ..... //any code statements
+    {   int ch;
+        ptr = & ch;
+    }
+    ....
+    // Here ptr is dangling pointer
+}
